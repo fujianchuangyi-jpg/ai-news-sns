@@ -1,0 +1,302 @@
+# ニュースソース定義
+#
+# type:         rss | hn | reddit | hf_papers
+# tier:         official | major | niche | research | community
+#               → 「有名度」の機械シグナルの重みになる（select.py の TIER_SCORE）
+# lang:         ja | en
+# image_policy: ogp_ok       … OGP画像を取得してカードに合成（出典・日付を焼き込む）
+#               official_only… ベンダー公式／CC系のみ。取れなければ文字カード
+#               text_only    … 画像を使わずタイポグラフィのみのカード（通信社・UGC向け）
+# enabled:      false にすると収集対象から外れる（URLが死んだソースの一時退避用）
+
+sources:
+  # ── 公式ブログ（ベンダー一次情報。ニュースの起点になる） ──────────────
+  - id: openai
+    name: OpenAI
+    type: rss
+    url: https://openai.com/news/rss.xml
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+
+  # Anthropic は RSS を公開していないため一覧ページをスクレイプする
+  - id: anthropic
+    name: Anthropic
+    type: html
+    url: https://www.anthropic.com/news
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+    options:
+      link_contains: /news/
+
+  - id: deepmind
+    name: Google DeepMind
+    type: rss
+    url: https://deepmind.google/blog/rss.xml
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+
+  - id: google_ai
+    name: Google
+    type: rss
+    url: https://blog.google/technology/ai/rss/
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+
+  - id: huggingface
+    name: Hugging Face
+    type: rss
+    url: https://huggingface.co/blog/feed.xml
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+
+  - id: microsoft_ai
+    name: Microsoft
+    type: rss
+    url: https://news.microsoft.com/source/topics/ai/feed/
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+
+  - id: nvidia
+    name: NVIDIA
+    type: rss
+    url: https://blogs.nvidia.com/feed/
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+    filter_ai: true
+
+  # ai.meta.com は RSS 廃止。Meta の技術ブログを AI フィルタ付きで拾う
+  - id: meta_ai
+    name: Meta
+    type: rss
+    url: https://engineering.fb.com/feed/
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+    filter_ai: true
+
+  # Mistral も RSS を持たないため一覧ページから拾う
+  - id: mistral
+    name: Mistral AI
+    type: html
+    url: https://mistral.ai/news
+    tier: official
+    lang: en
+    image_policy: ogp_ok
+    options:
+      link_contains: /news/
+
+  # ── 英語メディア（有名ニュースの供給源） ────────────────────────────
+  - id: techcrunch_ai
+    name: TechCrunch
+    type: rss
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+    tier: major
+    lang: en
+    image_policy: ogp_ok
+    filter_ai: false
+
+  - id: theverge_ai
+    name: The Verge
+    type: rss
+    url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+    tier: major
+    lang: en
+    image_policy: ogp_ok
+    filter_ai: false
+
+  - id: venturebeat_ai
+    name: VentureBeat
+    type: rss
+    url: https://venturebeat.com/category/ai/feed/
+    tier: major
+    lang: en
+    image_policy: ogp_ok
+    filter_ai: false
+
+  - id: arstechnica
+    name: Ars Technica
+    type: rss
+    url: https://feeds.arstechnica.com/arstechnica/technology-lab
+    tier: major
+    lang: en
+    image_policy: ogp_ok
+
+  - id: mit_tech_review
+    name: MIT Technology Review
+    type: rss
+    url: https://www.technologyreview.com/feed/
+    tier: major
+    lang: en
+    # 記事写真の多くが通信社／ゲッティ経由のため文字カードに寄せる
+    image_policy: text_only
+
+  # ── 日本語メディア ────────────────────────────────────────────────
+  - id: itmedia_aiplus
+    name: ITmedia AI+
+    type: rss
+    url: https://rss.itmedia.co.jp/rss/2.0/aiplus.xml
+    tier: major
+    lang: ja
+    image_policy: ogp_ok
+    filter_ai: false
+
+  - id: itmedia_news
+    name: ITmedia NEWS
+    type: rss
+    url: https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml
+    tier: major
+    lang: ja
+    image_policy: ogp_ok
+
+  - id: ascii
+    name: ASCII.jp
+    type: rss
+    url: https://ascii.jp/rss.xml
+    tier: niche
+    lang: ja
+    image_policy: ogp_ok
+
+  - id: pcwatch
+    name: PC Watch
+    type: rss
+    url: https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf
+    tier: niche
+    lang: ja
+    image_policy: ogp_ok
+
+  - id: forest_watch
+    name: 窓の杜
+    type: rss
+    url: https://forest.watch.impress.co.jp/data/rss/1.0/wf/feed.rdf
+    tier: niche
+    lang: ja
+    image_policy: ogp_ok
+
+  - id: cnet_japan
+    name: CNET Japan
+    type: rss
+    url: https://feeds.japan.cnet.com/rss/cnet/all.rdf
+    tier: niche
+    lang: ja
+    image_policy: ogp_ok
+
+  # Ledge.ai は RSS が 404 を返すようになったため停止中。
+  # 復活を確認できたら enabled: true に戻す。
+  - id: ledge_ai
+    name: Ledge.ai
+    type: rss
+    url: https://ledge.ai/feed/
+    tier: niche
+    lang: ja
+    image_policy: ogp_ok
+    filter_ai: false
+    enabled: false
+
+  # ── 研究（ニッチ枠の主力。専門的だが「へえ」がある） ──────────────────
+  - id: arxiv_ai
+    name: arXiv cs.AI
+    type: rss
+    url: https://rss.arxiv.org/rss/cs.AI
+    tier: research
+    lang: en
+    image_policy: official_only
+
+  - id: arxiv_cl
+    name: arXiv cs.CL
+    type: rss
+    url: https://rss.arxiv.org/rss/cs.CL
+    tier: research
+    lang: en
+    image_policy: official_only
+
+  - id: arxiv_lg
+    name: arXiv cs.LG
+    type: rss
+    url: https://rss.arxiv.org/rss/cs.LG
+    tier: research
+    lang: en
+    image_policy: official_only
+
+  - id: hf_papers
+    name: Hugging Face Daily Papers
+    type: hf_papers
+    url: https://huggingface.co/api/daily_papers
+    tier: research
+    lang: en
+    image_policy: official_only
+
+  # ── コミュニティ（話題の初動を拾う。UGCなので画像は使わない） ──────────
+  - id: hackernews
+    name: Hacker News
+    type: hn
+    url: https://hn.algolia.com/api/v1/search_by_date
+    tier: community
+    lang: en
+    image_policy: text_only
+    options:
+      min_points: 80
+      queries: ["AI", "LLM", "OpenAI", "Anthropic", "machine learning"]
+
+  - id: reddit_localllama
+    name: r/LocalLLaMA
+    type: reddit
+    url: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day
+    tier: community
+    lang: en
+    image_policy: text_only
+    filter_ai: false
+
+# AI関連かどうかの判定に使うキーワード。
+# 汎用ソース（ITmedia NEWS, Ars Technica, CNET, HN 等）はこれで絞り込む。
+ai_keywords:
+  - "AI"
+  - "A.I."
+  - "artificial intelligence"
+  - "machine learning"
+  - "deep learning"
+  - "neural"
+  - "LLM"
+  - "large language model"
+  - "generative"
+  - "transformer"
+  - "diffusion"
+  - "chatbot"
+  - "OpenAI"
+  - "ChatGPT"
+  - "Anthropic"
+  - "Claude"
+  - "Gemini"
+  - "DeepMind"
+  - "Llama"
+  - "Mistral"
+  - "Copilot"
+  - "Midjourney"
+  - "Stable Diffusion"
+  - "Hugging Face"
+  - "NVIDIA"
+  - "GPU"
+  - "推論"
+  - "生成AI"
+  - "人工知能"
+  - "機械学習"
+  - "深層学習"
+  - "大規模言語モデル"
+  - "ディープラーニング"
+
+# これらを含む記事は「AI関連」でも除外（PR・求人・イベント告知など）
+exclude_keywords:
+  - "PR:"
+  - "［PR］"
+  - "【PR】"
+  - "Sponsored"
+  - "advertorial"
+  - "セール"
+  - "クーポン"
+  - "Amazonタイムセール"

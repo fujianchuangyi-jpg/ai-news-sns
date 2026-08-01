@@ -1,0 +1,92 @@
+# AI ニュース SNS — 全体設定
+# コード変更なしで運用チューニングできる値はすべてここに置く。
+
+account:
+  name: "AI NEWS DAILY"
+  handle: "@ai_news_daily"
+  # プレビューサイトの公開ベースURL（GitHub Pages）。
+  # 例: https://<user>.github.io/ai-news-sns
+  # 未設定でもローカルのプレビュー生成は動く。
+  site_base_url: ""
+
+collect:
+  # 収集対象の時間窓（時間）。前回実行から取りこぼさないよう広めに取る。
+  lookback_hours: 30
+  # 1ソースあたりの最大取得件数
+  max_items_per_source: 25
+  # HTTP
+  timeout_seconds: 20
+  max_concurrency: 8
+  user_agent: "ainews-bot/0.1 (+https://github.com/)"
+  # 本文抽出を試みる最大件数（全件やると遅いのでスコア上位に絞る）
+  max_fulltext_fetch: 60
+
+dedup:
+  # 過去何日分の投稿済み記事と照合するか
+  history_days: 30
+  # タイトル類似度がこの値以上なら同一ニュースとみなす（0.0-1.0）
+  title_similarity_threshold: 0.62
+
+select:
+  # 1日に選ぶ本数と内訳。famous + niche = total になるようにする。
+  total: 4
+  famous: 2
+  niche: 2
+  # fame_final がこの値以上なら「有名」バケット
+  fame_threshold: 60
+  # fame_final = llm_weight * LLM評価 + signal_weight * 機械シグナル
+  llm_weight: 0.6
+  signal_weight: 0.4
+  # LLM に採点させる候補の上限（コスト管理）
+  max_candidates: 60
+  # 同一カテゴリを1日に何本まで許すか
+  max_per_category: 2
+  # このリスクフラグが付いた記事は自動除外
+  blocking_risk_flags:
+    - "未確認情報"
+    - "誤情報の疑い"
+    - "センシティブ"
+
+compose:
+  # X の上限。日本語は weighted length で1文字=2 のため実質140字。
+  x_max_weighted: 280
+  # 生成が上限を超えたときのリトライ回数
+  x_retry_limit: 2
+  # Instagram キャプションのハッシュタグ数
+  ig_hashtag_count: 22
+  # X の投稿末尾に付ける出典表記のテンプレート
+  x_source_template: "（出典: {source}）"
+
+image:
+  instagram:
+    width: 1080
+    height: 1350
+  x:
+    width: 1600
+    height: 900
+  # OGP画像を上部何割に敷くか
+  photo_ratio: 0.58
+  # ブランドカラー
+  colors:
+    background: "#0E1116"
+    surface: "#161B22"
+    text: "#F5F7FA"
+    muted: "#8B95A5"
+    accent: "#3DDC97"
+  font:
+    bold: "assets/fonts/NotoSansJP-Bold.otf"
+    regular: "assets/fonts/NotoSansJP-Regular.otf"
+
+llm:
+  model: "claude-opus-5"
+  # 選定は候補が多いので effort を落としてコストを抑える
+  select_effort: "medium"
+  # 原稿生成は品質重視
+  compose_effort: "high"
+  max_tokens: 16000
+
+analytics:
+  # 週次レポートを生成する曜日（0=月曜）
+  weekly_report_weekday: 6
+  # 実績を収集する対象期間（日）
+  lookback_days: 35

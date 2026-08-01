@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ draft.date }} の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">{{ draft.date }}　生成 {{ generated_jst }}</div>
+</header>
+
+{% if draft.verification_issues %}
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+{% endif %}
+
+<h2>X（{{ draft.x_posts|length }}投稿）</h2>
+{% for post in draft.x_posts %}
+  {% set item = draft.scored_by_id(post.article_id) %}
+  {% if item %}
+  <div class="card">
+    <div class="meta">
+      <span class="tag {{ item.bucket }}">{{ '有名' if item.bucket == 'famous' else 'ニッチ' }}</span>
+      <span class="tag">{{ item.assessment.category }}</span>
+      <span class="tag">{{ post.hook_type }}</span>
+      <span class="tag">{{ item.article.source_name }}</span>
+    </div>
+    <div class="headline">
+      <a href="{{ item.article.url }}" target="_blank" rel="noopener">{{ item.display_title }}</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: {{ item.article.title }}</div>
+    </div>
+
+    {% set img = x_images.get(post.article_id) %}
+    {% if img %}<img class="card-img" src="{{ img }}" alt="">{% endif %}
+
+    <pre class="body" id="x-{{ loop.index }}">{{ post.body }}</pre>
+    <div class="count {{ 'over' if post._weight > x_limit else '' }}">
+      重み {{ post._weight }} / {{ x_limit }}（見た目 {{ post._visible }}字）
+      {%- if post._weight > x_limit %} — 上限超過。手直しが必要です{% endif %}
+    </div>
+
+    {% if draft.verification_issues.get(post.article_id) %}
+    <div class="warn">
+      <b>要確認:</b>
+      {% for issue in draft.verification_issues[post.article_id] %}
+        <div>［{{ issue.kind }}］{{ issue.value }} — {{ issue.note }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-{{ loop.index }}">本文をコピー</button>
+      {% if img %}<a class="btn" href="{{ img }}" download>画像を保存</a>{% endif %}
+      <a class="btn" href="https://x.com/intent/post?text={{ post._intent }}"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+
+<h2>Instagram（カルーセル {{ ig_images|length }}枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    {% for img in ig_images %}
+    <div>
+      <a href="{{ img.path }}" download><img src="{{ img.path }}" alt="{{ loop.index }}枚目"></a>
+      <div class="n">{{ loop.index }}. {{ img.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="actions">
+    {% if zip_name %}<a class="btn" href="{{ zip_name }}" download>6枚まとめてダウンロード</a>{% endif %}
+  </div>
+
+  <pre class="body" id="ig-caption">{{ ig_caption }}</pre>
+  <div class="count">{{ ig_caption|length }}字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  {% for item in draft.selected %}
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag {{ item.bucket }}">{{ '有名' if item.bucket == 'famous' else 'ニッチ' }}</span>
+      <span class="tag">知名度 {{ item.fame_final }}</span>
+      <span class="tag">興味度 {{ item.assessment.interest }}</span>
+      <span class="tag">{{ item.article.cluster_size }}社が報道</span>
+    </div>
+    <div class="headline">{{ item.display_title }}</div>
+    <div style="color:var(--muted);font-size:.9rem">{{ item.assessment.why_matters }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>

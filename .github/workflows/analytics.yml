@@ -1,0 +1,74 @@
+name: 実績収集と週次レポート
+
+on:
+  schedule:
+    # 毎晩 23:00 JST（= 14:00 UTC）。その日の投稿が伸びきってから測る。
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      report:
+        description: "週次レポートを生成する"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: analytics
+  cancel-in-progress: false
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - run: uv sync --frozen
+
+      - name: 実績を収集
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          X_USER_ID: ${{ secrets.X_USER_ID }}
+        run: uv run ainews analytics
+
+      # 日曜、または手動指定時に週次レポートを出して Discord へ送る。
+      # cron は毎日走るので、曜日判定はシェル側で行う
+      # （github.event.schedule では日次と週次を区別できない）。
+      - name: 週次レポート
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          FORCE_REPORT: ${{ inputs.report }}
+        run: |
+          if [ "$FORCE_REPORT" != "true" ] && [ "$(TZ=Asia/Tokyo date +%u)" != "7" ]; then
+            echo "日曜ではないためレポートをスキップします"
+            exit 0
+          fi
+          uv run ainews analytics --report --summarize | tee weekly-report.md
+          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
+            uv run python -c "
+import pathlib
+from ainews.notify import send_text
+send_text(pathlib.Path('weekly-report.md').read_text(encoding='utf-8'))
+"
+          fi
+
+      - name: 実績をコミット
+        run: |
+          git config user.name  "ainews-bot"
+          git config user.email "ainews-bot@users.noreply.github.com"
+          git add data/ainews.db
+          if git diff --staged --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "実績更新 $(TZ=Asia/Tokyo date +%Y-%m-%d)"
+            git push
+          fi
