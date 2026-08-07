@@ -17,6 +17,7 @@ OGP画像が取れない、またはソースの image_policy が text_only の�
 from __future__ import annotations
 
 import logging
+import re
 from dataclasses import dataclass
 from datetime import date as date_cls
 from io import BytesIO
@@ -30,6 +31,15 @@ from .models import Draft, ImageCard, ScoredArticle
 from .net import DEFAULT_UA
 
 log = logging.getLogger(__name__)
+
+# 折り返しの単位。
+#   1. 英数字の連なり（末尾の空白まで含める）… 途中で切らない
+#   2. 空白の連なり
+#   3. それ以外の1文字（和文）      … 1文字ずつ折り返せる
+# 空白を独立トークンにせず英数字トークンに含めるのが要点。分けると
+# 行末で rstrip された空白が失われ、次行との間で単語が繋がってしまう。
+_WRAP_TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9.,\-_/'’&:%+]*\s*|\s+|.", re.DOTALL)
+
 
 # カテゴリごとのアクセント色。1日4枚が同じ色にならないようにする。
 CATEGORY_COLORS = {
@@ -93,25 +103,25 @@ class CardRenderer:
         """幅に収まるよう折り返す。
 
         日本語は単語境界が無いので1文字ずつ積む。英単語は途中で切ると
-        読めなくなるので、半角スペース区切りの語は塊のまま扱う。
+        読めなくなるので塊のまま扱う。
+
+        トークン化に正規表現を使っているのは、単純に空白で split すると
+        「Anthropic、Claude Opus 5」のように和文と欧文が混ざった見出しで
+        空白が消えて "ClaudeOpus 5" になってしまうため。空白は直前の
+        トークンに含めて運ぶ。
         """
         lines: list[str] = []
         current = ""
-        # 空白で切りつつ、日本語部分は1文字ずつ足せるよう細かい単位にする
-        chunks: list[str] = []
-        for word in text.split(" "):
-            if word.isascii():
-                chunks.append(word + " ")
-            else:
-                chunks.extend(list(word))
-        for chunk in chunks:
-            trial = current + chunk
+        for token in _WRAP_TOKEN.findall(text):
+            trial = current + token
             if self.draw_width(trial.rstrip(), font) <= max_width:
                 current = trial
+            elif current.strip():
+                lines.append(current.rstrip())
+                # 行頭に空白を持ち越さない
+                current = token.lstrip()
             else:
-                if current.strip():
-                    lines.append(current.rstrip())
-                current = chunk
+                current = token
         if current.strip():
             lines.append(current.rstrip())
         return lines

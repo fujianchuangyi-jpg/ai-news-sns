@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  日次下書き生成の launchd 定義。
+
+  導入:
+    cp scripts/com.ainews.daily.plist ~/Library/LaunchAgents/
+    # PROJECT_DIR を実際のパスに置換してから読み込む
+    sed -i '' "s|__PROJECT_DIR__|$HOME/dev/ai-news-sns|g" \
+        ~/Library/LaunchAgents/com.ainews.daily.plist
+    launchctl load ~/Library/LaunchAgents/com.ainews.daily.plist
+
+  即時テスト:
+    launchctl start com.ainews.daily
+    tail -f ~/dev/ai-news-sns/data/daily.log
+
+  停止:
+    launchctl unload ~/Library/LaunchAgents/com.ainews.daily.plist
+
+  Mac がスリープしていた場合、launchd は復帰後に遅れて実行する。
+  数時間ずれても下書きは残るので運用は破綻しない。
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.ainews.daily</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__PROJECT_DIR__/scripts/run_daily.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__PROJECT_DIR__</string>
+
+    <!-- 毎朝 6:00。収集から画像生成まで含めて10分ほどかかる -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>6</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- スクリプト側でもログを取るが、起動自体が失敗した場合の受け皿 -->
+    <key>StandardOutPath</key>
+    <string>__PROJECT_DIR__/data/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>__PROJECT_DIR__/data/launchd.err.log</string>
+
+    <!-- 一度きりの実行。失敗しても再起動ループに入らせない -->
+    <key>RunAtLoad</key>
+    <false/>
+    <key>KeepAlive</key>
+    <false/>
+
+    <!-- launchd の既定 PATH は狭すぎるので補う（スクリプト側でも足している） -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>LANG</key>
+        <string>ja_JP.UTF-8</string>
+    </dict>
+</dict>
+</plist>

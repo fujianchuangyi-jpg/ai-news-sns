@@ -24,7 +24,7 @@ from pathlib import Path
 
 from . import store
 from .config import docs_dir, load_settings
-from .llm import LLM, api_key_available
+from .llm import LLM, api_key_available, make_llm
 
 
 def _setup_logging(verbose: bool) -> None:
@@ -37,20 +37,34 @@ def _setup_logging(verbose: bool) -> None:
 
 
 def _make_llm(args: argparse.Namespace) -> LLM:
-    if getattr(args, "fake_llm", False):
-        from .fakes import FakeLLM
+    """CLI 引数から LLM バックエンドを組み立てる。
 
+    --fake-llm は --backend fake の別名として残してある（既存の手順書や
+    習慣を壊さないため）。
+    """
+    if getattr(args, "fake_llm", False):
         print("※ フェイクLLMを使用中（原稿の品質は評価できません）\n")
-        return FakeLLM()  # type: ignore[return-value]
-    if not api_key_available():
+        return make_llm("fake", with_fallback=False)  # type: ignore[return-value]
+
+    backend = getattr(args, "backend", None) or load_settings().llm.get(
+        "backend", "anthropic"
+    )
+
+    if backend == "anthropic" and not api_key_available():
         print(
             "ANTHROPIC_API_KEY が設定されていません。\n"
+            "  無料で動かす:   --backend claude_code  または  --backend ollama\n"
             "  実キーで動かす: export ANTHROPIC_API_KEY=sk-ant-...\n"
-            "  配線だけ確認する: --fake-llm を付けて再実行",
+            "  配線だけ確認:   --fake-llm",
             file=sys.stderr,
         )
         raise SystemExit(2)
-    return LLM()
+
+    # 比較検証のときは退避先を外し、そのバックエンド素の挙動を見る
+    with_fallback = not getattr(args, "no_fallback", False)
+    llm = make_llm(backend, with_fallback=with_fallback)
+    print(f"※ バックエンド: {backend}" + ("" if with_fallback else "（退避先なし）"))
+    return llm  # type: ignore[return-value]
 
 
 def _draft_dir(date: str) -> Path:
@@ -75,10 +89,15 @@ def cmd_collect(args: argparse.Namespace) -> int:
         print(cluster_summary(articles))
 
         if not args.dry_run:
-            candidates, dropped = prepare_candidates(conn, articles)
+            candidates, dropped, screened = prepare_candidates(
+                conn, articles, screen=args.prefilter, explain=args.explain
+            )
             from .extract import enrichment_summary
 
             print(f"\n── 候補（既出 {dropped} 件を除外）")
+            if screened is not None:
+                print("── 一次選抜（ローカル）")
+                print(screened.render(explain=args.explain))
             print(f"  {len(candidates)} 件")
             print(enrichment_summary(candidates))
             for article in candidates[:15]:
@@ -188,27 +207,51 @@ def build_parser() -> argparse.ArgumentParser:
         sub.set_defaults(func=func)
         return sub
 
+    def add_backend_flags(sub: argparse.ArgumentParser) -> None:
+        sub.add_argument(
+            "--backend",
+            choices=["claude_code", "ollama", "anthropic", "fake"],
+            help="使用するLLM。既定は settings.yaml の llm.backend",
+        )
+        sub.add_argument(
+            "--no-fallback",
+            action="store_true",
+            help="退避先に切り替えず、そのバックエンド素の挙動を見る（比較検証用）",
+        )
+        sub.add_argument("--fake-llm", action="store_true", help="--backend fake の別名")
+        sub.add_argument("--explain", action="store_true", help="スコア内訳を表示する")
+
     collect = add("collect", "ニュースを収集する", cmd_collect)
     collect.add_argument(
         "--dry-run", action="store_true", help="本文抽出をせず収集結果だけ見る"
     )
+    collect.add_argument(
+        "--prefilter",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="ローカルLLMで一次選抜する（--no-prefilter で無効）",
+    )
+    collect.add_argument("--explain", action="store_true", help="選抜の内訳を表示する")
 
     daily = add("daily", "収集から原稿生成まで実行する", cmd_daily)
-    daily.add_argument("--fake-llm", action="store_true", help="LLMをスタブに差し替える")
-    daily.add_argument("--explain", action="store_true", help="スコア内訳を表示する")
+    add_backend_flags(daily)
 
     add("images", "下書きからカード画像を生成する", cmd_images)
     add("render", "プレビューサイトを生成する", cmd_render)
     add("notify", "Discord に下書き完成を通知する", cmd_notify)
 
     run = add("run", "daily→images→render→notify を通しで実行する", cmd_run)
-    run.add_argument("--fake-llm", action="store_true", help="LLMをスタブに差し替える")
-    run.add_argument("--explain", action="store_true", help="スコア内訳を表示する")
+    add_backend_flags(run)
 
     analytics = add("analytics", "実績を収集・分析する", cmd_analytics)
     analytics.add_argument("--report", action="store_true", help="週次レポートを出力する")
     analytics.add_argument("--summarize", action="store_true", help="レポートをLLMで要約する")
-    analytics.add_argument("--fake-llm", action="store_true", help="LLMをスタブに差し替える")
+    analytics.add_argument(
+        "--backend",
+        choices=["claude_code", "ollama", "anthropic", "fake"],
+        help="要約に使うLLM",
+    )
+    analytics.add_argument("--fake-llm", action="store_true", help="--backend fake の別名")
     analytics.add_argument("--import-csv", help="X analytics の CSV を取り込む")
 
     return parser

@@ -23,7 +23,8 @@ from .collect import Collector, SourceResult, format_summary
 from .compose import Composer
 from .config import load_settings
 from .extract import Extractor, enrichment_summary
-from .llm import LLM
+from .llm import LLM, make_llm
+from .prefilter import Prefilter, PrefilterResult
 from .models import Article, Draft, ScoredArticle
 from .select import Selector, format_scores, signal_score
 from .verify import format_issues, verify_draft
@@ -52,6 +53,7 @@ class PipelineReport:
     draft: Draft | None = None
     scored: list[ScoredArticle] = field(default_factory=list)
     articles: list[Article] = field(default_factory=list)
+    prefilter: PrefilterResult | None = None
 
     def render(self, *, explain: bool = False) -> str:
         lines = [
@@ -62,6 +64,14 @@ class PipelineReport:
             f"  既出除外 {self.dropped_as_seen} 件 → 候補 {self.after_dedup} 件",
             "",
         ]
+        if self.prefilter is not None:
+            lines += ["── 一次選択（ローカル）", self.prefilter.render(explain=explain), ""]
+        if self.draft is not None and self.draft.fallback_reason:
+            lines += [
+                f"  ⚠ 主バックエンドが使えず {self.draft.llm_backend} で生成しました",
+                f"    理由: {self.draft.fallback_reason}",
+                "",
+            ]
         if self.draft is None:
             return "\n".join(lines)
 
@@ -93,19 +103,32 @@ def collect_stage(conn) -> tuple[list[Article], list[SourceResult]]:
     return articles, results
 
 
-def prepare_candidates(conn, articles: list[Article]) -> tuple[list[Article], int]:
-    """代表記事に絞り、既出を除き、本文を取得した候補を返す。"""
+def prepare_candidates(
+    conn, articles: list[Article], *, screen: bool = True, explain: bool = False
+) -> tuple[list[Article], int, PrefilterResult | None]:
+    """代表記事に絞り、既出を除き、一次選抜を通し、本文を取得する。
+
+    本文取得（HTTPアクセス）は一次選抜の**後**に行う。先に取ると、
+    落とす記事の本文まで取りに行くことになり、時間も相手サーバへの
+    負荷も無駄になる。
+    """
     settings = load_settings()
     reps = representatives(articles)
     history = store.drafted_history(conn, settings.dedup["history_days"])
     kept, dropped = filter_already_drafted(reps, history)
 
-    # 本文取得は重いので、機械シグナル上位だけに限る
-    limit = settings.collect["max_fulltext_fetch"]
-    candidates = sorted(kept, key=signal_score, reverse=True)[:limit]
+    candidates = sorted(kept, key=signal_score, reverse=True)[
+        : settings.collect["max_fulltext_fetch"]
+    ]
+
+    result: PrefilterResult | None = None
+    if screen:
+        result = Prefilter().run(candidates, explain=explain)
+        candidates = result.kept
+
     candidates = Extractor().enrich(candidates)
     store.upsert_articles(conn, candidates)
-    return candidates, len(dropped)
+    return candidates, len(dropped), result
 
 
 def run_daily(
@@ -126,17 +149,23 @@ def run_daily(
         report.articles = articles
         log.info("複数社が報じた話題:\n%s", cluster_summary(articles))
 
-        candidates, dropped = prepare_candidates(conn, articles)
+        shared_llm = llm if llm is not None else make_llm()
+
+        # 一次選抜はローカルの Ollama が担う。主バックエンドが
+        # 既に Ollama の場合は二重に走らせても意味がないので省く。
+        screen = getattr(shared_llm, "name", "") != "ollama"
+        candidates, dropped, screened = prepare_candidates(
+            conn, articles, screen=screen, explain=explain
+        )
         report.dropped_as_seen = dropped
         report.after_dedup = len(candidates)
         report.candidates = len(candidates)
+        report.prefilter = screened
         log.info("本文抽出:\n%s", enrichment_summary(candidates))
 
         if not candidates:
             log.error("候補が0件です。収集かフィルタ設定を確認してください")
             return report
-
-        shared_llm = llm or LLM()
         picked, scored = Selector(llm=shared_llm).run(candidates)
         report.scored = scored
         if not picked:
@@ -162,6 +191,8 @@ def run_daily(
             x_posts=x_posts,
             ig_caption=ig_caption,
             verification_issues=issues,
+            llm_backend=getattr(shared_llm, "name", ""),
+            fallback_reason=getattr(shared_llm, "fallback_reason", ""),
         )
         store.save_draft(conn, draft)
         store.record_drafted(conn, date, [i.article for i in picked])

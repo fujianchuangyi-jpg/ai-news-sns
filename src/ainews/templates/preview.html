@@ -84,6 +84,17 @@
   <div class="date">{{ draft.date }}　生成 {{ generated_jst }}</div>
 </header>
 
+{% if draft.fallback_reason %}
+<div class="warn">
+  <b>⚠ 予備のLLM（{{ draft.llm_backend }}）で生成されました。</b>
+  主バックエンドが使えなかったため、原稿の品質が普段より落ちている
+  可能性があります。いつもより念入りに確認してください。
+  <div style="margin-top:.4rem;font-size:.82rem;opacity:.85">
+    理由: {{ draft.fallback_reason }}
+  </div>
+</div>
+{% endif %}
+
 {% if draft.verification_issues %}
 <div class="warn">
   <b>⚠ ファクト照合で要確認の項目があります。</b>

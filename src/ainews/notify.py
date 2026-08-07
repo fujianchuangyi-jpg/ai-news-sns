@@ -38,6 +38,10 @@ def _build_payload(draft: Draft) -> dict:
         )
 
     warnings = []
+    if draft.fallback_reason:
+        warnings.append(
+            f"⚠️ 予備のLLM（{draft.llm_backend}）で生成。品質を念入りに確認してください"
+        )
     over = [p for p in draft.x_posts if weighted_length(p.body) > limit]
     if over:
         warnings.append(f"⚠️ X原稿 {len(over)}件が字数超過（手直しが必要）")
@@ -54,7 +58,12 @@ def _build_payload(draft: Draft) -> dict:
         "title": f"📰 {draft.date} の下書きができました",
         "description": description[:DESCRIPTION_LIMIT],
         "color": 0xE86A6A if warnings else 0x3DDC97,
-        "footer": {"text": f"X {len(draft.x_posts)}投稿 / Instagram カルーセル1件"},
+        "footer": {
+            "text": (
+                f"X {len(draft.x_posts)}投稿 / Instagram カルーセル1件"
+                + (f" / {draft.llm_backend}" if draft.llm_backend else "")
+            )
+        },
     }
     if url:
         embed["url"] = url
@@ -90,3 +99,32 @@ def send_text(message: str) -> bool:
     except Exception as exc:
         log.error("Discord への通知に失敗しました: %s", exc)
         return False
+
+
+def _main() -> int:
+    """`python -m ainews.notify --file report.md` でファイルを通知する。
+
+    ワークフローから使う。YAML の run ブロックに Python を直接埋め込むと
+    インデントで壊れやすいので、モジュールとして呼べるようにしてある。
+    """
+    import argparse
+    from pathlib import Path
+
+    parser = argparse.ArgumentParser(description="Discord にテキストを送る")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--file", help="送信するテキストファイル")
+    group.add_argument("--message", help="送信する文字列")
+    args = parser.parse_args()
+
+    text = (
+        Path(args.file).read_text(encoding="utf-8") if args.file else args.message
+    )
+    if send_text(text):
+        print("送信しました")
+        return 0
+    print("送信をスキップしました（DISCORD_WEBHOOK_URL 未設定または失敗）")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(_main())

@@ -73,6 +73,11 @@ class FakeLLM:
             return AssessmentBatch(  # type: ignore[return-value]
                 assessments=[self._assessment(i) for i in items]
             )
+        if schema.__name__ == "DraftCopy":
+            return schema(  # type: ignore[call-arg]
+                posts=[self._x_post(i) for i in items],
+                caption=self._ig_caption(items),
+            )
         if schema.__name__ == "XPostList":
             return schema(posts=[self._x_post(i) for i in items])  # type: ignore[call-arg]
         if schema is XPost:

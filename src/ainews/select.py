@@ -36,9 +36,15 @@ TIER_SCORE = {
     "community": 35.0,
 }
 
-# 1回の LLM 呼び出しで評価する記事数。多すぎると出力が長くなり
-# 後半の品質が落ちるため、このくらいで刻む。
-ASSESS_CHUNK = 12
+# 1回の呼び出しで評価する記事数の上限。
+#
+# 以前は12件ずつ刻んでいたが、Claude Code は1回あたり約25,000トークンの
+# 固定オーバーヘッド（Claude Code 自身のシステムプロンプト）を伴うため、
+# 刻むほど無駄が増える。一次選抜で20件程度まで絞ったうえで1回に
+# まとめて渡すのが最も効率がよい。
+#
+# 上限を残してあるのは、一次選抜が無効な場合や候補が異常に多い日の保険。
+ASSESS_CHUNK = 24
 
 
 def signal_score(article: Article) -> float:
@@ -85,6 +91,9 @@ class Selector:
             user=user,
             schema=AssessmentBatch,
             effort=self.settings.llm["select_effort"],
+            # スキーマを強制できないバックエンド（Claude Code）と、
+            # 件数を落としがちなバックエンド（Ollama）の両方に効く
+            count_hint=len(payload),
         )
         return batch.assessments
 

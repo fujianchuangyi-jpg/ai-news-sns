@@ -171,6 +171,11 @@ class Draft(BaseModel):
     verification_issues: dict[str, list[VerificationIssue]] = Field(
         default_factory=dict, description="article_id → 検出された問題"
     )
+    # どのバックエンドで生成したか。品質のばらつきを後から追えるようにする。
+    llm_backend: str = ""
+    # 主バックエンドが使えず退避した場合の理由。空なら通常実行。
+    # プレビューと通知に警告を出し、原稿を念入りに確認してもらう。
+    fallback_reason: str = ""
 
     def article_by_id(self, aid: str) -> Article | None:
         return next((s.article for s in self.selected if s.article.id == aid), None)

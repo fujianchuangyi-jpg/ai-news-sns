@@ -44,7 +44,6 @@ jobs:
       # （github.event.schedule では日次と週次を区別できない）。
       - name: 週次レポート
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           FORCE_REPORT: ${{ inputs.report }}
         run: |
@@ -52,13 +51,13 @@ jobs:
             echo "日曜ではないためレポートをスキップします"
             exit 0
           fi
-          uv run ainews analytics --report --summarize | tee weekly-report.md
+          # 集計そのものは純粋な計算で LLM を使わない。
+          # --summarize（示唆の生成）は Actions 上では claude も ollama も
+          # 使えないため付けない。欲しいときは手元で実行する:
+          #   uv run ainews analytics --report --summarize
+          uv run ainews analytics --report | tee weekly-report.md
           if [ -n "$DISCORD_WEBHOOK_URL" ]; then
-            uv run python -c "
-import pathlib
-from ainews.notify import send_text
-send_text(pathlib.Path('weekly-report.md').read_text(encoding='utf-8'))
-"
+            uv run python -m ainews.notify --file weekly-report.md
           fi
 
       - name: 実績をコミット

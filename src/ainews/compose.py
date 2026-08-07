@@ -20,9 +20,21 @@ log = logging.getLogger(__name__)
 
 
 class XPostList(BaseModel):
-    """複数の X 投稿をまとめて返すためのラッパ。"""
+    """複数の X 投稿をまとめて返すためのラッパ（字数超過の書き直し用）。"""
 
     posts: list[XPost]
+
+
+class DraftCopy(BaseModel):
+    """X原稿とIGキャプションを1回の呼び出しでまとめて受け取る。
+
+    分けて呼ぶと、同じ4記事の本文（約8,000トークン）を2回送ることになり、
+    さらに Claude Code では1回あたり約25,000トークンの固定オーバーヘッドが
+    上乗せされる。X と IG は同じ入力から書き分けるだけなので統合する。
+    """
+
+    posts: list[XPost]
+    caption: IGCaption
 
 
 def weighted_length(text: str) -> int:
@@ -74,36 +86,32 @@ class Composer:
             "body": item.article.text_for_llm,
         }
 
-    def compose_x(self, items: list[ScoredArticle]) -> list[XPost]:
-        """各ニュースの X 原稿を作り、字数超過は書き直させる。"""
-        system = prompt("compose_x")
-        limit = self.cfg["x_max_weighted"]
+    def _order_posts(
+        self, posts: list[XPost], items: list[ScoredArticle]
+    ) -> list[XPost]:
+        """生成された投稿を入力順に並べ直す。
 
-        user = (
-            f"以下の {len(items)} 件のニュースそれぞれについて、X の投稿原稿を"
-            f"書いてください。\n\n{json_dump([self._x_payload(i) for i in items])}"
-        )
-        result = self.llm.structured(
-            system=system, user=user, schema=XPostList, effort=self.effort
-        )
-        posts = {p.article_id: p for p in result.posts}
-
-        # 足りない・多い場合に備えて入力順に整える
-        ordered = [posts[i.article.id] for i in items if i.article.id in posts]
-        missing = [i for i in items if i.article.id not in posts]
-        if missing:
-            log.warning("X 原稿が生成されなかった記事: %d 件", len(missing))
-
-        return [self._enforce_length(p, items, system, limit) for p in ordered]
+        LLM が article_id を取り違えたり順序を入れ替えたりしても、
+        画像・キャプションとの対応が崩れないようにする。
+        """
+        by_id = {p.article_id: p for p in posts}
+        ordered = [by_id[i.article.id] for i in items if i.article.id in by_id]
+        if missing := [i for i in items if i.article.id not in by_id]:
+            log.warning(
+                "X 原稿が生成されなかった記事: %s",
+                ", ".join(i.display_title[:24] for i in missing),
+            )
+        return ordered
 
     def _enforce_length(
         self,
         post: XPost,
         items: list[ScoredArticle],
         system: str,
-        limit: int,
+        limit: int | None = None,
     ) -> XPost:
         """字数超過なら、超過量を伝えて書き直させる。"""
+        limit = limit if limit is not None else self.cfg["x_max_weighted"]
         retries = self.cfg["x_retry_limit"]
         item = next((i for i in items if i.article.id == post.article_id), None)
         if item is None:
@@ -153,35 +161,38 @@ class Composer:
 
     # ── Instagram ─────────────────────────────────────────────────────
 
-    def compose_ig(self, items: list[ScoredArticle]) -> IGCaption:
+    def run(self, items: list[ScoredArticle]) -> tuple[list[XPost], IGCaption]:
+        """X原稿4本とIGキャプションを1回の呼び出しで生成する。
+
+        分けて呼ぶと同じ記事本文を2回送ることになり、Claude Code では
+        さらに固定オーバーヘッドが二重にかかる。X と IG は同じ入力を
+        書き分けるだけなので統合している。
+        """
+        system = prompt("compose")
+        hashtags = self.cfg["ig_hashtag_count"]
         payload = [
-            {
-                "order": n,
-                "title": i.article.title,
-                "headline_ja": i.assessment.headline_ja,
-                "source": i.article.source_name,
-                "hook_seed": i.assessment.hook,
-                "why_matters": i.assessment.why_matters,
-                "category": i.assessment.category,
-                "body": i.article.text_for_llm,
-            }
-            for n, i in enumerate(items, start=1)
+            {"order": n, **self._x_payload(i)} for n, i in enumerate(items, start=1)
         ]
-        count = self.cfg["ig_hashtag_count"]
         user = (
-            f"以下の {len(payload)} 件を1つのカルーセル投稿にまとめる"
-            f"キャプションを書いてください。ハッシュタグは {count} 個前後。\n\n"
+            f"以下の {len(payload)} 件のニュースから、X の投稿原稿 {len(payload)} 本と、"
+            f"Instagram のキャプション1本を書いてください。"
+            f"Instagram のハッシュタグは {hashtags} 個前後にしてください。\n\n"
             f"{json_dump(payload)}"
         )
-        return self.llm.structured(
-            system=prompt("compose_ig"),
+        result = self.llm.structured(
+            system=system,
             user=user,
-            schema=IGCaption,
+            schema=DraftCopy,
             effort=self.effort,
+            count_hint=len(payload),
         )
 
-    def run(self, items: list[ScoredArticle]) -> tuple[list[XPost], IGCaption]:
-        return self.compose_x(items), self.compose_ig(items)
+        posts = self._order_posts(result.posts, items)
+        # 字数超過の書き直しだけは X 単体のプロンプトで行う。
+        # 統合プロンプトを再送すると IG まで作り直すことになり無駄が大きい。
+        rewrite_system = prompt("compose_x")
+        posts = [self._enforce_length(p, items, rewrite_system) for p in posts]
+        return posts, result.caption
 
 
 def format_posts(posts: list[XPost], limit: int = 280) -> str:

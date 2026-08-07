@@ -1,9 +1,18 @@
-name: 日次下書き生成
+# 日次下書き生成のバックアップ経路（手動実行のみ）
+#
+# 本番の定時実行は Mac の launchd に移した（scripts/com.ainews.daily.plist）。
+# 理由は2つ:
+#   1. Claude Code の認証情報をクラウドCIに持ち出さないため。
+#      認証は Mac のローカルに置いたまま、公式CLIをそのまま呼ぶ
+#   2. 一次選抜に使う Ollama がローカルにしか無いため
+#
+# このワークフローは「Mac が長期間使えない」ときの逃げ道として残してある。
+# Actions 上では Claude Code も Ollama も使えないので ANTHROPIC_API_KEY
+# （従量課金）が必要になる。キーが無ければ何もせず終了する。
+
+name: 日次下書き生成（手動バックアップ）
 
 on:
-  schedule:
-    # 毎朝 6:00 JST（= 21:00 UTC 前日）。cron は UTC で解釈される。
-    - cron: "0 21 * * *"
   workflow_dispatch:
     inputs:
       fake_llm:
@@ -11,7 +20,6 @@ on:
         type: boolean
         default: false
 
-# 生成物とDBをコミットするので書き込み権限が要る
 permissions:
   contents: write
 
@@ -26,41 +34,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: uv をセットアップ
-        uses: astral-sh/setup-uv@v5
+      - name: APIキーの有無を確認
+        id: check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ] && [ "${{ inputs.fake_llm }}" != "true" ]; then
+            echo "ANTHROPIC_API_KEY が未設定です。"
+            echo "この経路は従量課金の API キーを使います。"
+            echo "通常は Mac の launchd（無料）で実行してください。"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: astral-sh/setup-uv@v5
+        if: steps.check.outputs.skip == 'false'
         with:
           enable-cache: true
 
       - name: 依存をインストール
+        if: steps.check.outputs.skip == 'false'
         run: uv sync --frozen
 
       - name: 下書きを生成
+        if: steps.check.outputs.skip == 'false'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          uv run ainews run ${{ inputs.fake_llm && '--fake-llm' || '' }}
+          # Actions 上には Ollama が無いので一次選抜は使えない。
+          # anthropic バックエンドが全工程を担当する。
+          uv run ainews run \
+            ${{ inputs.fake_llm && '--backend fake' || '--backend anthropic' }} \
+            --no-fallback
 
       - name: 生成物をコミット
+        if: steps.check.outputs.skip == 'false'
         run: |
           git config user.name  "ainews-bot"
           git config user.email "ainews-bot@users.noreply.github.com"
           git add docs data/ainews.db
-          # 変更が無い日（生成に失敗した等）はコミットせず正常終了する
           if git diff --staged --quiet; then
             echo "変更なし"
           else
             git commit -m "下書き $(TZ=Asia/Tokyo date +%Y-%m-%d)"
             git push
-          fi
-
-      - name: 失敗時に通知
-        if: failure()
-        env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
-            curl -sS -H "Content-Type: application/json" \
-              -d "{\"content\":\"⚠️ 日次下書きの生成に失敗しました: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
-              "$DISCORD_WEBHOOK_URL"
           fi

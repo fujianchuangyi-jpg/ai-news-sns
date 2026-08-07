@@ -149,8 +149,14 @@ class LLM:
         schema: type[T],
         effort: str = "high",
         max_tokens: int | None = None,
+        count_hint: int | None = None,
     ) -> T:
-        """JSON Schema で出力を拘束し、Pydantic モデルとして返す。"""
+        """JSON Schema で出力を拘束し、Pydantic モデルとして返す。
+
+        count_hint は他バックエンドとの互換のために受け取るが、ここでは
+        使わない。Anthropic API は output_config.format でスキーマを
+        強制できるため、件数を言い聞かせる必要がない。
+        """
         response = self._client.messages.create(
             model=self.model,
             max_tokens=max_tokens or self.max_tokens,
@@ -198,3 +204,106 @@ def json_dump(obj: Any) -> str:
 def api_key_available() -> bool:
     """ANTHROPIC_API_KEY が設定されているか（dry-run 判定用）。"""
     return bool(os.environ.get("ANTHROPIC_API_KEY"))
+
+
+class FallbackLLM:
+    """主バックエンドが失敗したら退避先に切り替えるラッパ。
+
+    毎朝の投稿を止めないための機構。Claude Code が使えない日
+    （利用上限に達した、未ログイン、オフライン）でも、ローカルの
+    Ollama が引き継いで下書きを完成させる。
+
+    一度退避したら、その実行中は退避先を使い続ける。主バックエンドが
+    使えない状態は数分で直らないことが多く、呼び出しのたびに試すのは
+    時間の無駄になるため。
+    """
+
+    def __init__(self, primary: Any, fallback: Any) -> None:
+        self.primary = primary
+        self.fallback = fallback
+        self.active = primary
+        self.fallback_reason: str = ""
+
+    @property
+    def name(self) -> str:
+        return getattr(self.active, "name", "unknown")
+
+    @property
+    def switched(self) -> bool:
+        return self.active is self.fallback
+
+    def _switch(self, exc: Exception) -> None:
+        if self.switched:
+            return
+        self.fallback_reason = f"{getattr(self.primary, 'name', '?')}: {exc}"
+        log.warning(
+            "%s が使えないため %s に切り替えます: %s",
+            getattr(self.primary, "name", "?"),
+            getattr(self.fallback, "name", "?"),
+            exc,
+        )
+        self.active = self.fallback
+
+    def _call(self, method: str, **kwargs: Any) -> Any:
+        from .providers import ProviderError
+
+        try:
+            return getattr(self.active, method)(**kwargs)
+        except ProviderError as exc:
+            if self.switched:
+                raise
+            self._switch(exc)
+            return getattr(self.active, method)(**kwargs)
+
+    def structured(self, **kwargs: Any) -> Any:
+        return self._call("structured", **kwargs)
+
+    def text(self, **kwargs: Any) -> Any:
+        return self._call("text", **kwargs)
+
+
+def _build(backend: str) -> Any:
+    """バックエンド名から素のプロバイダを作る。"""
+    if backend == "ollama":
+        from .providers.ollama import OllamaProvider
+
+        return OllamaProvider()
+    if backend == "claude_code":
+        from .providers.claude_code import ClaudeCodeProvider
+
+        return ClaudeCodeProvider()
+    if backend == "anthropic":
+        return LLM()
+    if backend == "fake":
+        from .fakes import FakeLLM
+
+        return FakeLLM()
+    raise ValueError(f"未知のバックエンド: {backend}")
+
+
+def make_llm(backend: str | None = None, *, with_fallback: bool = True) -> Any:
+    """設定に従って LLM バックエンドを組み立てる。
+
+    Args:
+        backend: 明示指定。None なら settings.llm.backend を使う。
+        with_fallback: 退避先を付けるか。バックエンド比較のように
+            素の挙動を見たいときは False にする。
+    """
+    settings = load_settings()
+    backend = backend or settings.llm.get("backend", "anthropic")
+    primary = _build(backend)
+
+    if not with_fallback:
+        return primary
+
+    fallback_name = settings.llm.get("fallback_backend")
+    if not fallback_name or fallback_name == backend:
+        return primary
+
+    try:
+        fallback = _build(fallback_name)
+    except Exception as exc:
+        log.warning("退避先 %s を用意できません: %s", fallback_name, exc)
+        return primary
+
+    return FallbackLLM(primary, fallback)
