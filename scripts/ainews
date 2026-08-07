@@ -1,0 +1,41 @@
+#!/bin/bash
+# どこからでも `ainews ...` を叩けるようにするラッパ。
+#
+# ~/.local/bin にリンクしておくと、プロジェクトに cd しなくても使える:
+#     ln -sf ~/dev/ai-news-sns/scripts/ainews ~/.local/bin/ainews
+#
+#     ainews              → 今日のプレビューを開く（引数なしの既定動作）
+#     ainews run          → 収集から配信まで通しで実行
+#     ainews collect      → 収集して確認
+#     ainews daily --explain
+#
+# 引数なしで「開く」にしているのは、いちばん頻度が高い操作だから。
+
+set -uo pipefail
+
+PROJECT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}" 2>/dev/null || echo "${BASH_SOURCE[0]}")")/.." && pwd)"
+
+# launchd やアプリから呼ばれると PATH が狭いので補う
+export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+if ! command -v uv >/dev/null 2>&1; then
+    echo "uv が見つかりません。https://docs.astral.sh/uv/ を参照してください" >&2
+    exit 1
+fi
+
+cd "$PROJECT_DIR" || exit 1
+
+# 個人設定（Discord Webhook など）を読む
+if [ -f "$PROJECT_DIR/.env" ]; then
+    set -a
+    # shellcheck disable=SC1091
+    . "$PROJECT_DIR/.env"
+    set +a
+fi
+
+# 引数なしなら今日のプレビューを開く
+if [ $# -eq 0 ]; then
+    exec uv run ainews open
+fi
+
+exec uv run ainews "$@"

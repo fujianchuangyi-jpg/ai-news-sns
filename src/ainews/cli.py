@@ -153,7 +153,12 @@ def cmd_render(args: argparse.Namespace) -> int:
 
 
 def cmd_notify(args: argparse.Namespace) -> int:
-    from .notify import send_draft_notification
+    """Discord に配信する。
+
+    既定は下書き一式（原稿＋画像）を投稿できる形で流し込む。
+    --summary-only を付けると、見出しとリンクだけの軽い通知になる。
+    """
+    from .notify import send_draft_notification, send_draft_package
     from .pipeline import today_jst
 
     date = args.date or today_jst()
@@ -162,13 +167,42 @@ def cmd_notify(args: argparse.Namespace) -> int:
     if draft is None:
         print(f"{date} の下書きがありません", file=sys.stderr)
         return 1
-    ok = send_draft_notification(draft)
-    print("── 通知を送信しました" if ok else "── 通知はスキップされました（Webhook 未設定）")
+
+    if args.summary_only:
+        ok = send_draft_notification(draft)
+    else:
+        ok = send_draft_package(draft, _draft_dir(date))
+
+    if ok:
+        print("── Discord に配信しました")
+    else:
+        print("── 配信をスキップしました（DISCORD_WEBHOOK_URL 未設定）")
+    return 0
+
+
+def cmd_open(args: argparse.Namespace) -> int:
+    """その日のプレビューをブラウザで開く。"""
+    import subprocess
+
+    from .pipeline import today_jst
+
+    date = args.date or today_jst()
+    path = _draft_dir(date) / "index.html"
+    if not path.exists():
+        print(
+            f"{date} のプレビューがありません。\n"
+            f"  作成する: ainews run",
+            file=sys.stderr,
+        )
+        return 1
+    subprocess.run(["open", str(path)], check=False)
+    print(f"── {path} を開きました")
     return 0
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    """日次の通し実行。GitHub Actions から呼ぶ。"""
+    """日次の通し実行。launchd から呼ぶ。"""
+    args.summary_only = getattr(args, "summary_only", False)
     for step in (cmd_daily, cmd_images, cmd_render, cmd_notify):
         code = step(args)
         if code != 0:
@@ -238,7 +272,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     add("images", "下書きからカード画像を生成する", cmd_images)
     add("render", "プレビューサイトを生成する", cmd_render)
-    add("notify", "Discord に下書き完成を通知する", cmd_notify)
+    add("open", "その日のプレビューをブラウザで開く", cmd_open)
+
+    notify = add("notify", "Discord に下書きを配信する", cmd_notify)
+    notify.add_argument(
+        "--summary-only",
+        action="store_true",
+        help="見出しとリンクだけの軽い通知にする（既定は原稿と画像も送る）",
+    )
 
     run = add("run", "daily→images→render→notify を通しで実行する", cmd_run)
     add_backend_flags(run)

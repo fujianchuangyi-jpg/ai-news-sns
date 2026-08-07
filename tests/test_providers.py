@@ -335,3 +335,121 @@ class TestWrap:
         font = renderer.font(52, bold=True)
         for line in renderer.wrap("Google DeepMind、Gemini Robotics ER 2を発表", font, 900):
             assert line == line.strip()
+
+
+# ── Discord 配信 ──────────────────────────────────────────────────────
+
+
+class TestDiscordPackage:
+    """配信の要件は「長押しコピーで原稿がそのまま取れる」こと。
+
+    Discord の「テキストをコピー」は content だけを拾い embed は含めない。
+    そのため content に余計な見出しが混ざると、貼り付けのたびに手直しが
+    必要になり、この仕組みの価値が失われる。
+    """
+
+    def _capture(self, monkeypatch, tmp_path):
+        import ainews.notify as notify
+
+        sent: list[tuple[dict, list | None]] = []
+        monkeypatch.setattr(
+            notify, "_post", lambda w, p, a=None: (sent.append((p, a)), True)[1]
+        )
+        monkeypatch.setattr(notify, "_webhook", lambda: "https://discord.test/x")
+        monkeypatch.setattr(notify, "SEND_INTERVAL", 0)
+        return notify, sent
+
+    def _draft(self):
+        from ainews.models import Assessment, Draft, IGCaption, ScoredArticle, XPost
+        from datetime import UTC, datetime
+
+        items, posts = [], []
+        for i in range(2):
+            article = make_article(f"見出し{i}です")
+            items.append(
+                ScoredArticle(
+                    article=article,
+                    signal_score=50,
+                    fame_final=70,
+                    bucket="famous",
+                    assessment=Assessment(
+                        article_id=article.id,
+                        fame=70,
+                        interest=80,
+                        category="新モデル",
+                        headline_ja=f"見出し{i}です",
+                        hook="フック",
+                        why_matters="重要",
+                        risk_flags=[],
+                    ),
+                )
+            )
+            posts.append(
+                XPost(
+                    article_id=article.id,
+                    body=f"本文{i}です。\n\n#AI（出典: test）",
+                    hook_type="断言型",
+                )
+            )
+        return Draft(
+            date="2026-08-07",
+            generated_at=datetime.now(UTC),
+            selected=items,
+            x_posts=posts,
+            ig_caption=IGCaption(
+                opening="冒頭", items=["1件目", "2件目"], closing="締め", hashtags=["AI"]
+            ),
+        )
+
+    def test_content_is_the_post_body_verbatim(self, monkeypatch, tmp_path):
+        notify, sent = self._capture(monkeypatch, tmp_path)
+        draft = self._draft()
+        notify.send_draft_package(draft, tmp_path)
+
+        contents = [p.get("content") for p, _ in sent if p.get("content")]
+        bodies = {p.body for p in draft.x_posts} | {draft.ig_caption.render()}
+        assert set(contents) == bodies
+
+    def test_metadata_never_leaks_into_content(self, monkeypatch, tmp_path):
+        """番号や字数が content に混ざると、コピーした本文が汚れる。"""
+        notify, sent = self._capture(monkeypatch, tmp_path)
+        notify.send_draft_package(self._draft(), tmp_path)
+
+        for payload, _ in sent:
+            content = payload.get("content", "")
+            assert "字数" not in content
+            assert "長押し" not in content
+            assert not content.startswith("X ")
+
+    def test_summary_message_carries_no_content(self, monkeypatch, tmp_path):
+        """ヘッダは embed だけにする。content があると誤コピーの元になる。"""
+        notify, sent = self._capture(monkeypatch, tmp_path)
+        notify.send_draft_package(self._draft(), tmp_path)
+        assert not sent[0][0].get("content")
+        assert "の下書き" in sent[0][0]["embeds"][0]["title"]
+
+    def test_skips_without_webhook(self, monkeypatch, tmp_path):
+        import ainews.notify as notify
+
+        monkeypatch.setattr(notify, "_webhook", lambda: "")
+        assert notify.send_draft_package(self._draft(), tmp_path) is False
+
+
+class TestSplit:
+    def test_short_text_stays_whole(self):
+        from ainews.notify import _split
+
+        assert _split("abc", 100) == ["abc"]
+
+    def test_splits_on_newline_when_possible(self):
+        from ainews.notify import _split
+
+        parts = _split("a" * 40 + "\n" + "b" * 40, 50)
+        assert parts == ["a" * 40, "b" * 40]
+
+    def test_splits_by_length_without_newline(self):
+        from ainews.notify import _split
+
+        parts = _split("a" * 120, 50)
+        assert all(len(p) <= 50 for p in parts)
+        assert "".join(parts) == "a" * 120

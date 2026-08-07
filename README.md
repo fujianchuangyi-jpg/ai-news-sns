@@ -60,6 +60,16 @@ account:
 
 ## 使い方
 
+`~/.local/bin/ainews` にリンクしてあるので、どこからでも叩けます。
+
+```bash
+ainews                 # 今日のプレビューをブラウザで開く（引数なしの既定）
+ainews run             # 収集から Discord 配信まで通しで実行
+ainews notify          # 下書きを Discord に配信し直す
+```
+
+プロジェクト内で細かく回す場合:
+
 ```bash
 # 収集だけ試す（LLMを呼ばない）
 uv run ainews collect --dry-run
@@ -89,13 +99,28 @@ uv run ainews daily --backend claude_code --no-fallback  # 退避なしで素の
 uv run ainews run --fake-llm
 ```
 
-### 毎朝の運用
+### 毎朝の運用（Discord で完結）
 
-1. 6:00 JST に Mac の launchd が実行し、Discord に通知が届く
-2. 通知のリンクからプレビューを開く（スマホ推奨）
-3. X: 「本文をコピー」→「Xの投稿画面を開く」（本文入力済みで開きます）→ 画像を添付して投稿
-4. Instagram: 「6枚まとめてダウンロード」→ キャプションをコピー → アプリでカルーセル投稿
+1. 6:00 JST に Mac の launchd が実行し、**Discord に下書き一式が届く**
+2. スマホの Discord を開く。届くのは7メッセージ:
+
+   | | 内容 |
+   |---|---|
+   | 1 | その日の全体像（4本の見出し・警告） |
+   | 2〜5 | X原稿1本ずつ（**本文のみ**＋カード画像1枚） |
+   | 6 | Instagram カルーセル画像6枚 |
+   | 7 | Instagram キャプション（**本文のみ**） |
+
+3. **X**: メッセージを長押し →「テキストをコピー」→ 画像を長押しして保存 →
+   X アプリに貼り付けて投稿
+4. **Instagram**: 画像6枚を保存 → キャプションを長押しコピー → カルーセル投稿
 5. 翌日、`analytics` が実績を自動収集して下書きと突き合わせます
+
+> 原稿のメッセージには**本文しか入れていません**。Discord の「テキストをコピー」は
+> メッセージ本文だけを拾い、番号や字数などの情報（埋め込み部分）は含まれません。
+> つまり長押し1回で、そのまま貼れる状態のテキストが手に入ります。
+
+プレビューページ（`ainews` で開く）も引き続き使えます。PC で作業するとき向けです。
 
 ---
 
@@ -229,7 +254,7 @@ Actions 用の Secrets:
 
 | Secret | 用途 |
 |---|---|
-| `DISCORD_WEBHOOK_URL` | 完成通知・失敗通知 |
+| `DISCORD_WEBHOOK_URL` | 下書き配信・失敗通知 |
 | `IG_USER_ID` / `META_ACCESS_TOKEN` | Instagram 実績収集 |
 | `X_BEARER_TOKEN` / `X_USER_ID` | X 実績収集（CSV取り込みで代替可） |
 | `ANTHROPIC_API_KEY` | バックアップ経路を使うときだけ |
