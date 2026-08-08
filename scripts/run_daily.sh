@@ -33,11 +33,25 @@ if [ -f "$PROJECT_DIR/.env" ]; then
     set +a
 fi
 
-log "───────── 日次実行を開始"
+# --check: 環境だけ確認して終わる（LLM を呼ばない）。
+# launchd から起動したときに PATH や認証が正しく解決できるかを、
+# 本番と同じ経路で確かめるための入口。launchd の PATH は極端に狭く、
+# ここが原因で「毎朝静かに失敗し続ける」のが最もありがちな事故なので、
+# 登録直後に必ずこれを通す。
+CHECK_ONLY=false
+[ "${1:-}" = "--check" ] && CHECK_ONLY=true
+
+if $CHECK_ONLY; then
+    log "───────── 環境チェック（launchd 経由）"
+else
+    log "───────── 日次実行を開始"
+fi
+
+log "  PATH=$PATH"
 
 for cmd in uv claude ollama; do
     if command -v "$cmd" >/dev/null 2>&1; then
-        log "  $cmd: $(command -v "$cmd")"
+        log "  ✓ $cmd: $(command -v "$cmd")"
     else
         # claude が無ければ Ollama にフォールバックして続行できる。
         # uv が無いと何もできないのでここで止める。
@@ -45,6 +59,12 @@ for cmd in uv claude ollama; do
         [ "$cmd" = "uv" ] && { log "uv が必須です。中止します"; exit 1; }
     fi
 done
+
+if [ -n "${DISCORD_WEBHOOK_URL:-}" ]; then
+    log "  ✓ DISCORD_WEBHOOK_URL: 設定済み"
+else
+    log "  ⚠ DISCORD_WEBHOOK_URL: 未設定（配信されません）"
+fi
 
 # Ollama が寝ていると一次選抜もフォールバックも動かないので起こす
 if ! curl -s -m 3 http://localhost:11434/api/version >/dev/null 2>&1; then
@@ -54,6 +74,16 @@ if ! curl -s -m 3 http://localhost:11434/api/version >/dev/null 2>&1; then
         sleep 1
         curl -s -m 2 http://localhost:11434/api/version >/dev/null 2>&1 && break
     done
+fi
+if curl -s -m 3 http://localhost:11434/api/version >/dev/null 2>&1; then
+    log "  ✓ Ollama: 応答あり"
+else
+    log "  ⚠ Ollama: 応答なし（一次選抜とフォールバックが使えません）"
+fi
+
+if $CHECK_ONLY; then
+    log "───────── チェック完了（本番実行はしていません）"
+    exit 0
 fi
 
 log "下書きを生成中（収集 → 一次選抜 → 選定 → 原稿 → 画像 → プレビュー）"

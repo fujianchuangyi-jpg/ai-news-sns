@@ -33,11 +33,17 @@
     <key>WorkingDirectory</key>
     <string>__PROJECT_DIR__</string>
 
-    <!-- 毎朝 6:00。収集から画像生成まで含めて10分ほどかかる -->
+    <!-- 毎日 22:00 に生成する。0:00 のクラウド配信より前に置き、
+         Mac が起きているうちに高品質な下書き（Claude Code + Ollama）を
+         作って push しておくため。
+
+         Mac がスリープ中だった時刻は launchd が「取りこぼした実行」として
+         復帰直後に走らせる。その場合でも 0:00 のクラウド配信が
+         別途動くので、配信自体は落ちない。 -->
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>6</integer>
+        <integer>22</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>

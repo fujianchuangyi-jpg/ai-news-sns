@@ -7,7 +7,7 @@ account:
   # プレビューサイトの公開ベースURL（GitHub Pages）。
   # 例: https://<user>.github.io/ai-news-sns
   # 未設定でもローカルのプレビュー生成は動く。
-  site_base_url: ""
+  site_base_url: "https://fujianchuangyi-jpg.github.io/ai-news-sns"
 
 collect:
   # 収集対象の時間窓（時間）。前回実行から取りこぼさないよう広めに取る。
@@ -106,6 +106,9 @@ llm:
     timeout_seconds: 600
     # スキーマ違反時に、エラー内容を添えて何回まで書き直させるか
     schema_retry: 1
+    # 1回の呼び出しで許すターン数。ツールは無効にしているので暴走はしないが、
+    # 1に固定すると長い出力で error_max_turns になることがある。
+    max_turns: 3
 
   ollama:
     model: "gemma4-ja:latest"

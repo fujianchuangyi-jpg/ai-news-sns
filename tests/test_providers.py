@@ -453,3 +453,34 @@ class TestSplit:
         parts = _split("a" * 120, 50)
         assert all(len(p) <= 50 for p in parts)
         assert "".join(parts) == "a" * 120
+
+
+class TestFailureReason:
+    """claude -p は異常時も JSON の封筒を返す。生の JSON を投げると
+    先頭のメタデータで文字数を使い切り、肝心の理由が読めなくなる。"""
+
+    def test_prefers_result_over_raw_json(self):
+        from ainews.providers.claude_code import _failure_reason
+
+        envelope = {"is_error": True, "result": "Usage limit reached", "subtype": "error"}
+        assert "Usage limit reached" in _failure_reason(envelope, "", "{...}")
+
+    def test_falls_back_to_subtype(self):
+        from ainews.providers.claude_code import _failure_reason
+
+        assert "error_max_turns" in _failure_reason(
+            {"is_error": True, "subtype": "error_max_turns"}, "", ""
+        )
+
+    def test_uses_stderr_without_envelope(self):
+        from ainews.providers.claude_code import _failure_reason
+
+        assert _failure_reason(None, "command not found", "") == "command not found"
+
+    def test_usage_limit_in_envelope_triggers_fallback(self):
+        """封筒の中に理由が埋もれていても、退避すべきと判定できること。"""
+        from ainews.providers.claude_code import ClaudeCodeProvider, _failure_reason
+
+        envelope = {"is_error": True, "result": "Claude Code usage limit reached"}
+        error = ClaudeCodeProvider._classify(_failure_reason(envelope, "", ""), 1)
+        assert isinstance(error, ProviderUnavailable)

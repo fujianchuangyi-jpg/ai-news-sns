@@ -174,9 +174,49 @@ def cmd_notify(args: argparse.Namespace) -> int:
         ok = send_draft_package(draft, _draft_dir(date))
 
     if ok:
+        # 配信済みの印を残す。Mac と 0時のクラウドジョブが
+        # 同じ下書きを二重に送らないようにするため。
+        from datetime import UTC, datetime
+
+        draft.delivered_at = datetime.now(UTC)
+        with store.connect() as conn:
+            store.save_draft(conn, draft)
         print("── Discord に配信しました")
     else:
         print("── 配信をスキップしました（DISCORD_WEBHOOK_URL 未設定）")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    """今日の下書きの有無と配信状況を返す。
+
+    0時のクラウド配信ジョブが「生成が必要か」「もう配信済みか」を
+    判断するために使う。--json は機械可読な出力。
+    """
+    import json
+
+    from .pipeline import today_jst
+
+    date = args.date or today_jst()
+    with store.connect() as conn:
+        draft = store.load_draft(conn, date)
+
+    state = {
+        "date": date,
+        "exists": draft is not None,
+        "delivered": bool(draft and draft.delivered_at),
+        "backend": draft.llm_backend if draft else "",
+        "posts": len(draft.x_posts) if draft else 0,
+        "images": len(draft.images) if draft else 0,
+    }
+    if args.json:
+        print(json.dumps(state, ensure_ascii=False))
+    else:
+        print(f"── {date}")
+        print(f"  下書き: {'あり' if state['exists'] else 'なし'}")
+        print(f"  配信  : {'済み' if state['delivered'] else 'まだ'}")
+        if draft:
+            print(f"  生成元: {state['backend']} / X{state['posts']}本 / 画像{state['images']}枚")
     return 0
 
 
@@ -273,6 +313,9 @@ def build_parser() -> argparse.ArgumentParser:
     add("images", "下書きからカード画像を生成する", cmd_images)
     add("render", "プレビューサイトを生成する", cmd_render)
     add("open", "その日のプレビューをブラウザで開く", cmd_open)
+
+    status = add("status", "下書きの有無と配信状況を表示する", cmd_status)
+    status.add_argument("--json", action="store_true", help="機械可読な JSON で出力する")
 
     notify = add("notify", "Discord に下書きを配信する", cmd_notify)
     notify.add_argument(

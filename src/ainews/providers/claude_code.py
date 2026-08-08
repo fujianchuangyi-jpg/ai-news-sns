@@ -71,6 +71,10 @@ class ClaudeCodeProvider:
         self.schema_retry = (
             schema_retry if schema_retry is not None else int(cfg.get("schema_retry", 1))
         )
+        # ツールを無効にしているので本来1ターンで返るはずだが、1に固定すると
+        # 長い出力のときに error_max_turns で落ちることがある（実測）。
+        # 暴走はツール無効で防げているので、少しだけ余裕を持たせる。
+        self.max_turns = int(cfg.get("max_turns", 3))
         self.binary = shutil.which("claude")
         # 実行のたびに消費トークンを積算し、Max枠の減り方を可視化する
         self.calls = 0
@@ -92,7 +96,7 @@ class ClaudeCodeProvider:
             "--output-format",
             "json",
             "--max-turns",
-            "1",
+            str(self.max_turns),
             # ツールは一切使わせない。ファイル探索などを始めると
             # 余計なターンとトークンを消費する
             "--allowed-tools",
@@ -118,20 +122,25 @@ class ClaudeCodeProvider:
         except OSError as exc:
             raise ProviderUnavailable(f"claude を起動できません: {exc}") from exc
 
-        if completed.returncode != 0:
-            message = (completed.stderr or completed.stdout or "").strip()
-            raise self._classify(message, completed.returncode)
+        # 異常終了でも本文は JSON の封筒で返ることが多い。生の文字列を
+        # そのまま投げると 200 字で切られて肝心の理由が読めなくなるため、
+        # まず封筒として解釈し、result / subtype から理由を取り出す。
+        envelope: dict[str, Any] | None = None
+        if completed.stdout.strip():
+            try:
+                envelope = json.loads(completed.stdout)
+            except json.JSONDecodeError:
+                envelope = None
 
-        try:
-            envelope = json.loads(completed.stdout)
-        except json.JSONDecodeError as exc:
+        if completed.returncode != 0 or (envelope and envelope.get("is_error")):
+            raise self._classify(
+                _failure_reason(envelope, completed.stderr, completed.stdout),
+                completed.returncode,
+            )
+
+        if envelope is None:
             raise ProviderError(
                 f"claude -p の出力を JSON として読めません: {completed.stdout[:300]}"
-            ) from exc
-
-        if envelope.get("is_error"):
-            raise self._classify(
-                str(envelope.get("result") or envelope.get("subtype") or ""), 0
             )
 
         self._record_usage(envelope)
@@ -146,8 +155,8 @@ class ClaudeCodeProvider:
         """エラーメッセージから、退避すべきか再試行すべきかを判断する。"""
         lowered = message.lower()
         if any(hint in lowered for hint in _UNAVAILABLE_HINTS):
-            return ProviderUnavailable(f"Claude Code が利用できません: {message[:200]}")
-        return ProviderError(f"claude -p が失敗しました (exit={returncode}): {message[:200]}")
+            return ProviderUnavailable(f"Claude Code が利用できません: {message[:400]}")
+        return ProviderError(f"claude -p が失敗しました (exit={returncode}): {message[:400]}")
 
     def _record_usage(self, envelope: dict[str, Any]) -> None:
         usage = envelope.get("usage") or {}
@@ -239,6 +248,26 @@ class ClaudeCodeProvider:
             f"  Claude Code: {self.calls}回  "
             f"入力 {self.total_input_tokens:,} / 出力 {self.total_output_tokens:,} トークン"
         )
+
+
+def _failure_reason(
+    envelope: dict[str, Any] | None, stderr: str, stdout: str
+) -> str:
+    """失敗の理由を人が読める1行にする。
+
+    claude -p は異常時も JSON の封筒を返す。生の JSON をそのまま
+    エラーメッセージにすると、先頭のメタデータだけで文字数を使い切って
+    肝心の理由が読めない。result / subtype を優先して取り出す。
+    """
+    if envelope:
+        parts = [
+            str(envelope.get(key))
+            for key in ("result", "subtype", "api_error_status", "stop_reason")
+            if envelope.get(key)
+        ]
+        if parts:
+            return " / ".join(parts)
+    return (stderr or stdout or "理由不明").strip()
 
 
 def _strip_fence(text: str) -> str:

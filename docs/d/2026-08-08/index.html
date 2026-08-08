@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-08-08 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-08-08　生成 08/08 21:14</div>
+</header>
+
+<div class="warn">
+  <b>⚠ 予備のLLM（ollama）で生成されました。</b>
+  主バックエンドが使えなかったため、原稿の品質が普段より落ちている
+  可能性があります。いつもより念入りに確認してください。
+  <div style="margin-top:.4rem;font-size:.82rem;opacity:.85">
+    理由: claude_code: claude -p が失敗しました (exit=1): {&#34;is_error&#34;:true,&#34;duration_api_ms&#34;:0,&#34;num_turns&#34;:1,&#34;stop_reason&#34;:&#34;stop_sequence&#34;,&#34;session_id&#34;:&#34;84a83dfa-89e4-444b-8f7b-521603c4f9e4&#34;,&#34;total_cost_usd&#34;:0.49663100000000016,&#34;usage&#34;:{&#34;input_tokens&#34;:12,&#34;ca
+  </div>
+</div>
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">断言型</span>
+      <span class="tag">MIT Technology Review</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.technologyreview.com/2026/08/06/1141278/the-download-google-ai-shake-up-meta-rogue-model/" target="_blank" rel="noopener">GoogleのAI再編とMetaの暴走モデル（The Download）</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: The Download: Google’s AI shake-up and Meta’s rogue model</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">GoogleのAI部門は大規模な再編に入り、DeepMindの運営をKoray Kavukcuoglu氏が引き継ぎます。
+
+戦略も「専門ツール」から、自律的に研究・実行するエージェントシステムへシフトします。
+今後の開発は、より高度な自己完結型AIを目指す動きです。
+#生成AI #Google
+（出典: MIT Technology Review）</pre>
+    <div class="count ">
+      重み 276 / 280（見た目 170字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］エージェントシステム — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=Google%E3%81%AEAI%E9%83%A8%E9%96%80%E3%81%AF%E5%A4%A7%E8%A6%8F%E6%A8%A1%E3%81%AA%E5%86%8D%E7%B7%A8%E3%81%AB%E5%85%A5%E3%82%8A%E3%80%81DeepMind%E3%81%AE%E9%81%8B%E5%96%B6%E3%82%92Koray%20Kavukcuoglu%E6%B0%8F%E3%81%8C%E5%BC%95%E3%81%8D%E7%B6%99%E3%81%8E%E3%81%BE%E3%81%99%E3%80%82%0A%0A%E6%88%A6%E7%95%A5%E3%82%82%E3%80%8C%E5%B0%82%E9%96%80%E3%83%84%E3%83%BC%E3%83%AB%E3%80%8D%E3%81%8B%E3%82%89%E3%80%81%E8%87%AA%E5%BE%8B%E7%9A%84%E3%81%AB%E7%A0%94%E7%A9%B6%E3%83%BB%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%B8%E3%82%B7%E3%83%95%E3%83%88%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%E4%BB%8A%E5%BE%8C%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%AF%E3%80%81%E3%82%88%E3%82%8A%E9%AB%98%E5%BA%A6%E3%81%AA%E8%87%AA%E5%B7%B1%E5%AE%8C%E7%B5%90%E5%9E%8BAI%E3%82%92%E7%9B%AE%E6%8C%87%E3%81%99%E5%8B%95%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Google%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20MIT%20Technology%20Review%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">断言型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/" target="_blank" rel="noopener">Mirendil、Google Cloudと1億ドル以上の契約で自己改善AIをスケールアップ</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Exclusive: Mirendil inks $100M+ Google Cloud deal to scale self-improving AI</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">スタートアップMirendilがGoogle Cloudと1億ドル以上の大型契約を締結。
+
+これにより、自ら進化する「自己改善AI」開発に必要な膨大な計算資源（TPU, GPU）を確保します。
+最先端AIはチップ性能だけでなく、「システム設計力」で競争しているのが現状です。
+#生成AI #GoogleCloud
+（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 280 / 280（見た目 168字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］スタートアップ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ハードウェア — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97Mirendil%E3%81%8CGoogle%20Cloud%E3%81%A81%E5%84%84%E3%83%89%E3%83%AB%E4%BB%A5%E4%B8%8A%E3%81%AE%E5%A4%A7%E5%9E%8B%E5%A5%91%E7%B4%84%E3%82%92%E7%B7%A0%E7%B5%90%E3%80%82%0A%0A%E3%81%93%E3%82%8C%E3%81%AB%E3%82%88%E3%82%8A%E3%80%81%E8%87%AA%E3%82%89%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%80%8C%E8%87%AA%E5%B7%B1%E6%94%B9%E5%96%84AI%E3%80%8D%E9%96%8B%E7%99%BA%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E8%86%A8%E5%A4%A7%E3%81%AA%E8%A8%88%E7%AE%97%E8%B3%87%E6%BA%90%EF%BC%88TPU%2C%20GPU%EF%BC%89%E3%82%92%E7%A2%BA%E4%BF%9D%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%E6%9C%80%E5%85%88%E7%AB%AFAI%E3%81%AF%E3%83%81%E3%83%83%E3%83%97%E6%80%A7%E8%83%BD%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AA%E3%81%8F%E3%80%81%E3%80%8C%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E8%A8%AD%E8%A8%88%E5%8A%9B%E3%80%8D%E3%81%A7%E7%AB%B6%E4%BA%89%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8C%E7%8F%BE%E7%8A%B6%E3%81%A7%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23GoogleCloud%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">規制</span>
+      <span class="tag">断言型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2608/07/2000000454/" target="_blank" rel="noopener">「声」の権利明記：生成AIでの無断利用、法務省が民事責任の解釈指針を公表</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 「声」の権利明記　生成AIで無断利用、法務省が民事責任の解釈指針を公表</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">「声」の無断利用は、肖像や氏名と同様に法的保護対象になりました。
+
+法務省が解釈指針を公表し、「人物識別情報」として明記。特に収益目的での生成AI利用には注意が必要です。
+
+個人の人格権侵害とならないよう、サービス提供者・利用者双方の配慮が求められます。
+#生成AI #法律
+（出典: ITmedia AI+）</pre>
+    <div class="count over">
+      重み 284 / 280（見た目 149字） — 上限超過。手直しが必要です    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］ITmedia — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%80%8C%E5%A3%B0%E3%80%8D%E3%81%AE%E7%84%A1%E6%96%AD%E5%88%A9%E7%94%A8%E3%81%AF%E3%80%81%E8%82%96%E5%83%8F%E3%82%84%E6%B0%8F%E5%90%8D%E3%81%A8%E5%90%8C%E6%A7%98%E3%81%AB%E6%B3%95%E7%9A%84%E4%BF%9D%E8%AD%B7%E5%AF%BE%E8%B1%A1%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%0A%0A%E6%B3%95%E5%8B%99%E7%9C%81%E3%81%8C%E8%A7%A3%E9%87%88%E6%8C%87%E9%87%9D%E3%82%92%E5%85%AC%E8%A1%A8%E3%81%97%E3%80%81%E3%80%8C%E4%BA%BA%E7%89%A9%E8%AD%98%E5%88%A5%E6%83%85%E5%A0%B1%E3%80%8D%E3%81%A8%E3%81%97%E3%81%A6%E6%98%8E%E8%A8%98%E3%80%82%E7%89%B9%E3%81%AB%E5%8F%8E%E7%9B%8A%E7%9B%AE%E7%9A%84%E3%81%A7%E3%81%AE%E7%94%9F%E6%88%90AI%E5%88%A9%E7%94%A8%E3%81%AB%E3%81%AF%E6%B3%A8%E6%84%8F%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%80%82%0A%0A%E5%80%8B%E4%BA%BA%E3%81%AE%E4%BA%BA%E6%A0%BC%E6%A8%A9%E4%BE%B5%E5%AE%B3%E3%81%A8%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%80%81%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%8F%90%E4%BE%9B%E8%80%85%E3%83%BB%E5%88%A9%E7%94%A8%E8%80%85%E5%8F%8C%E6%96%B9%E3%81%AE%E9%85%8D%E6%85%AE%E3%81%8C%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23%E6%B3%95%E5%BE%8B%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">断言型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/976289/suno-ai-music-spam-watermark" target="_blank" rel="noopener">Suno、スパム的なAI音楽対策を発表</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Suno shares plans to combat spammy AI music</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AI音楽生成サービスSunoが、スパム対策としてウォーターマーキング技術とダウンロードポリシーを変更します。
+
+これによりコンテンツの透明性が高まり、不正利用や著作権侵害への対応を進めます。業界標準化の流れに沿った動きです。
+#生成AI
+（出典: The Verge）</pre>
+    <div class="count ">
+      重み 244 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］ウォーターマーキング — この語が本文に見つかりません</div>
+        <div>［固有名詞］ダウンロードポリシー — この語が本文に見つかりません</div>
+        <div>［固有名詞］コンテンツ — この語が本文に見つかりません</div>
+        <div>［固有名詞］Verge — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E9%9F%B3%E6%A5%BD%E7%94%9F%E6%88%90%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9Suno%E3%81%8C%E3%80%81%E3%82%B9%E3%83%91%E3%83%A0%E5%AF%BE%E7%AD%96%E3%81%A8%E3%81%97%E3%81%A6%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%BF%E3%83%BC%E3%83%9E%E3%83%BC%E3%82%AD%E3%83%B3%E3%82%B0%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%0A%E3%81%93%E3%82%8C%E3%81%AB%E3%82%88%E3%82%8A%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E9%80%8F%E6%98%8E%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%BE%E3%82%8A%E3%80%81%E4%B8%8D%E6%AD%A3%E5%88%A9%E7%94%A8%E3%82%84%E8%91%97%E4%BD%9C%E6%A8%A9%E4%BE%B5%E5%AE%B3%E3%81%B8%E3%81%AE%E5%AF%BE%E5%BF%9C%E3%82%92%E9%80%B2%E3%82%81%E3%81%BE%E3%81%99%E3%80%82%E6%A5%AD%E7%95%8C%E6%A8%99%E6%BA%96%E5%8C%96%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AB%E6%B2%BF%E3%81%A3%E3%81%9F%E5%8B%95%E3%81%8D%E3%81%A7%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-08-08.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">今日のAIニュース4選からは、「自律化」「保護」という二つの大きな流れが見て取れます。
+特に、Googleの戦略的な再編や、法務省による「声」の権利明記など、技術進化と同時にルール作りが加速しているのが現状です。
+
+1. まず、GoogleはAI部門を大規模に再編し、DeepMindの運営責任者が変更されました。AI戦略も専門ツール提供から、自律的に研究・実行する「エージェントシステム」へのシフトが進んでいます。(MIT Technology Review)
+
+2. 次に、スタートアップMirendilがGoogle Cloudと1億ドル以上の大型契約を締結し、自己改善AIの開発に必要な計算資源（TPU, GPU）を確保しました。最先端のAI開発は、ハードウェア性能だけでなくシステム設計能力が鍵となっています。(TechCrunch)
+
+3. 法的な側面では、法務省が解釈指針を発表し、著名人の『声』も肖像や氏名と同様に法的保護対象と位置づけました。生成AI利用者は、パブリシティー権など個人の人格権侵害に当たらないよう注意が必要です。(ITmedia AI+)
+
+4. 最後に、Sunoはスパム的なAI音楽対策として、ウォーターマーキング技術とダウンロードポリシーの変更を発表しました。これは、急速に普及するAIコンテンツにおける透明性確保と不正利用防止に向けた業界標準化の流れです。(The Verge)
+
+今日のニュースからわかるのは、AIが単なる「便利なツール」ではなく、「自律的に動く主体」として進化しつつあり、それに対応するための法規制や技術的なガバナンス（透明性確保）が急務となっている点です。
+今後のテクノロジーの進展を追いかけるためにも、ぜひこの投稿を保存して見返してください！
+
+#AI #生成AI #人工知能 #テクノロジー #ChatGPT #Claude #Google #DeepMind #Mirendil #法務省 #パブリシティー権 #Suno #著作権 #AI活用 #TechCrunch #MIT Technology Review #ITmedia AI+ #GoogleCloud #GPT #MachineLearning #FutureTech #DigitalRights #Innovation</pre>
+  <div class="count">977字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 19.3</span>
+      <span class="tag">興味度 5</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">GoogleのAI再編とMetaの暴走モデル（The Download）</div>
+    <div style="color:var(--muted);font-size:.9rem">業界最大手であるGoogleの内部構造の変化と、AI開発における次のトレンド（単なるツール提供から自律的な研究・実行能力を持つエージェントへの移行）を包括的に解説しているため。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 19.9</span>
+      <span class="tag">興味度 5</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Mirendil、Google Cloudと1億ドル以上の契約で自己改善AIをスケールアップ</div>
+    <div style="color:var(--muted);font-size:.9rem">最先端のAI研究における最大のボトルネックである『計算資源』の問題を、具体的な大口契約事例で示すことで、現在のAI開発競争の構造と資金の流れを明確にしているため。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 19.3</span>
+      <span class="tag">興味度 5</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">「声」の権利明記：生成AIでの無断利用、法務省が民事責任の解釈指針を公表</div>
+    <div style="color:var(--muted);font-size:.9rem">日本国内において、音声データという新たな個人情報に対する法的な取り扱いが明確化された点で極めて重要。クリエイターやサービス提供者にとって必須の知識となるため。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 18.7</span>
+      <span class="tag">興味度 4</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Suno、スパム的なAI音楽対策を発表</div>
+    <div style="color:var(--muted);font-size:.9rem">急速に普及するAI生成コンテンツ（特に音声・音楽）における著作権や不正利用の問題への具体的な対策を示しており、今後の業界標準化の流れを示すため。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>

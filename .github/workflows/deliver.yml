@@ -1,0 +1,108 @@
+# 0:00 JST に Discord へ配信する。
+#
+# なぜクラウドでやるのか:
+#   Mac がスリープ中は CPU が止まるため、Mac 上では何も動かない。
+#   「Mac が寝ていても 0 時ちょうどに届く」を成立させるには、
+#   処理を Mac の外で走らせるしかない。
+#
+# 役割分担:
+#   生成（収集・選定・原稿・画像）… Mac が起きているときに実行し push する。
+#                                   Claude Code + Ollama なので品質が高く $0。
+#   配信                        … このワークフローが 0:00 に実行する。
+#                                   LLM を一切使わないので、確実かつ無料。
+#
+# Mac が一度も起きず今日の下書きが無い日は、生成まで肩代わりする
+# （llm.yml の cloud バックエンド。GEMINI_API_KEY が要る）。
+
+name: 0時の配信
+
+on:
+  schedule:
+    # 0:00 JST = 15:00 UTC（前日）
+    - cron: "0 15 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "配信済みでも再送する"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deliver
+  cancel-in-progress: false
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - run: uv sync --frozen
+
+      # 今日（JST）の下書きが既にあるか、既に配信済みかを見る
+      - name: 下書きの状態を確認
+        id: state
+        run: |
+          uv run ainews status --json | tee state.json
+          {
+            echo "exists=$(jq -r .exists state.json)"
+            echo "delivered=$(jq -r .delivered state.json)"
+            echo "date=$(jq -r .date state.json)"
+          } >> "$GITHUB_OUTPUT"
+
+      # Mac が生成できていなかった日だけ、クラウドで作る
+      - name: 下書きが無ければ生成する
+        if: steps.state.outputs.exists == 'false'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::warning::今日の下書きが無く、GEMINI_API_KEY も未設定のため生成できません。"
+            echo "::warning::Mac で 'ainews run' を実行するか、GEMINI_API_KEY を登録してください。"
+            exit 0
+          fi
+          # クラウドには Ollama も claude も無いので一次選抜は使わない
+          uv run ainews daily --backend gemini --no-fallback
+          uv run ainews images
+          uv run ainews render
+
+      - name: Discord へ配信
+        if: steps.state.outputs.delivered == 'false' || inputs.force
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: uv run ainews notify
+
+      - name: 配信済みでスキップした場合の記録
+        if: steps.state.outputs.delivered == 'true' && !inputs.force
+        run: echo "::notice::${{ steps.state.outputs.date }} は配信済みのためスキップしました"
+
+      - name: 生成物をコミット
+        run: |
+          git config user.name  "ainews-bot"
+          git config user.email "ainews-bot@users.noreply.github.com"
+          git add docs data/ainews.db
+          if git diff --staged --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "配信 $(TZ=Asia/Tokyo date +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: 失敗を通知
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
+            curl -sS -H "Content-Type: application/json" \
+              -d "{\"content\":\"⚠️ 0時の配信に失敗しました: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+              "$DISCORD_WEBHOOK_URL"
+          fi

@@ -7,8 +7,8 @@ weekly-report.md
 *.local.yaml
 .env
 
-# 動作確認で生成した成果物。初回コミットには含めない。
-# 本番運用では GitHub Actions が docs/ と data/ をコミットするため、
-# 運用開始時に下2行を削除する。
-docs/d/
-data/ainews.db
+# 生成物とDBはコミットする。
+#   docs/       … GitHub Pages がプレビューを配信する
+#   data/*.db   … 既出チェックの履歴と、0時の配信ジョブが読む下書き
+# ログとローカル設定は除く。
+data/*.log

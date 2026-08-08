@@ -176,6 +176,9 @@ class Draft(BaseModel):
     # 主バックエンドが使えず退避した場合の理由。空なら通常実行。
     # プレビューと通知に警告を出し、原稿を念入りに確認してもらう。
     fallback_reason: str = ""
+    # Discord に配信した時刻。Mac と 0時のクラウドジョブの両方が
+    # 配信しうるので、二重配信を防ぐための印として使う。
+    delivered_at: datetime | None = None
 
     def article_by_id(self, aid: str) -> Article | None:
         return next((s.article for s in self.selected if s.article.id == aid), None)
