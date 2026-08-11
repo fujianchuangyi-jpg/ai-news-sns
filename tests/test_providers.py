@@ -484,3 +484,28 @@ class TestFailureReason:
         envelope = {"is_error": True, "result": "Claude Code usage limit reached"}
         error = ClaudeCodeProvider._classify(_failure_reason(envelope, "", ""), 1)
         assert isinstance(error, ProviderUnavailable)
+
+
+class TestRelogin:
+    """認証切れは放置すると毎日품質が落ちたまま気づけない。
+    一時障害と区別して、通知で対処を促せること。"""
+
+    def test_oauth_expiry_is_treated_as_unavailable(self):
+        from ainews.providers.claude_code import ClaudeCodeProvider
+
+        error = ClaudeCodeProvider._classify(
+            "Failed to authenticate: OAuth session expired and could not be refreshed", 1
+        )
+        assert isinstance(error, ProviderUnavailable)
+
+    def test_oauth_expiry_needs_relogin(self):
+        from ainews.providers.claude_code import needs_relogin
+
+        assert needs_relogin("OAuth session expired and could not be refreshed")
+        assert needs_relogin("You are not logged in. Please run /login")
+
+    def test_transient_failure_does_not_need_relogin(self):
+        from ainews.providers.claude_code import needs_relogin
+
+        assert not needs_relogin("usage limit reached")
+        assert not needs_relogin("connection reset by peer")

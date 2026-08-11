@@ -48,10 +48,26 @@ _UNAVAILABLE_HINTS = (
     "not logged in",
     "please run /login",
     "authentication",
+    "failed to authenticate",
+    # OAuth セッションは自動更新されるが、更新に失敗すると期限切れになる。
+    # 実運用で2日間これが起き、気づかないまま品質の低いローカルLLMで
+    # 生成され続けた。再ログインが必要なので利用者に知らせる必要がある。
+    "oauth session expired",
+    "session expired",
     "invalid api key",
     "credit balance",
     "quota",
 )
+
+# 退避理由のうち、利用者が手を打たないと直らないもの。
+# 単なる一時障害と区別して、通知で明示的に対処を促す。
+_NEEDS_ACTION = ("oauth session expired", "session expired", "not logged in", "/login")
+
+
+def needs_relogin(reason: str) -> bool:
+    """退避理由が再ログインを要するものか。"""
+    lowered = reason.lower()
+    return any(hint in lowered for hint in _NEEDS_ACTION)
 
 
 class ClaudeCodeProvider:

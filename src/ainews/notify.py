@@ -61,9 +61,18 @@ def _build_payload(draft: Draft) -> dict:
 
     warnings = []
     if draft.fallback_reason:
+        from .providers.claude_code import needs_relogin
+
         warnings.append(
             f"⚠️ 予備のLLM（{draft.llm_backend}）で生成。品質を念入りに確認してください"
         )
+        if needs_relogin(draft.fallback_reason):
+            # 放置すると毎日この状態が続き、品質が落ちたまま気づけない。
+            # 具体的な対処をそのまま書く。
+            warnings.append(
+                "🔑 **Claude Code の再ログインが必要です。**"
+                "ターミナルで `claude` を起動し `/login` を実行してください"
+            )
     over = [p for p in draft.x_posts if weighted_length(p.body) > limit]
     if over:
         warnings.append(f"⚠️ X原稿 {len(over)}件が字数超過（手直しが必要）")
@@ -280,9 +289,18 @@ def _summary_embed(draft: Draft, limit: int) -> dict:
 
     warnings = []
     if draft.fallback_reason:
+        from .providers.claude_code import needs_relogin
+
         warnings.append(
             f"⚠️ 予備のLLM（{draft.llm_backend}）で生成。品質を念入りに確認してください"
         )
+        if needs_relogin(draft.fallback_reason):
+            # 放置すると毎日この状態が続き、品質が落ちたまま気づけない。
+            # 具体的な対処をそのまま書く。
+            warnings.append(
+                "🔑 **Claude Code の再ログインが必要です。**"
+                "ターミナルで `claude` を起動し `/login` を実行してください"
+            )
     if over := [p for p in draft.x_posts if weighted_length(p.body) > limit]:
         warnings.append(f"⚠️ X原稿 {len(over)}件が字数超過（手直しが必要）")
     if draft.verification_issues:

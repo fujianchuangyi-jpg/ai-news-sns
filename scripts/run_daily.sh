@@ -86,6 +86,20 @@ if $CHECK_ONLY; then
     exit 0
 fi
 
+# 既に今日の下書きを配信済みなら何もしない。
+# Mac の launchd と 0時のクラウドジョブの両方が走りうるので、
+# 二重配信を避ける。--force を付けたときだけ作り直す。
+if [ "${1:-}" != "--force" ]; then
+    STATE=$(uv run ainews status --json 2>/dev/null || echo '{}')
+    case "$STATE" in
+        *'"delivered": true'*)
+            log "今日の下書きは配信済みのため何もしません（作り直すなら --force）"
+            log "───────── 完了"
+            exit 0
+            ;;
+    esac
+fi
+
 log "下書きを生成中（収集 → 一次選抜 → 選定 → 原稿 → 画像 → プレビュー）"
 if uv run ainews run >>"$LOG" 2>&1; then
     log "✓ 下書きの生成が完了"
