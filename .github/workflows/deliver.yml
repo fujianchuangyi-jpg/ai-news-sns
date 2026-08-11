@@ -60,25 +60,38 @@ jobs:
 
       # Mac が生成できていなかった日だけ、クラウドで作る
       - name: 下書きが無ければ生成する
+        id: generate
         if: steps.state.outputs.exists == 'false'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           if [ -z "$GEMINI_API_KEY" ]; then
-            echo "::warning::今日の下書きが無く、GEMINI_API_KEY も未設定のため生成できません。"
-            echo "::warning::Mac で 'ainews run' を実行するか、GEMINI_API_KEY を登録してください。"
+            echo "::warning::今日の下書きがなく、クラウド生成用のキーも未設定のため何も配信しません。"
+            echo "::warning::Mac で 'ainews run' を実行すれば生成・配信されます。"
+            echo "generated=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           # クラウドには Ollama も claude も無いので一次選抜は使わない
           uv run ainews daily --backend gemini --no-fallback
           uv run ainews images
           uv run ainews render
+          echo "generated=true" >> "$GITHUB_OUTPUT"
 
+      # 配信するのは「下書きがある」かつ「まだ配信していない」ときだけ。
+      # 下書きが無い日にここへ来ると notify が失敗し、ジョブ全体が
+      # 赤くなって本当の異常が埋もれる。
       - name: Discord へ配信
-        if: steps.state.outputs.delivered == 'false' || inputs.force
+        if: >-
+          (steps.state.outputs.exists == 'true' || steps.generate.outputs.generated == 'true')
+          && (steps.state.outputs.delivered == 'false' || inputs.force)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: uv run ainews notify
+
+      - name: 配信しなかった理由を記録
+        if: >-
+          steps.state.outputs.exists == 'false' && steps.generate.outputs.generated != 'true'
+        run: echo "::notice::${{ steps.state.outputs.date }} の下書きが無いため配信をスキップしました"
 
       - name: 配信済みでスキップした場合の記録
         if: steps.state.outputs.delivered == 'true' && !inputs.force

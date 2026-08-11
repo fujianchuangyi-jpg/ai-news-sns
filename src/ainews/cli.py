@@ -241,8 +241,20 @@ def cmd_open(args: argparse.Namespace) -> int:
 
 
 def cmd_run(args: argparse.Namespace) -> int:
-    """日次の通し実行。launchd から呼ぶ。"""
+    """日次の通し実行。launchd から呼ぶ。
+
+    最初に日付を1回だけ確定させ、以降の全ステップに渡す。各ステップが
+    個別に「今日」を求めると、実行が日付をまたいだときに daily が保存した
+    下書きを images が見つけられず失敗する。ローカルLLMへ退避した日は
+    生成が数時間かかることがあり、実際にこれで落ちた。
+    """
+    from .pipeline import today_jst
+
     args.summary_only = getattr(args, "summary_only", False)
+    if not args.date:
+        args.date = today_jst()
+        print(f"※ 対象日: {args.date}\n")
+
     for step in (cmd_daily, cmd_images, cmd_render, cmd_notify):
         code = step(args)
         if code != 0:

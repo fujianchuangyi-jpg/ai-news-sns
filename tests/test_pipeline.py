@@ -319,3 +319,66 @@ class TestIGCaption:
         # 入力に # が付いていても二重にしない
         assert "#AI #生成AI" in rendered
         assert "##" not in rendered
+
+
+class TestVerifySourceNote:
+    """出典表記の媒体名を「本文に無い固有名詞」として誤検出しないこと。
+
+    括弧付き・括弧なしの両方が実際に生成される（ローカルLLMへ退避した日は
+    書式が崩れやすい）。ここを取りこぼすと毎回ノイズの警告が出て、
+    本物の捏造が埋もれる。
+    """
+
+    SOURCE = "OpenAIは新モデルを発表した。推論性能は3倍に向上した。"
+
+    def test_parenthesized_source_is_ignored(self):
+        draft = "推論性能が3倍に。\n\n#AI（出典: ITmedia AI+）"
+        assert verify_text(draft, self.SOURCE) == []
+
+    def test_bare_source_is_ignored(self):
+        draft = "推論性能が3倍に。\n\n#AI\n出典: ITmedia AI+"
+        assert verify_text(draft, self.SOURCE) == []
+
+    def test_halfwidth_parens_are_ignored(self):
+        draft = "推論性能が3倍に。\n\n#AI (出典: TechCrunch)"
+        assert verify_text(draft, self.SOURCE) == []
+
+    def test_real_fabrication_still_caught(self):
+        """出典を無視するようにしても、本文の捏造は検出できること。"""
+        draft = "推論性能が10倍に。ソフトバンクが出資。\n\n#AI（出典: ITmedia）"
+        values = [i.value for i in verify_text(draft, self.SOURCE)]
+        assert "10倍" in values and "ソフトバンク" in values
+
+
+class TestRunDateConsistency:
+    """通し実行が日付をまたいでも、全ステップが同じ日を見ること。
+
+    ローカルLLMへ退避した日は生成が数時間かかることがあり、実際に
+    daily が保存した下書きを images が見つけられず失敗した。
+    """
+
+    def test_run_fixes_the_date_once(self, monkeypatch):
+        import argparse
+
+        from ainews import cli
+
+        seen: list[str | None] = []
+
+        def fake_step(args):
+            seen.append(args.date)
+            return 0
+
+        monkeypatch.setattr(cli, "cmd_daily", fake_step)
+        monkeypatch.setattr(cli, "cmd_images", fake_step)
+        monkeypatch.setattr(cli, "cmd_render", fake_step)
+        monkeypatch.setattr(cli, "cmd_notify", fake_step)
+
+        # 各ステップの間で日付が変わる状況を作る
+        dates = iter(["2026-08-10", "2026-08-11", "2026-08-11", "2026-08-11"])
+        monkeypatch.setattr(
+            "ainews.pipeline.today_jst", lambda: next(dates, "2026-08-11")
+        )
+
+        args = argparse.Namespace(date=None)
+        assert cli.cmd_run(args) == 0
+        assert seen == ["2026-08-10"] * 4, "全ステップが同じ日付を見ること"
