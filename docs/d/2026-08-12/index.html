@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-08-12 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-08-12　生成 08/12 22:06</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/08/11/an-unreleased-anthropic-model-made-progress-on-one-of-maths-biggest-unsolved-problems/" target="_blank" rel="noopener">Anthropic未公開モデル、リーマン予想を前進</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: An unreleased Anthropic model made progress on one of math’s biggest unsolved problems</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">60体の分身が650案を検証し、2体が核心に届いた。
+Anthropicの未公開モデルが150年未解決のリーマン予想を前進させた。
+指示したのは数学の訓練がない社員。「本気で挑んで」と促し1日半待っただけ。
+#AI #Anthropic（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 220 / 280（見た目 131字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］3100万 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］2人 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］リーマン — この語が本文に見つかりません</div>
+        <div>［固有名詞］サブエージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］アイデア — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］TechCrunch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=60%E4%BD%93%E3%81%AE%E5%88%86%E8%BA%AB%E3%81%8C650%E6%A1%88%E3%82%92%E6%A4%9C%E8%A8%BC%E3%81%97%E3%80%812%E4%BD%93%E3%81%8C%E6%A0%B8%E5%BF%83%E3%81%AB%E5%B1%8A%E3%81%84%E3%81%9F%E3%80%82%0AAnthropic%E3%81%AE%E6%9C%AA%E5%85%AC%E9%96%8B%E3%83%A2%E3%83%87%E3%83%AB%E3%81%8C150%E5%B9%B4%E6%9C%AA%E8%A7%A3%E6%B1%BA%E3%81%AE%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E4%BA%88%E6%83%B3%E3%82%92%E5%89%8D%E9%80%B2%E3%81%95%E3%81%9B%E3%81%9F%E3%80%82%0A%E6%8C%87%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%AE%E3%81%AF%E6%95%B0%E5%AD%A6%E3%81%AE%E8%A8%93%E7%B7%B4%E3%81%8C%E3%81%AA%E3%81%84%E7%A4%BE%E5%93%A1%E3%80%82%E3%80%8C%E6%9C%AC%E6%B0%97%E3%81%A7%E6%8C%91%E3%82%93%E3%81%A7%E3%80%8D%E3%81%A8%E4%BF%83%E3%81%971%E6%97%A5%E5%8D%8A%E5%BE%85%E3%81%A3%E3%81%9F%E3%81%A0%E3%81%91%E3%80%82%0A%23AI%20%23Anthropic%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">規制</span>
+      <span class="tag">断言型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2608/12/2000000497/" target="_blank" rel="noopener">Claudeの生成文に見えない透かし、日本も対象</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Anthropic、「Claude」で生成したテキストに“見えない透かし”　日本を含むグローバルに適用へ</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">Claudeの文章は、コピペしても痕跡が残る。
+Anthropicが生成テキストに機械可読な透かしを埋め込む。EU AI Act対応だが適用は日本を含む世界全体で、8月2日以降のモデルが対象。
+検出手段はまだ未公開。
+#生成AI #Claude（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 225 / 280（見た目 136字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=Claude%E3%81%AE%E6%96%87%E7%AB%A0%E3%81%AF%E3%80%81%E3%82%B3%E3%83%94%E3%83%9A%E3%81%97%E3%81%A6%E3%82%82%E7%97%95%E8%B7%A1%E3%81%8C%E6%AE%8B%E3%82%8B%E3%80%82%0AAnthropic%E3%81%8C%E7%94%9F%E6%88%90%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AB%E6%A9%9F%E6%A2%B0%E5%8F%AF%E8%AA%AD%E3%81%AA%E9%80%8F%E3%81%8B%E3%81%97%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80%E3%80%82EU%20AI%20Act%E5%AF%BE%E5%BF%9C%E3%81%A0%E3%81%8C%E9%81%A9%E7%94%A8%E3%81%AF%E6%97%A5%E6%9C%AC%E3%82%92%E5%90%AB%E3%82%80%E4%B8%96%E7%95%8C%E5%85%A8%E4%BD%93%E3%81%A7%E3%80%818%E6%9C%882%E6%97%A5%E4%BB%A5%E9%99%8D%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%8C%E5%AF%BE%E8%B1%A1%E3%80%82%0A%E6%A4%9C%E5%87%BA%E6%89%8B%E6%AE%B5%E3%81%AF%E3%81%BE%E3%81%A0%E6%9C%AA%E5%85%AC%E9%96%8B%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Claude%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">Hacker News</span>
+    </div>
+    <div class="headline">
+      <a href="https://github.com/trycua/cua/blob/main/blog/gpu-passthrough-macos-vms.md" target="_blank" rel="noopener">macOS仮想環境のLLM推論が16倍速に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Apple Silicon and macOS VMs: Faster LLM Inference with llama.cpp</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">同じVM、同じモデルで、生成速度が16.36倍になった。
+macOSの仮想GPUが性能を過少申告していたのが原因。Metalの応答を書き換える互換レイヤーで、M1 Ultraのプロンプト処理は実機の98%に届いた。
+#AI #llamacpp（出典: Hacker News）</pre>
+    <div class="count ">
+      重み 217 / 280（見た目 136字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］レイヤー — この語が本文に見つかりません</div>
+        <div>［固有名詞］プロンプト — この語が本文に見つかりません</div>
+        <div>［固有名詞］プロセス — この語が本文に見つかりません</div>
+        <div>［固有名詞］Hacker — この語が本文に見つかりません</div>
+        <div>［固有名詞］News — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%90%8C%E3%81%98VM%E3%80%81%E5%90%8C%E3%81%98%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A7%E3%80%81%E7%94%9F%E6%88%90%E9%80%9F%E5%BA%A6%E3%81%8C16.36%E5%80%8D%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F%E3%80%82%0AmacOS%E3%81%AE%E4%BB%AE%E6%83%B3GPU%E3%81%8C%E6%80%A7%E8%83%BD%E3%82%92%E9%81%8E%E5%B0%91%E7%94%B3%E5%91%8A%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%AE%E3%81%8C%E5%8E%9F%E5%9B%A0%E3%80%82Metal%E3%81%AE%E5%BF%9C%E7%AD%94%E3%82%92%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88%E3%82%8B%E4%BA%92%E6%8F%9B%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%A7%E3%80%81M1%20Ultra%E3%81%AE%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E5%87%A6%E7%90%86%E3%81%AF%E5%AE%9F%E6%A9%9F%E3%81%AE98%25%E3%81%AB%E5%B1%8A%E3%81%84%E3%81%9F%E3%80%82%0A%23AI%20%23llamacpp%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Hacker%20News%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://atmarkit.itmedia.co.jp/ait/articles/2608/12/news044.html" target="_blank" rel="noopener">SaaS支出37兆円が2030年までに消失と予測</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 37兆円のSaaS支出が2030年までに「消える」　Gartnerが予測するエージェントAIの破壊力</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIが画面を操作し始めたら、SaaSは何に課金するのか。
+Gartnerは、企業向けソフト支出の最大2340億ドル（約37兆円）が2030年までにエージェント型AIの影響にさらされると予測。
+ユーザー数課金の前提が崩れる。
+#AI #SaaS（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 226 / 280（見た目 135字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］2割 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェントアービトラージ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ベンダー — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%8C%E7%94%BB%E9%9D%A2%E3%82%92%E6%93%8D%E4%BD%9C%E3%81%97%E5%A7%8B%E3%82%81%E3%81%9F%E3%82%89%E3%80%81SaaS%E3%81%AF%E4%BD%95%E3%81%AB%E8%AA%B2%E9%87%91%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%82%0AGartner%E3%81%AF%E3%80%81%E4%BC%81%E6%A5%AD%E5%90%91%E3%81%91%E3%82%BD%E3%83%95%E3%83%88%E6%94%AF%E5%87%BA%E3%81%AE%E6%9C%80%E5%A4%A72340%E5%84%84%E3%83%89%E3%83%AB%EF%BC%88%E7%B4%8437%E5%85%86%E5%86%86%EF%BC%89%E3%81%8C2030%E5%B9%B4%E3%81%BE%E3%81%A7%E3%81%AB%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E5%9E%8BAI%E3%81%AE%E5%BD%B1%E9%9F%BF%E3%81%AB%E3%81%95%E3%82%89%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E4%BA%88%E6%B8%AC%E3%80%82%0A%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E6%95%B0%E8%AA%B2%E9%87%91%E3%81%AE%E5%89%8D%E6%8F%90%E3%81%8C%E5%B4%A9%E3%82%8C%E3%82%8B%E3%80%82%0A%23AI%20%23SaaS%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-08-12.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">60体のAIが650案を試し、150年解けなかった難問が一歩進みました。
+今日の4本は「AIが人の手を離れて動き出した」話で揃っています。
+
+1. Anthropicの未公開モデルが、リーマン予想が成り立つ範囲の下限を大きく押し上げました。60体のサブエージェントのうち、核心のアイデアを出したのは2体。13体が着想を補助し、30体は空振り、13体が検証役、2体が論文の初稿を書きました。
+出力トークンは合計3100万。結果は社内の数学者2人が確認し、証明支援ソフトLeanで形式化されています。(TechCrunch)
+
+2. Claudeが生成したテキストに、人間には知覚できない電子透かしが入ります。テキストの一部として織り込まれるので、コピペで別の場所へ移しても一緒に移動します。画像などのファイルにはC2PA準拠の来歴メタデータが付きます。
+EU AI Act第50条（違反時は最大1500万ユーロ、または全世界売上高の3%）への対応ですが、適用は日本を含む世界全体。ただし検出の仕組みは後日公開の技術文書待ちで、今は手元で確かめる手段がありません。(ITmedia AI+)
+
+3. macOSの仮想マシンでllama.cppが遅かった原因は、Appleの仮想GPUが自分の能力を実際より低く申告していたことでした。アプリはその答えを見て遅いGPUコードを選んでしまう。
+Metalへの応答を書き換える小さな互換レイヤーを1プロセスに挟むだけで、M1 UltraのTinyLlama 1.1Bはプロンプト処理11.08倍・生成16.36倍に。Gemma 4 12Bでは実機の99.59%のプロンプト速度に届きました。(Hacker News)
+
+4. Gartnerが名付けたのは「エージェントアービトラージ」。AIが複数のシステムをまたいで作業すると、人が従来型ソフトの画面を開かなくなり、ユーザー数の増加と需要の増加が結び付かなくなります。
+影響を受けるのは企業向けソフト支出の最大2340億ドル（約37兆円）、2030年のSaaS支出の約2割。ただしSaaSが消えるわけではなく「異なる形で続く」、既存ベンダーにも新規参入者にも脅威であり機会でもある、という見立てです。(ITmedia AI+)
+
+5. 
+
+4本に共通するのは、AIが「使う道具」から「自分で進める主体」に移りつつあること。だからこそ、誰の成果なのか・どこまでAIが関わったのか・何に課金するのかが、数学でも企業システムでも同時に問い直されています。
+毎朝、その日のAIニュースを4本だけに絞って届けています。流し読みで置いていかれたくない方は、フォローと保存をどうぞ。
+
+#AI #生成AI #人工知能 #AIニュース #テクノロジー #ArtificialIntelligence #GenAI #Claude #Anthropic #LLM #ローカルLLM #AIエージェント #AI活用 #AI規制 #リーマン予想 #EUAIAct #電子透かし #C2PA #llamacpp #AppleSilicon #Gartner #SaaS</pre>
+  <div class="count">1316字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 64.9</span>
+      <span class="tag">興味度 94</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Anthropic未公開モデル、リーマン予想を前進</div>
+    <div style="color:var(--muted);font-size:.9rem">数学の訓練がない社員が「本気で挑んで」と指示しただけで1日半後に成果が出た。AIが数学的発見の主体になり得ることを示し、著者性をめぐる論争も起きている。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 60.1</span>
+      <span class="tag">興味度 76</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Claudeの生成文に見えない透かし、日本も対象</div>
+    <div style="color:var(--muted);font-size:.9rem">EU AI Act第50条への対応だが適用は世界全体。8月2日以降のモデルが対象で、検出手段はまだ未公開。AI生成テキストの追跡が既定路線になりつつある。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 50.8</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">5社が報道</span>
+    </div>
+    <div class="headline">macOS仮想環境のLLM推論が16倍速に</div>
+    <div style="color:var(--muted);font-size:.9rem">Apple仮想GPUが能力を過少申告していたのが原因で、小さな互換レイヤーだけで実機の94〜99%まで回復した。VM上でローカルLLMを動かす開発者に直接効く発見。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 54.1</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">SaaS支出37兆円が2030年までに消失と予測</div>
+    <div style="color:var(--muted);font-size:.9rem">エージェントがシステム間を横断して作業すると、人間が画面を開かなくなりユーザー数課金の前提が崩れる。ソフトウェア業界の収益モデルが根本から書き換わる。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
