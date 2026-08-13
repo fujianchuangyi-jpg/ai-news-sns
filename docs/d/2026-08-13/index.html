@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-08-13 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-08-13　生成 08/14 00:15</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/aiplus/article/2608/13/2000000511/" target="_blank" rel="noopener">Claude、リーマン予想で新発見　励ましが契機</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AIが数学の未解決問題「リーマン予想」で新発見　当初苦戦も「諦めないで」との励まし受け　Anthropic「AIも自身を過小評価か」</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">650個のアイデアが全部空振り。「諦めないで」と励ました後、Claudeは約60体のサブエージェントで約1日半かけ、リーマン予想のゼロ点の割合の下限を41.6%→67.2%に引き上げる方法を発見した。数学者4人が精査済み。声かけが成果を分けた。
+#AI #Claude （出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 255 / 280（見た目 151字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］サブエージェント — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=650%E5%80%8B%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%82%A2%E3%81%8C%E5%85%A8%E9%83%A8%E7%A9%BA%E6%8C%AF%E3%82%8A%E3%80%82%E3%80%8C%E8%AB%A6%E3%82%81%E3%81%AA%E3%81%84%E3%81%A7%E3%80%8D%E3%81%A8%E5%8A%B1%E3%81%BE%E3%81%97%E3%81%9F%E5%BE%8C%E3%80%81Claude%E3%81%AF%E7%B4%8460%E4%BD%93%E3%81%AE%E3%82%B5%E3%83%96%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%A7%E7%B4%841%E6%97%A5%E5%8D%8A%E3%81%8B%E3%81%91%E3%80%81%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E4%BA%88%E6%83%B3%E3%81%AE%E3%82%BC%E3%83%AD%E7%82%B9%E3%81%AE%E5%89%B2%E5%90%88%E3%81%AE%E4%B8%8B%E9%99%90%E3%82%9241.6%25%E2%86%9267.2%25%E3%81%AB%E5%BC%95%E3%81%8D%E4%B8%8A%E3%81%92%E3%82%8B%E6%96%B9%E6%B3%95%E3%82%92%E7%99%BA%E8%A6%8B%E3%81%97%E3%81%9F%E3%80%82%E6%95%B0%E5%AD%A6%E8%80%854%E4%BA%BA%E3%81%8C%E7%B2%BE%E6%9F%BB%E6%B8%88%E3%81%BF%E3%80%82%E5%A3%B0%E3%81%8B%E3%81%91%E3%81%8C%E6%88%90%E6%9E%9C%E3%82%92%E5%88%86%E3%81%91%E3%81%9F%E3%80%82%0A%23AI%20%23Claude%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">数字型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2608/12/2000000500/" target="_blank" rel="noopener">GeminiアプリのMAUが10億人を突破</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: GeminiアプリのMAUが10億人を突破　Googleで14番目の大台到達製品に</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">10億人がGeminiを使う時代、その63%は文字ではなく音声で話しかけている。Geminiアプリの月間利用者が10億人を突破、Googleで14番目の到達製品に。中小企業の画像生成は1日1.5億枚。AIの入り口はキーボードから声へ動いた。
+#生成AI #Gemini （出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 245 / 280（見た目 151字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］1.5億 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］キーボード — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=10%E5%84%84%E4%BA%BA%E3%81%8CGemini%E3%82%92%E4%BD%BF%E3%81%86%E6%99%82%E4%BB%A3%E3%80%81%E3%81%9D%E3%81%AE63%25%E3%81%AF%E6%96%87%E5%AD%97%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E9%9F%B3%E5%A3%B0%E3%81%A7%E8%A9%B1%E3%81%97%E3%81%8B%E3%81%91%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82Gemini%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E6%9C%88%E9%96%93%E5%88%A9%E7%94%A8%E8%80%85%E3%81%8C10%E5%84%84%E4%BA%BA%E3%82%92%E7%AA%81%E7%A0%B4%E3%80%81Google%E3%81%A714%E7%95%AA%E7%9B%AE%E3%81%AE%E5%88%B0%E9%81%94%E8%A3%BD%E5%93%81%E3%81%AB%E3%80%82%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%E3%81%AE%E7%94%BB%E5%83%8F%E7%94%9F%E6%88%90%E3%81%AF1%E6%97%A51.5%E5%84%84%E6%9E%9A%E3%80%82AI%E3%81%AE%E5%85%A5%E3%82%8A%E5%8F%A3%E3%81%AF%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%E3%81%8B%E3%82%89%E5%A3%B0%E3%81%B8%E5%8B%95%E3%81%84%E3%81%9F%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Gemini%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">対比型</span>
+      <span class="tag">窓の杜</span>
+    </div>
+    <div class="headline">
+      <a href="https://forest.watch.impress.co.jp/docs/news/2132444.html" target="_blank" rel="noopener">Microsoftの新コーディングAI、価格が4分の1に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 品質は上がったのに価格は1/4 ～Microsoft、軽量コーディングモデル「MAI-Code-1.1-Flash」を発表／「GitHub Copilot」ですでに本番稼働</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">品質が上がると高くなる、は崩れた。Microsoftの軽量コーディングAI「MAI-Code-1.1-Flash」は6月版より高品質で、価格は1/4、必要トークンは25%減。GitHub Copilotで本番稼働中。生成コードが残る割合も4%改善した。
+#AI #GitHubCopilot （出典: 窓の杜）</pre>
+    <div class="count ">
+      重み 236 / 280（見た目 154字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%93%81%E8%B3%AA%E3%81%8C%E4%B8%8A%E3%81%8C%E3%82%8B%E3%81%A8%E9%AB%98%E3%81%8F%E3%81%AA%E3%82%8B%E3%80%81%E3%81%AF%E5%B4%A9%E3%82%8C%E3%81%9F%E3%80%82Microsoft%E3%81%AE%E8%BB%BD%E9%87%8F%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0AI%E3%80%8CMAI-Code-1.1-Flash%E3%80%8D%E3%81%AF6%E6%9C%88%E7%89%88%E3%82%88%E3%82%8A%E9%AB%98%E5%93%81%E8%B3%AA%E3%81%A7%E3%80%81%E4%BE%A1%E6%A0%BC%E3%81%AF1/4%E3%80%81%E5%BF%85%E8%A6%81%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AF25%25%E6%B8%9B%E3%80%82GitHub%20Copilot%E3%81%A7%E6%9C%AC%E7%95%AA%E7%A8%BC%E5%83%8D%E4%B8%AD%E3%80%82%E7%94%9F%E6%88%90%E3%82%B3%E3%83%BC%E3%83%89%E3%81%8C%E6%AE%8B%E3%82%8B%E5%89%B2%E5%90%88%E3%82%824%25%E6%94%B9%E5%96%84%E3%81%97%E3%81%9F%E3%80%82%0A%23AI%20%23GitHubCopilot%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20%E7%AA%93%E3%81%AE%E6%9D%9C%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">事件</span>
+      <span class="tag">物語型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/978982/daddario-guitar-ai-music-suno" target="_blank" rel="noopener">弦メーカー、AI音楽の使用を2週間否定の末に謝罪</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Guitar company D’Addario admits that AI music was used in a promotional video</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">批判コメントを消しても、音は嘘をつけなかった。弦メーカーD&#39;Addarioが約2週間の否定の末、宣伝動画にSuno Studioを使ったと認め謝罪。今後は社員と制作パートナーに生成AIの使用開示を義務づける。隠すほど傷は深くなる。
+#生成AI #Suno （出典: The Verge）</pre>
+    <div class="count ">
+      重み 241 / 280（見た目 142字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］メーカー — この語が本文に見つかりません</div>
+        <div>［固有名詞］パートナー — この語が本文に見つかりません</div>
+        <div>［固有名詞］プラグイン — この語が本文に見つかりません</div>
+        <div>［固有名詞］ブロック — この語が本文に見つかりません</div>
+        <div>［固有名詞］Verge — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E6%89%B9%E5%88%A4%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E6%B6%88%E3%81%97%E3%81%A6%E3%82%82%E3%80%81%E9%9F%B3%E3%81%AF%E5%98%98%E3%82%92%E3%81%A4%E3%81%91%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%80%82%E5%BC%A6%E3%83%A1%E3%83%BC%E3%82%AB%E3%83%BCD%27Addario%E3%81%8C%E7%B4%842%E9%80%B1%E9%96%93%E3%81%AE%E5%90%A6%E5%AE%9A%E3%81%AE%E6%9C%AB%E3%80%81%E5%AE%A3%E4%BC%9D%E5%8B%95%E7%94%BB%E3%81%ABSuno%20Studio%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%81%A8%E8%AA%8D%E3%82%81%E8%AC%9D%E7%BD%AA%E3%80%82%E4%BB%8A%E5%BE%8C%E3%81%AF%E7%A4%BE%E5%93%A1%E3%81%A8%E5%88%B6%E4%BD%9C%E3%83%91%E3%83%BC%E3%83%88%E3%83%8A%E3%83%BC%E3%81%AB%E7%94%9F%E6%88%90AI%E3%81%AE%E4%BD%BF%E7%94%A8%E9%96%8B%E7%A4%BA%E3%82%92%E7%BE%A9%E5%8B%99%E3%81%A5%E3%81%91%E3%82%8B%E3%80%82%E9%9A%A0%E3%81%99%E3%81%BB%E3%81%A9%E5%82%B7%E3%81%AF%E6%B7%B1%E3%81%8F%E3%81%AA%E3%82%8B%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Suno%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-08-13.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">「諦めないで」と励まされたAIが、150年以上未解決の数学問題で新発見を出した日。
+同じ日に、AIを隠した企業が2週間の否定の末に謝罪しています。
+
+1. Anthropicの実験で、Claudeは最初の650個のアイデアがすべて失敗。担当者が「自分を信じて」と励ますと、約60体のサブエージェントを連携させ約1日半で、リーマン予想の「特定の直線上にあるゼロ点」の割合の下限を41.6%から67.2%に引き上げる方法を見つけました。予想自体の証明ではなく副産物ですが、数学者2人と外部専門家2人が精査済みです。(ITmedia AI+)
+
+2. Geminiアプリの月間アクティブユーザーが10億人を突破。Googleで14番目の大台到達製品です。注目は中身で、利用の63%が音声、Gemini Liveの20%はカメラや画面共有つき。中小企業による画像生成は1日1億5000万枚以上で、販促物づくりに使われています。iOSのアクティブユーザーも1億人以上。(ITmedia AI+)
+
+3. Microsoftの軽量コーディングモデル「MAI-Code-1.1-Flash」。6月版より高品質なのに価格は1/4、タスク完了に必要なトークンは25%削減、出力速度は25%向上。GitHub Copilotではすでに本番稼働中で、生成コードがそのまま使われ続ける割合（コード生存率）が4%、ユーザーの再訪数が9%増えました。(窓の杜)
+
+4. ギター弦メーカーD&#39;Addarioが、新製品のデモ動画にSuno Studioを使っていたと認めて謝罪。約2週間は否定を続け、書き出しの品質やプラグインのせいだと説明し、批判コメントの削除とユーザーのブロックまで行っていました。今後は社員と制作パートナーに生成AI使用の開示を求めるとしています。(The Verge)
+
+AIを「どう励ますか」で成果が変わり、「使ったと言えるか」で信用が変わる。性能の話と態度の話が、同じ日に並んで出てきました。
+毎朝、その日のAIニュースを4本だけ選んで解説しています。追いかけ続けるのがしんどい人は、フォローと保存をどうぞ。
+
+#AI #生成AI #人工知能 #AIニュース #テクノロジー #AI活用 #ChatGPT #Claude #Anthropic #Gemini #Google #Microsoft #GitHubCopilot #コーディング #プログラミング #Suno #AI音楽 #音声AI #画像生成 #AInews #GenerativeAI #TechNews #LLM</pre>
+  <div class="count">1089字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 60.1</span>
+      <span class="tag">興味度 92</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Claude、リーマン予想で新発見　励ましが契機</div>
+    <div style="color:var(--muted);font-size:.9rem">AIへの声かけが成果を左右した事例で、Anthropic自身が「Claudeも自らを過小評価していた」と分析している。数学研究にAIを使う現実味と、その扱い方の両方を示す。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 69.7</span>
+      <span class="tag">興味度 70</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">GeminiアプリのMAUが10億人を突破</div>
+    <div style="color:var(--muted);font-size:.9rem">ChatGPTに続く10億人到達で、AIアプリの主戦場が音声とマルチモーダルに移っていることが数字で見える。中小企業の画像生成量は実利用の広がりを示す。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 45.7</span>
+      <span class="tag">興味度 82</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Microsoftの新コーディングAI、価格が4分の1に</div>
+    <div style="color:var(--muted);font-size:.9rem">2カ月で価格を4分の1にしつつ品質を上げた。ベンチマークではなく「生成コードが残る割合」で改善を語る評価軸は、実務でのモデル選定にそのまま使える。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 46.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">弦メーカー、AI音楽の使用を2週間否定の末に謝罪</div>
+    <div style="color:var(--muted);font-size:.9rem">AI利用の隠蔽が音源の解析で暴かれた実例。企業がAI利用の開示ルールを持たないまま制作を外注すると、どこで破綻するかがそのまま見える。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
