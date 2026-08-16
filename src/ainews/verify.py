@@ -19,6 +19,10 @@ import logging
 import re
 import unicodedata
 
+from typing import Literal
+
+from pydantic import BaseModel, Field
+
 from .models import VerificationIssue
 
 log = logging.getLogger(__name__)
@@ -195,4 +199,99 @@ def format_issues(issues: dict[str, list[VerificationIssue]], titles: dict[str, 
         lines.append(f"    ▸ {titles.get(article_id, article_id)[:50]}")
         for issue in found:
             lines.append(f"        [{issue.kind}] {issue.value} — {issue.note}")
+    return "\n".join(lines)
+
+
+# ── LLM による検閲（意味のすり替えを捕まえる） ────────────────────────
+
+
+class AuditIssue(BaseModel):
+    """LLM 検閲が見つけた問題。"""
+
+    article_id: str = Field(description="対象の記事ID（入力のものをそのまま）")
+    severity: Literal["high", "medium", "low"] = Field(
+        description="high=誤報になる / medium=誤解を招く / low=表現が強い"
+    )
+    quote: str = Field(description="原稿の該当箇所をそのまま引用")
+    problem: str = Field(description="何が問題かを1文で")
+    evidence: str = Field(description="元記事には何と書かれているか")
+
+
+class AuditResult(BaseModel):
+    issues: list[AuditIssue] = Field(default_factory=list)
+
+
+def audit_draft(llm, x_posts, ig_items, sources, titles) -> list[AuditIssue]:
+    """原稿を元記事と突き合わせ、記事にない主張を検出する。
+
+    機械照合（verify_text）は「本文に無い数値・固有名詞」しか見ないため、
+    語彙は正しいのに意味がずれているケースをすり抜ける。実際に
+    「価格の高騰」を「供給の安定性がボトルネック」と書き換えた原稿が
+    そのまま通った。ここはそれを捕まえるための最後の砦。
+
+    Args:
+        llm:       構造化出力を返せるバックエンド
+        x_posts:   article_id → X原稿
+        ig_items:  article_id → IGキャプションの該当項目
+        sources:   article_id → 元記事本文
+        titles:    article_id → 表示用の見出し（ログ用）
+
+    Returns:
+        検出された問題。失敗した場合は空リスト（検閲の失敗で日次実行を止めない）。
+    """
+    from .config import prompt
+    from .llm import json_dump
+
+    payload = []
+    for article_id, source_text in sources.items():
+        if not source_text.strip():
+            continue
+        payload.append(
+            {
+                "id": article_id,
+                "headline": titles.get(article_id, ""),
+                "x_post": x_posts.get(article_id, ""),
+                "ig_item": ig_items.get(article_id, ""),
+                "article_body": source_text[:4000],
+            }
+        )
+    if not payload:
+        return []
+
+    try:
+        result = llm.structured(
+            system=prompt("audit"),
+            user=(
+                f"以下の {len(payload)} 件について、原稿が元記事に書かれていることだけで"
+                f"構成されているかを検査してください。\n\n{json_dump(payload)}"
+            ),
+            schema=AuditResult,
+            effort="high",
+        )
+    except Exception as exc:
+        # 検閲が失敗しても下書き自体は使える。人が確認する前提なので止めない。
+        log.warning("LLM検閲に失敗しました（機械照合のみで続行）: %s", exc)
+        return []
+
+    for issue in result.issues:
+        log.warning(
+            "検閲[%s] %s — %s",
+            issue.severity,
+            titles.get(issue.article_id, issue.article_id)[:30],
+            issue.problem,
+        )
+    return result.issues
+
+
+def format_audit(issues: list[AuditIssue], titles: dict[str, str]) -> str:
+    if not issues:
+        return "  LLM検閲: 記事にない主張は見つかりませんでした"
+    lines = ["  LLM検閲で要確認:"]
+    order = {"high": 0, "medium": 1, "low": 2}
+    for issue in sorted(issues, key=lambda i: order.get(i.severity, 9)):
+        mark = {"high": "🔴", "medium": "🟡", "low": "⚪"}.get(issue.severity, "・")
+        lines.append(f"    {mark} {titles.get(issue.article_id, '')[:40]}")
+        lines.append(f"        原稿: 「{issue.quote[:60]}」")
+        lines.append(f"        問題: {issue.problem}")
+        lines.append(f"        記事: {issue.evidence[:80]}")
     return "\n".join(lines)

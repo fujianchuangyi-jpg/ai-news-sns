@@ -179,6 +179,10 @@ class Draft(BaseModel):
     # Discord に配信した時刻。Mac と 0時のクラウドジョブの両方が
     # 配信しうるので、二重配信を防ぐための印として使う。
     delivered_at: datetime | None = None
+    # LLM検閲が見つけた「記事にない主張」。機械照合が捕まえられない
+    # 意味のすり替えを検出する。型は verify.AuditIssue だが、循環参照を
+    # 避けるため dict で保持する。
+    audit_issues: list[dict] = Field(default_factory=list)
 
     def article_by_id(self, aid: str) -> Article | None:
         return next((s.article for s in self.selected if s.article.id == aid), None)

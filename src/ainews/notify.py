@@ -221,12 +221,35 @@ def send_draft_package(draft: Draft, draft_dir: Path) -> bool:
                 }
             )
 
+        # 記事にない主張。誤報に直結するので該当箇所と根拠を並べて出す。
+        audits = [
+            a for a in draft.audit_issues if a.get("article_id") == post.article_id
+        ]
+        for audit in audits[:3]:
+            mark = {"high": "🚨", "medium": "⚠️", "low": "・"}.get(
+                audit.get("severity", ""), "・"
+            )
+            fields.append(
+                {
+                    "name": f"{mark} 記事にない主張",
+                    "value": (
+                        f"**該当**: 「{audit.get('quote', '')[:80]}」\n"
+                        f"**問題**: {audit.get('problem', '')[:150]}\n"
+                        f"**記事**: {audit.get('evidence', '')[:150]}"
+                    )[:1000],
+                    "inline": False,
+                }
+            )
+
         source = item.article.source_name if item else ""
         url = item.article.url if item else ""
+        has_audit = any(
+            a.get("article_id") == post.article_id for a in draft.audit_issues
+        )
         embed = {
             "title": f"X {index}/{len(draft.x_posts)}　↑この上の本文を長押ししてコピー",
             "description": f"[元記事を開く（{source}）]({url})" if url else "",
-            "color": COLOR_WARN if (over or issues) else COLOR_OK,
+            "color": COLOR_WARN if (over or issues or has_audit) else COLOR_OK,
             "fields": fields,
         }
 

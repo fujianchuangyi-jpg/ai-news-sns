@@ -27,7 +27,7 @@ from .llm import LLM, make_llm
 from .prefilter import Prefilter, PrefilterResult
 from .models import Article, Draft, ScoredArticle
 from .select import Selector, format_scores, signal_score
-from .verify import format_issues, verify_draft
+from .verify import audit_draft, format_audit, format_issues, verify_draft
 
 log = logging.getLogger(__name__)
 
@@ -91,6 +91,14 @@ class PipelineReport:
 
         titles = {s.article.id: s.display_title for s in self.draft.selected}
         lines.append(format_issues(self.draft.verification_issues, titles))
+        lines.append("")
+        from .verify import AuditIssue
+
+        lines.append(
+            format_audit(
+                [AuditIssue.model_validate(i) for i in self.draft.audit_issues], titles
+            )
+        )
         return "\n".join(lines)
 
 
@@ -184,6 +192,12 @@ def run_daily(
         sources = {i.article.id: (i.article.fulltext or i.article.summary) for i in picked}
         issues = verify_draft(x_bodies, ig_items, sources)
 
+        # 機械照合は「本文に無い数値・固有名詞」しか見ない。語彙は正しいのに
+        # 意味がずれているケース（価格の話→供給の話 など）は素通りするので、
+        # LLM に原稿と元記事を並べて読ませ、記事にない主張を検出させる。
+        titles_for_audit = {i.article.id: i.display_title for i in picked}
+        audit = audit_draft(shared_llm, x_bodies, ig_items, sources, titles_for_audit)
+
         draft = Draft(
             date=date,
             generated_at=datetime.now(UTC),
@@ -193,6 +207,7 @@ def run_daily(
             verification_issues=issues,
             llm_backend=getattr(shared_llm, "name", ""),
             fallback_reason=getattr(shared_llm, "fallback_reason", ""),
+            audit_issues=[i.model_dump() for i in audit],
         )
         store.save_draft(conn, draft)
         store.record_drafted(conn, date, [i.article for i in picked])

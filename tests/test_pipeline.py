@@ -382,3 +382,45 @@ class TestRunDateConsistency:
         args = argparse.Namespace(date=None)
         assert cli.cmd_run(args) == 0
         assert seen == ["2026-08-10"] * 4, "全ステップが同じ日付を見ること"
+
+
+class TestAuditWiring:
+    """LLM検閲の配線。検出漏れがそのまま誤報になるので、
+    結果が下書きに載り、通知まで届くことを担保する。"""
+
+    def test_audit_failure_does_not_break_the_run(self):
+        """検閲が落ちても下書きは使える（人が確認する前提）。"""
+        from ainews.verify import audit_draft
+
+        class Broken:
+            def structured(self, **_):
+                raise RuntimeError("模擬失敗")
+
+        result = audit_draft(
+            Broken(), {"a": "原稿"}, {}, {"a": "元記事の本文"}, {"a": "見出し"}
+        )
+        assert result == []
+
+    def test_empty_sources_are_skipped(self):
+        from ainews.verify import audit_draft
+
+        class NeverCalled:
+            def structured(self, **_):
+                raise AssertionError("本文が無いのに呼ばれてはいけない")
+
+        assert audit_draft(NeverCalled(), {"a": "原稿"}, {}, {"a": "  "}, {}) == []
+
+    def test_format_orders_by_severity(self):
+        from ainews.verify import AuditIssue, format_audit
+
+        issues = [
+            AuditIssue(article_id="a", severity="low", quote="q1", problem="p1", evidence="e1"),
+            AuditIssue(article_id="b", severity="high", quote="q2", problem="p2", evidence="e2"),
+        ]
+        out = format_audit(issues, {"a": "低", "b": "高"})
+        assert out.index("p2") < out.index("p1"), "重大なものを先に出すこと"
+
+    def test_no_issues_is_stated_explicitly(self):
+        from ainews.verify import format_audit
+
+        assert "見つかりません" in format_audit([], {})
