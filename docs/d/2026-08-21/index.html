@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-08-21 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-08-21　生成 08/22 08:50</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/08/20/a-third-of-webpages-published-since-chatgpts-launch-show-signs-of-ai-authorship-study-finds/" target="_blank" rel="noopener">ChatGPT登場後のWebページ、35%にAI執筆の痕跡</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: A third of web pages published since ChatGPT’s launch show signs of AI authorship, study finds</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">ChatGPT公開後に出たWebページの35%に、AI執筆の痕跡がありました。
+Pew Research が約50万件の英語ページを解析。ドメイン別では.comが約10%で、.eduと.govの約1%に対し10倍。.orgは4.6%。
+em dashやOxford commaの使用も年々増加。
+#AI #PewResearch （出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 254 / 280（見た目 178字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］50万 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］ドメイン — この語が本文に見つかりません</div>
+        <div>［固有名詞］ダッシュ — この語が本文に見つかりません</div>
+        <div>［固有名詞］TechCrunch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=ChatGPT%E5%85%AC%E9%96%8B%E5%BE%8C%E3%81%AB%E5%87%BA%E3%81%9FWeb%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE35%25%E3%81%AB%E3%80%81AI%E5%9F%B7%E7%AD%86%E3%81%AE%E7%97%95%E8%B7%A1%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%0APew%20Research%20%E3%81%8C%E7%B4%8450%E4%B8%87%E4%BB%B6%E3%81%AE%E8%8B%B1%E8%AA%9E%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E8%A7%A3%E6%9E%90%E3%80%82%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E5%88%A5%E3%81%A7%E3%81%AF.com%E3%81%8C%E7%B4%8410%25%E3%81%A7%E3%80%81.edu%E3%81%A8.gov%E3%81%AE%E7%B4%841%25%E3%81%AB%E5%AF%BE%E3%81%9710%E5%80%8D%E3%80%82.org%E3%81%AF4.6%25%E3%80%82%0Aem%20dash%E3%82%84Oxford%20comma%E3%81%AE%E4%BD%BF%E7%94%A8%E3%82%82%E5%B9%B4%E3%80%85%E5%A2%97%E5%8A%A0%E3%80%82%0A%23AI%20%23PewResearch%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/982774/greg-brockman-openai-role-expansion" target="_blank" rel="noopener">OpenAIの実権はグレッグ・ブロックマンへ</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: It’s Greg Brockman’s OpenAI now</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">CEOはアルトマン、でも日々の実務を回しているのは別の人物。
+OpenAI社長グレッグ・ブロックマンが製品戦略と「スケーリング」部門の両方を握り、商用部門のほぼ全体に権限を持つ状態に。4月以降、Sora元責任者や元COOら幹部の退社が続きます。
+#AI #OpenAI （出典: The Verge）</pre>
+    <div class="count ">
+      重み 258 / 280（見た目 148字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］4月 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］アルトマン — この語が本文に見つかりません</div>
+        <div>［固有名詞］グレッグ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ブロックマン — この語が本文に見つかりません</div>
+        <div>［固有名詞］スケーリング — この語が本文に見つかりません</div>
+        <div>［固有名詞］フィジー — この語が本文に見つかりません</div>
+        <div>［固有名詞］ピーブルズ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ウェイル — この語が本文に見つかりません</div>
+        <div>［固有名詞］ブラッド — この語が本文に見つかりません</div>
+        <div>［固有名詞］ライトキャップ — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=CEO%E3%81%AF%E3%82%A2%E3%83%AB%E3%83%88%E3%83%9E%E3%83%B3%E3%80%81%E3%81%A7%E3%82%82%E6%97%A5%E3%80%85%E3%81%AE%E5%AE%9F%E5%8B%99%E3%82%92%E5%9B%9E%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%AF%E5%88%A5%E3%81%AE%E4%BA%BA%E7%89%A9%E3%80%82%0AOpenAI%E7%A4%BE%E9%95%B7%E3%82%B0%E3%83%AC%E3%83%83%E3%82%B0%E3%83%BB%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%83%9E%E3%83%B3%E3%81%8C%E8%A3%BD%E5%93%81%E6%88%A6%E7%95%A5%E3%81%A8%E3%80%8C%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E3%80%8D%E9%83%A8%E9%96%80%E3%81%AE%E4%B8%A1%E6%96%B9%E3%82%92%E6%8F%A1%E3%82%8A%E3%80%81%E5%95%86%E7%94%A8%E9%83%A8%E9%96%80%E3%81%AE%E3%81%BB%E3%81%BC%E5%85%A8%E4%BD%93%E3%81%AB%E6%A8%A9%E9%99%90%E3%82%92%E6%8C%81%E3%81%A4%E7%8A%B6%E6%85%8B%E3%81%AB%E3%80%824%E6%9C%88%E4%BB%A5%E9%99%8D%E3%80%81Sora%E5%85%83%E8%B2%AC%E4%BB%BB%E8%80%85%E3%82%84%E5%85%83COO%E3%82%89%E5%B9%B9%E9%83%A8%E3%81%AE%E9%80%80%E7%A4%BE%E3%81%8C%E7%B6%9A%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82%0A%23AI%20%23OpenAI%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/podcast/982434/ai-math-openai-astra-existential-crisis" target="_blank" rel="noopener">数学界がAIで実存的危機、専門家は「呆然」</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Welcome to the AI crisis in math</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">AIは最高峰の抽象数学を解けるのに、足し算はいまだに苦手。
+OpenAIが長年未解決の数学問題の解答を公開し、数学界は「呆然」。The Vergeの取材では、曜日や時刻もまだ間違えるといいます。
+人間の数学者を育てる意味は何か、という問いが出ています。
+#AI #数学 （出典: The Verge）</pre>
+    <div class="count ">
+      重み 263 / 280（見た目 147字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］1年 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］プログラム — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AF%E6%9C%80%E9%AB%98%E5%B3%B0%E3%81%AE%E6%8A%BD%E8%B1%A1%E6%95%B0%E5%AD%A6%E3%82%92%E8%A7%A3%E3%81%91%E3%82%8B%E3%81%AE%E3%81%AB%E3%80%81%E8%B6%B3%E3%81%97%E7%AE%97%E3%81%AF%E3%81%84%E3%81%BE%E3%81%A0%E3%81%AB%E8%8B%A6%E6%89%8B%E3%80%82%0AOpenAI%E3%81%8C%E9%95%B7%E5%B9%B4%E6%9C%AA%E8%A7%A3%E6%B1%BA%E3%81%AE%E6%95%B0%E5%AD%A6%E5%95%8F%E9%A1%8C%E3%81%AE%E8%A7%A3%E7%AD%94%E3%82%92%E5%85%AC%E9%96%8B%E3%81%97%E3%80%81%E6%95%B0%E5%AD%A6%E7%95%8C%E3%81%AF%E3%80%8C%E5%91%86%E7%84%B6%E3%80%8D%E3%80%82The%20Verge%E3%81%AE%E5%8F%96%E6%9D%90%E3%81%A7%E3%81%AF%E3%80%81%E6%9B%9C%E6%97%A5%E3%82%84%E6%99%82%E5%88%BB%E3%82%82%E3%81%BE%E3%81%A0%E9%96%93%E9%81%95%E3%81%88%E3%82%8B%E3%81%A8%E3%81%84%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%E4%BA%BA%E9%96%93%E3%81%AE%E6%95%B0%E5%AD%A6%E8%80%85%E3%82%92%E8%82%B2%E3%81%A6%E3%82%8B%E6%84%8F%E5%91%B3%E3%81%AF%E4%BD%95%E3%81%8B%E3%80%81%E3%81%A8%E3%81%84%E3%81%86%E5%95%8F%E3%81%84%E3%81%8C%E5%87%BA%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%23AI%20%23%E6%95%B0%E5%AD%A6%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">規制</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">MIT Technology Review</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.technologyreview.com/2026/08/21/1142627/when-ai-designs-a-drug-who-gets-the-credit/" target="_blank" rel="noopener">AIが創薬しても発明者になれない米特許制度</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: When AI designs a drug, who gets the credit?</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIが薬を設計したら、発明者は誰になるのか。
+Insilico Medicineは肺線維症の候補分子を「生成AIが発見した」と発表しましたが、特許にはAIの記載がなく、CEOら人間5人が発明者。米控訴裁は2022年、法律上の発明者は人間だけと判断しています。
+#AI #創薬 （出典: MIT Technology Review）</pre>
+    <div class="count ">
+      重み 268 / 280（見た目 163字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］5人 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］アレックス — この語が本文に見つかりません</div>
+        <div>［固有名詞］ジャヴォロンコフ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ワシントン — この語が本文に見つかりません</div>
+        <div>［固有名詞］ライアン — この語が本文に見つかりません</div>
+        <div>［固有名詞］アボット — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%8C%E8%96%AC%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%97%E3%81%9F%E3%82%89%E3%80%81%E7%99%BA%E6%98%8E%E8%80%85%E3%81%AF%E8%AA%B0%E3%81%AB%E3%81%AA%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%82%0AInsilico%20Medicine%E3%81%AF%E8%82%BA%E7%B7%9A%E7%B6%AD%E7%97%87%E3%81%AE%E5%80%99%E8%A3%9C%E5%88%86%E5%AD%90%E3%82%92%E3%80%8C%E7%94%9F%E6%88%90AI%E3%81%8C%E7%99%BA%E8%A6%8B%E3%81%97%E3%81%9F%E3%80%8D%E3%81%A8%E7%99%BA%E8%A1%A8%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%81%8C%E3%80%81%E7%89%B9%E8%A8%B1%E3%81%AB%E3%81%AFAI%E3%81%AE%E8%A8%98%E8%BC%89%E3%81%8C%E3%81%AA%E3%81%8F%E3%80%81CEO%E3%82%89%E4%BA%BA%E9%96%935%E4%BA%BA%E3%81%8C%E7%99%BA%E6%98%8E%E8%80%85%E3%80%82%E7%B1%B3%E6%8E%A7%E8%A8%B4%E8%A3%81%E3%81%AF2022%E5%B9%B4%E3%80%81%E6%B3%95%E5%BE%8B%E4%B8%8A%E3%81%AE%E7%99%BA%E6%98%8E%E8%80%85%E3%81%AF%E4%BA%BA%E9%96%93%E3%81%A0%E3%81%91%E3%81%A8%E5%88%A4%E6%96%AD%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%23AI%20%23%E5%89%B5%E8%96%AC%20%EF%BC%88%E5%87%BA%E5%85%B8%3A%20MIT%20Technology%20Review%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-08-21.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">ChatGPT公開後に生まれたWebページの35%に、AI執筆の痕跡。
+読むのも書くのもボット、という状況が数字で見えてきました。
+
+1. ① Pew Researchが Common Crawl から約50万件の英語ページを集めて解析。ChatGPT公開後のページに絞ると35%にAI執筆の痕跡がありました。
+ドメイン別では.comが約10%、.eduと.govは約1%、.orgは4.6%。em dash（ダッシュ）やOxford comma、「it&#39;s not X, it&#39;s Y」という言い回しの増加も、AIらしさの手がかりとして挙がっています。(TechCrunch)
+
+2. ② OpenAIの日常業務を回しているのは、社長で共同創業者のグレッグ・ブロックマン。フィジー・シモ氏の休職で製品全体を引き継ぎ、その後の組織再編で「スケーリング」部門も加わりました。
+4月以降、Sora元責任者ピーブルズ氏、科学部門VPのウェイル氏、そして長年COOを務めたブラッド・ライトキャップ氏らが退社。IPO申請後の人事です。(The Verge)
+
+3. ③ OpenAIが長年の未解決問題の解答を公開し、数学界に激震。The Vergeの記者が一流の数学者たちに取材したところ、返ってきたのは「shell-shocked（呆然）」という言葉でした。
+一方でAIは足し算や曜日、時刻の把握がいまだに苦手。この6か月〜1年で急変した能力をどう捉えるか、そして人間の数学者を育てる助成金やプログラムに何の意味があるのか、が議論になっています。(The Verge)
+
+4. ④ Insilico Medicineは肺線維症の候補分子を「生成AIプラットフォームが発見した」と発表。ところが特許出願書類にAIの記載はなく、CEOのアレックス・ジャヴォロンコフ氏を含む人間5人が発明者として名を連ねていました。
+2022年、ワシントンDCの控訴裁は「発明者＝individual（人間）」と判断。弁護士のライアン・アボット氏は、発明者の記載誤りは特許を無効にする理由になり得ると指摘しています。(MIT Technology Review)
+
+Webの文章、企業の指揮系統、数学の証明、そして特許の発明者欄。AIがどこまで担っているかを、人間の側が数え直している4本でした。
+毎朝4本、AIニュースを日本語でまとめています。あとで読み返したい方は保存を、明日も受け取りたい方はフォローをどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ChatGPT #OpenAI #Claude #AI活用 #機械学習 #AI創薬 #数学 #特許 #スタートアップ #IT news #GregBrockman #PewResearch #Insilico #AInews #GenerativeAI #MachineLearning #TechNews</pre>
+  <div class="count">1231字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 60.1</span>
+      <span class="tag">興味度 88</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">ChatGPT登場後のWebページ、35%にAI執筆の痕跡</div>
+    <div style="color:var(--muted);font-size:.9rem">Webの新規コンテンツの3分の1超がAI製という推計は、学習データの汚染や検索の信頼性に直結する。ボット同士が読み書きする状況が現実味を帯びる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 61.9</span>
+      <span class="tag">興味度 82</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">OpenAIの実権はグレッグ・ブロックマンへ</div>
+    <div style="color:var(--muted);font-size:.9rem">IPOを控えたOpenAIが収益追求へ舵を切る中、誰が実務を握るかは製品戦略の方向を左右する。相次ぐ幹部退社の背景も見える。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 55.9</span>
+      <span class="tag">興味度 85</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">数学界がAIで実存的危機、専門家は「呆然」</div>
+    <div style="color:var(--muted);font-size:.9rem">AIが最高峰の数学問題を解く一方で初等的な計算を誤るというねじれは、モデルの能力の本質を考えるうえで示唆的。数学教育や研究資金の意味も問われる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 46.9</span>
+      <span class="tag">興味度 80</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AIが創薬しても発明者になれない米特許制度</div>
+    <div style="color:var(--muted);font-size:.9rem">AIの貢献を法律上どう扱うかが未解決のまま、企業は人間を発明者に立てて回避している。特許無効化の火種になり得る。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
