@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-09-10 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-09-10　生成 09/11 22:32</div>
+</header>
+
+<div class="warn">
+  <b>⚠ 予備のLLM（ollama）で生成されました。</b>
+  主バックエンドが使えなかったため、原稿の品質が普段より落ちている
+  可能性があります。いつもより念入りに確認してください。
+  <div style="margin-top:.4rem;font-size:.82rem;opacity:.85">
+    理由: claude_code: Claude Code が利用できません: Failed to authenticate: OAuth session expired and could not be refreshed / success / stop_sequence
+  </div>
+</div>
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/992953/openai-math-millennium-prize-navier-stokes" target="_blank" rel="noopener">OpenAIの巧妙な数学的ブレークスルーが学界に冷や水を浴びせる</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: OpenAI’s sly mathematical breakthrough sends a chill through academia</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">OpenAIが、90年間人間を悩ませてきた流体運動の難問「ナビエ・ストークス方程式」に挑みました。
+なんと、内部モデルと約1万体のAIエージェント群を用いて、わずか88時間で解を見出したと発表しました。
+そのスピードは学界に大きな波紋を呼んでいます。#生成AI #OpenAI（出典: The Verge）</pre>
+    <div class="count ">
+      重み 269 / 280（見た目 151字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］ストークス — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］スピード — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=OpenAI%E3%81%8C%E3%80%8190%E5%B9%B4%E9%96%93%E4%BA%BA%E9%96%93%E3%82%92%E6%82%A9%E3%81%BE%E3%81%9B%E3%81%A6%E3%81%8D%E3%81%9F%E6%B5%81%E4%BD%93%E9%81%8B%E5%8B%95%E3%81%AE%E9%9B%A3%E5%95%8F%E3%80%8C%E3%83%8A%E3%83%93%E3%82%A8%E3%83%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%82%B9%E6%96%B9%E7%A8%8B%E5%BC%8F%E3%80%8D%E3%81%AB%E6%8C%91%E3%81%BF%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%0A%E3%81%AA%E3%82%93%E3%81%A8%E3%80%81%E5%86%85%E9%83%A8%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E7%B4%841%E4%B8%87%E4%BD%93%E3%81%AEAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E7%BE%A4%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6%E3%80%81%E3%82%8F%E3%81%9A%E3%81%8B88%E6%99%82%E9%96%93%E3%81%A7%E8%A7%A3%E3%82%92%E8%A6%8B%E5%87%BA%E3%81%97%E3%81%9F%E3%81%A8%E7%99%BA%E8%A1%A8%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%0A%E3%81%9D%E3%81%AE%E3%82%B9%E3%83%94%E3%83%BC%E3%83%89%E3%81%AF%E5%AD%A6%E7%95%8C%E3%81%AB%E5%A4%A7%E3%81%8D%E3%81%AA%E6%B3%A2%E7%B4%8B%E3%82%92%E5%91%BC%E3%82%93%E3%81%A7%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%23%E7%94%9F%E6%88%90AI%20%23OpenAI%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://atmarkit.itmedia.co.jp/ait/articles/2609/10/news011.html" target="_blank" rel="noopener">OpenRouterの利用量が1年で20倍超 今も加速する「AI共通API」について私たちが知るべきこと</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: OpenRouterの利用量が1年で20倍超　今も加速する「AI共通API」について私たちが知るべきこと</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">複数のLLMに統一的にアクセスできる「AI共通API」プラットフォームOpenRouterの利用量が、わずか1年で20倍以上に急増しています。
+これにより、特定のベンダーに依存しない開発環境が加速し、AI開発における標準化が進んでいます。
+#生成AI #OpenRouter（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 255 / 280（見た目 152字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］アクセス — この語が本文に見つかりません</div>
+        <div>［固有名詞］ベンダー — この語が本文に見つかりません</div>
+        <div>［固有名詞］ベンダーロックイン — この語が本文に見つかりません</div>
+        <div>［固有名詞］ITmedia — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E8%A4%87%E6%95%B0%E3%81%AELLM%E3%81%AB%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%8CAI%E5%85%B1%E9%80%9AAPI%E3%80%8D%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0OpenRouter%E3%81%AE%E5%88%A9%E7%94%A8%E9%87%8F%E3%81%8C%E3%80%81%E3%82%8F%E3%81%9A%E3%81%8B1%E5%B9%B4%E3%81%A720%E5%80%8D%E4%BB%A5%E4%B8%8A%E3%81%AB%E6%80%A5%E5%A2%97%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%E3%81%93%E3%82%8C%E3%81%AB%E3%82%88%E3%82%8A%E3%80%81%E7%89%B9%E5%AE%9A%E3%81%AE%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%E3%81%AB%E4%BE%9D%E5%AD%98%E3%81%97%E3%81%AA%E3%81%84%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%8C%E5%8A%A0%E9%80%9F%E3%81%97%E3%80%81AI%E9%96%8B%E7%99%BA%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A8%99%E6%BA%96%E5%8C%96%E3%81%8C%E9%80%B2%E3%82%93%E3%81%A7%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23OpenRouter%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">規制</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/video/superintelligence-is-coming-should-we-let-it/" target="_blank" rel="noopener">超知能AIは来る。私たちはそれを許すべきか？</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Superintelligence is coming. Should we let it?</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">「超知能AI」が不可避の未来だと語られる中、その制御不能なリスクへの対処法が問われています。
+単なる技術開発の話から、社会全体のリスク管理や国際的な規制枠組みの必要性へと焦点が移っています。
+#生成AI #AI倫理（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 223 / 280（見た目 121字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%80%8C%E8%B6%85%E7%9F%A5%E8%83%BDAI%E3%80%8D%E3%81%8C%E4%B8%8D%E5%8F%AF%E9%81%BF%E3%81%AE%E6%9C%AA%E6%9D%A5%E3%81%A0%E3%81%A8%E8%AA%9E%E3%82%89%E3%82%8C%E3%82%8B%E4%B8%AD%E3%80%81%E3%81%9D%E3%81%AE%E5%88%B6%E5%BE%A1%E4%B8%8D%E8%83%BD%E3%81%AA%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%B8%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95%E3%81%8C%E5%95%8F%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%E5%8D%98%E3%81%AA%E3%82%8B%E6%8A%80%E8%A1%93%E9%96%8B%E7%99%BA%E3%81%AE%E8%A9%B1%E3%81%8B%E3%82%89%E3%80%81%E7%A4%BE%E4%BC%9A%E5%85%A8%E4%BD%93%E3%81%AE%E3%83%AA%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86%E3%82%84%E5%9B%BD%E9%9A%9B%E7%9A%84%E3%81%AA%E8%A6%8F%E5%88%B6%E6%9E%A0%E7%B5%84%E3%81%BF%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7%E3%81%B8%E3%81%A8%E7%84%A6%E7%82%B9%E3%81%8C%E7%A7%BB%E3%81%A3%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23AI%E5%80%AB%E7%90%86%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">規制</span>
+      <span class="tag">断言型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/09/09/openai-adds-a-prominent-ai-doomer-to-its-board-of-directors/" target="_blank" rel="noopener">（重複のため省略）</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: OpenAI adds a prominent AI doomer to its board of directors</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">「AIは人間の利益に沿って制御されるべき」と、著名なAI研究者がOpenAIのファウンデーションボードに参加します。
+彼は、AI能力の急速な加速が、取り返しのつかない喪失につながるリスクを指摘しています。
+#生成AI #Alignment（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 230 / 280（見た目 133字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］ファウンデーションボード — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%80%8CAI%E3%81%AF%E4%BA%BA%E9%96%93%E3%81%AE%E5%88%A9%E7%9B%8A%E3%81%AB%E6%B2%BF%E3%81%A3%E3%81%A6%E5%88%B6%E5%BE%A1%E3%81%95%E3%82%8C%E3%82%8B%E3%81%B9%E3%81%8D%E3%80%8D%E3%81%A8%E3%80%81%E8%91%97%E5%90%8D%E3%81%AAAI%E7%A0%94%E7%A9%B6%E8%80%85%E3%81%8COpenAI%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A6%E3%83%B3%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%89%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%E5%BD%BC%E3%81%AF%E3%80%81AI%E8%83%BD%E5%8A%9B%E3%81%AE%E6%80%A5%E9%80%9F%E3%81%AA%E5%8A%A0%E9%80%9F%E3%81%8C%E3%80%81%E5%8F%96%E3%82%8A%E8%BF%94%E3%81%97%E3%81%AE%E3%81%A4%E3%81%8B%E3%81%AA%E3%81%84%E5%96%AA%E5%A4%B1%E3%81%AB%E3%81%A4%E3%81%AA%E3%81%8C%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%92%E6%8C%87%E6%91%98%E3%81%97%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Alignment%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-09-10.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">今日のAIニュースは、「技術的なブレイクスルー」と「制御の難しさ」という二つの大きな軸で動いています。特に、OpenAIによる数学的課題への挑戦や、超知能に関する議論が示すように、AIの進化速度に社会全体が追いつけていない状況です。
+
+1. まず、OpenAIは90年間未解決だった流体運動の難問「ナビエ・ストークス方程式」に対し、内部モデルと約1万体のAIエージェント群を使い、わずか88時間で解を見出したと発表しました。(The Verge)
+
+2. 次に、複数の主要なLLMに統一的にアクセスできるAPIプラットフォームOpenRouterが急成長しており、その利用量は過去1年で20倍以上に増加しています。これにより、特定のベンダーロックインのリスクを減らす動きが進んでいます。(ITmedia AI+)
+
+3. また、AIの能力向上に伴い「超知能（Superintelligence）」という概念が現実的な脅威として議論され始めています。単なる技術開発の話から、社会全体でリスク管理や国際的な規制枠組みが必要だという視点に焦点が移っています。(TechCrunch)
+
+4. 最後に、著名なAI研究者Paul Christiano氏がOpenAIのボードに参加しました。彼は、AI能力の急速な加速は制御不能な事態を招く「意味のあるリスク」があると警鐘を鳴らし、安全性の確保を強く訴えています。(TechCrunch)
+
+5. source_note_added_to_items_end_of_list_for_consistency_check
+
+AIの進化は止まらず加速していますが、その力をどう制御し、社会に組み込んでいくかが最大の課題です。技術的な進歩と倫理・規制の両面から目を配ることが重要になります。
+今日のまとめが役に立ったら「保存」して見返せるようにしておきましょう！
+
+#AI #生成AI #人工知能 #テクノロジー #LLM #OpenAI #Anthropic #Claude #ChatGPT #Superintelligence #超知能 #API #TechCrunch #TheVerge #ITmedia #Alignment #規制 #研究開発 #未来技術 #AI活用 #MachineLearning #DeepLearning</pre>
+  <div class="count">987字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 18.1</span>
+      <span class="tag">興味度 3</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">OpenAIの巧妙な数学的ブレークスルーが学界に冷や水を浴びせる</div>
+    <div style="color:var(--muted);font-size:.9rem">（重複のため省略）</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 18.1</span>
+      <span class="tag">興味度 3</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">OpenRouterの利用量が1年で20倍超 今も加速する「AI共通API」について私たちが知るべきこと</div>
+    <div style="color:var(--muted);font-size:.9rem">特定のベンダーロックインのリスクが高まる中で、中立的なインターフェースを提供するプラットフォームの価値が飛躍的に高まっていることを示す。これはAI開発における標準化と相互運用性の観点から非常に重要なトレンドである。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 18.1</span>
+      <span class="tag">興味度 3</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">超知能AIは来る。私たちはそれを許すべきか？</div>
+    <div style="color:var(--muted);font-size:.9rem">「超知能（Superintelligence）」という概念が現実的な脅威として議論され始め、単なる技術開発の話題から、社会全体のリスク管理や国際的な規制枠組みの必要性へと焦点を移させている。これは今後の政策立案に大きな影響を与える。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 18.7</span>
+      <span class="tag">興味度 2</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">（重複のため省略）</div>
+    <div style="color:var(--muted);font-size:.9rem">（重複のため省略）</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
