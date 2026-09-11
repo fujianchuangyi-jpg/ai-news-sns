@@ -29,8 +29,10 @@ uv sync
 # Claude Code にログイン済みであること
 claude --version
 
-# 一次選抜とフォールバックに使うローカルモデル
+# フォールバック（原稿生成）用。字数厳守に強い
 ollama pull gemma4-ja
+# 一次選抜用。判別が速い。役割が違うのでモデルを分けている
+ollama pull qwen3.5:4b
 ollama serve            # 起動していなければ
 
 export DISCORD_WEBHOOK_URL=https://...     # 任意（完成通知）
@@ -297,6 +299,7 @@ uv run pytest -q
 
 ```bash
 uv run python -m ainews.providers.ollama --selftest       # スキーマ強制と件数欠落
+uv run python -m ainews.providers.ollama --selftest --prefilter  # 一次選抜用モデルで同じ検査
 uv run python -m ainews.providers.claude_code --selftest  # stdin入力とJSON再パース
 ```
 

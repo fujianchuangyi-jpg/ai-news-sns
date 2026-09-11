@@ -5,6 +5,11 @@
      ここを課金バックエンドに投げると無駄が大きい
   2. フォールバック — Claude Code が使えない日でも投稿を止めない
 
+この2つは求められる能力が違う。一次選抜は判別の速さだけが要るが、
+フォールバックは日本語の自然さと字数の厳密さが要る。そこで
+settings.yaml の `prefilter_overrides` で、一次選抜だけ別モデルに
+割り当てられるようにしてある（`OllamaProvider.for_prefilter()`）。
+
 強み: `format` に JSON Schema を渡すと構造が保証される。
       スキーマ強制ができない Claude Code の最終的な安全網になる。
 
@@ -42,14 +47,38 @@ class OllamaProvider:
         model: str | None = None,
         host: str | None = None,
         timeout: float | None = None,
+        num_ctx: int | None = None,
+        temperature: float | None = None,
+        think: bool | None = None,
     ) -> None:
         cfg = load_settings().llm.get("ollama", {})
         self.model = model or cfg.get("model", "gemma4-ja:latest")
         self.host = (host or cfg.get("host", "http://localhost:11434")).rstrip("/")
         # 60記事の一括処理で数分かかるため、既定のタイムアウトでは足りない
         self.timeout = timeout or float(cfg.get("timeout_seconds", 900))
-        self.num_ctx = int(cfg.get("num_ctx", 16384))
-        self.temperature = float(cfg.get("temperature", 0.2))
+        self.num_ctx = int(num_ctx if num_ctx is not None else cfg.get("num_ctx", 16384))
+        self.temperature = float(
+            temperature if temperature is not None else cfg.get("temperature", 0.2)
+        )
+        # None は「think を指定しない」という意味。thinking 非対応のモデルに
+        # このフィールドを送ると 400 を返す Ollama があるため、既定は送らない。
+        self.think = cfg.get("think") if think is None else think
+
+    @classmethod
+    def for_prefilter(cls) -> OllamaProvider:
+        """一次選抜用の設定で組み立てる。
+
+        settings.yaml の llm.ollama.prefilter_overrides に書いた値だけが
+        上書きされ、書かなかった項目は既定の設定に落ちる。つまり
+        prefilter_overrides を消せば1モデル運用に戻る。
+        """
+        over = load_settings().llm.get("ollama", {}).get("prefilter_overrides") or {}
+        return cls(
+            model=over.get("model"),
+            num_ctx=over.get("num_ctx"),
+            temperature=over.get("temperature"),
+            think=over.get("think"),
+        )
 
     # ── 内部 ──────────────────────────────────────────────────────────
 
@@ -63,18 +92,34 @@ class OllamaProvider:
         }
         if fmt is not None:
             payload["format"] = fmt
+        # Qwen3.5 のようなハイブリッド推論モデルは黙っていると思考する。
+        # 構造化出力では推論トークンが遅延にしかならず（一次選抜は5チャンク
+        # あるので丸ごと伸びる）、本文側に漏れると JSON も壊す。
+        if self.think is not None:
+            payload["think"] = self.think
 
-        try:
-            response = httpx.post(
-                f"{self.host}/api/generate", json=payload, timeout=self.timeout
-            )
-        except httpx.ConnectError as exc:
-            raise ProviderUnavailable(
-                f"Ollama に接続できません（{self.host}）。"
-                "`ollama serve` が起動しているか確認してください"
-            ) from exc
-        except httpx.TimeoutException as exc:
-            raise ProviderError(f"Ollama がタイムアウトしました（{self.timeout}秒）") from exc
+        def post(body: dict[str, Any]) -> httpx.Response:
+            try:
+                return httpx.post(
+                    f"{self.host}/api/generate", json=body, timeout=self.timeout
+                )
+            except httpx.ConnectError as exc:
+                raise ProviderUnavailable(
+                    f"Ollama に接続できません（{self.host}）。"
+                    "`ollama serve` が起動しているか確認してください"
+                ) from exc
+            except httpx.TimeoutException as exc:
+                raise ProviderError(
+                    f"Ollama がタイムアウトしました（{self.timeout}秒）"
+                ) from exc
+
+        response = post(payload)
+        if response.status_code == 400 and "think" in payload:
+            # thinking 非対応のモデルに think を送ると 400 になる版がある。
+            # 設定ミスで投稿を止めたくないので、一度だけ外して投げ直す。
+            log.debug("%s は think を受け付けないと判断して再試行します", self.model)
+            payload.pop("think")
+            response = post(payload)
 
         if response.status_code == 404:
             raise ProviderUnavailable(
@@ -84,7 +129,8 @@ class OllamaProvider:
         response.raise_for_status()
 
         body = response.json()
-        text = body.get("response", "")
+        # think=false でも、モデルのテンプレート次第では本文側に残る
+        text = _strip_thinking(body.get("response", ""))
         if not text.strip():
             raise ProviderError("Ollama が空の応答を返しました")
 
@@ -154,9 +200,25 @@ class OllamaProvider:
         except Exception:
             return False
         names = {m.get("name", "") for m in response.json().get("models", [])}
-        # "gemma4-ja" と "gemma4-ja:latest" のどちらの書き方でも通す
-        base = self.model.split(":")[0]
-        return any(n == self.model or n.split(":")[0] == base for n in names)
+        # "gemma4-ja" と "gemma4-ja:latest" のどちらの書き方でも通す。
+        # ただしタグまで一致を要求する。ベース名だけで通していたため、
+        # qwen3.5:9b しか無いのに qwen3.5:4b を「ある」と誤判定していた。
+        wanted = self.model if ":" in self.model else f"{self.model}:latest"
+        return wanted in names or self.model in names
+
+
+_THINK_CLOSE = "</think>"
+
+
+def _strip_thinking(text: str) -> str:
+    """推論ブロックを落とす。
+
+    Ollama は思考を `thinking` フィールドに分離するが、バージョンやモデルの
+    テンプレート次第では本文側に残る。残ったまま JSON を探すと推論文中の
+    `{` を拾って壊れるので、ここで確実に切り落とす。
+    """
+    index = text.rfind(_THINK_CLOSE)
+    return text[index + len(_THINK_CLOSE) :] if index != -1 else text
 
 
 def _extract_json(text: str) -> str:
@@ -168,12 +230,15 @@ def _extract_json(text: str) -> str:
     return text[start : end + 1]
 
 
-def _selftest() -> int:
+def _selftest(provider: OllamaProvider) -> int:
     """`python -m ainews.providers.ollama --selftest` 用。
 
     確認するのは2点:
       1. JSON Schema の強制が効くか
       2. 件数欠落が起きないか（起きるなら指示の効きが足りない）
+
+    `--prefilter` を付けると一次選抜用モデルを試す。モデルを差し替えたら
+    まずここで、件数欠落と所要時間を差し替え前と比べる。
     """
     import time
 
@@ -187,8 +252,8 @@ def _selftest() -> int:
     class Batch(BaseModel):
         items: list[Item]
 
-    provider = OllamaProvider()
     print(f"モデル: {provider.model}  ホスト: {provider.host}")
+    print(f"num_ctx: {provider.num_ctx}  think: {provider.think}")
     if not provider.available():
         print("✗ Ollama が利用できません")
         return 1
@@ -237,4 +302,12 @@ def _selftest() -> int:
 if __name__ == "__main__":
     import sys
 
-    raise SystemExit(_selftest() if "--selftest" in sys.argv else 0)
+    if "--selftest" not in sys.argv:
+        raise SystemExit(0)
+    raise SystemExit(
+        _selftest(
+            OllamaProvider.for_prefilter()
+            if "--prefilter" in sys.argv
+            else OllamaProvider()
+        )
+    )

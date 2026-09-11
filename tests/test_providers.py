@@ -21,6 +21,7 @@ from ainews.providers import (
     schema_instruction,
 )
 from ainews.providers.claude_code import ClaudeCodeProvider, _strip_fence
+from ainews.providers.ollama import OllamaProvider, _extract_json, _strip_thinking
 
 
 class Sample(BaseModel):
@@ -193,6 +194,132 @@ class TestFallback:
         llm = FallbackLLM(primary, backup)
         llm.structured(system="", user="", schema=Sample)
         assert not llm.switched and backup.calls == 0
+
+
+# ── Ollama の役割別設定 ──────────────────────────────────────────────
+
+
+class _Tags:
+    """/api/tags の応答を差し込むスタブ。"""
+
+    def __init__(self, names: list[str]) -> None:
+        self.names = names
+        self.status_code = 200
+
+    def raise_for_status(self) -> None:
+        pass
+
+    def json(self) -> dict:
+        return {"models": [{"name": n} for n in self.names]}
+
+
+class TestOllamaRoles:
+    """一次選抜と原稿生成で別モデルを使う配線。壊れると静かに品質が変わる。"""
+
+    def test_prefilter_uses_a_different_model(self):
+        assert OllamaProvider.for_prefilter().model != OllamaProvider().model
+
+    def test_prefilter_uses_a_smaller_context(self):
+        """一次選抜が読むのは見出しと概要だけ。16k は KV キャッシュの無駄。"""
+        assert OllamaProvider.for_prefilter().num_ctx < OllamaProvider().num_ctx
+
+    def test_prefilter_disables_thinking(self):
+        """推論トークンは構造化出力では遅延にしかならない。"""
+        assert OllamaProvider.for_prefilter().think is False
+
+    def test_think_is_not_sent_unless_configured(self):
+        """thinking 非対応のモデルに think を送ると弾かれる版がある。"""
+        assert OllamaProvider().think is None
+
+    def test_available_requires_a_matching_tag(self, monkeypatch):
+        """別サイズを pull 済みなだけで「ある」と誤判定しないこと。"""
+        monkeypatch.setattr(
+            "ainews.providers.ollama.httpx.get", lambda *a, **k: _Tags(["qwen3.5:9b"])
+        )
+        assert OllamaProvider(model="qwen3.5:9b").available()
+        assert not OllamaProvider(model="qwen3.5:4b").available()
+
+    def test_available_accepts_an_implicit_latest(self, monkeypatch):
+        monkeypatch.setattr(
+            "ainews.providers.ollama.httpx.get",
+            lambda *a, **k: _Tags(["gemma4-ja:latest"]),
+        )
+        assert OllamaProvider(model="gemma4-ja").available()
+
+
+class _Generated:
+    """/api/generate の応答を差し込むスタブ。"""
+
+    def __init__(self, text: str = '{"a": 1}', status: int = 200) -> None:
+        self.text = text
+        self.status_code = status
+
+    def raise_for_status(self) -> None:
+        pass
+
+    def json(self) -> dict:
+        return {"response": self.text}
+
+
+class _Recorder:
+    """送信したペイロードを覚えておき、任意の回だけ 400 を返す。"""
+
+    def __init__(self, fail_first: bool = False) -> None:
+        self.payloads: list[dict] = []
+        self.fail_first = fail_first
+
+    def __call__(self, url: str, *, json: dict, **_) -> _Generated:
+        # 再試行は同じ dict から think を落として送るので、複製して控える
+        self.payloads.append(dict(json))
+        if self.fail_first and len(self.payloads) == 1:
+            return _Generated(status=400)
+        return _Generated()
+
+
+class TestThinkPayload:
+    """think の送出。ここを間違えると遅くなるか、丸ごと 400 で落ちる。"""
+
+    def _send(self, provider, recorder, monkeypatch) -> None:
+        monkeypatch.setattr("ainews.providers.ollama.httpx.post", recorder)
+        provider.text(system="", user="")
+
+    def test_prefilter_turns_thinking_off(self, monkeypatch):
+        recorder = _Recorder()
+        self._send(OllamaProvider.for_prefilter(), recorder, monkeypatch)
+        assert recorder.payloads[0]["think"] is False
+
+    def test_prefilter_sends_its_own_context_size(self, monkeypatch):
+        recorder = _Recorder()
+        self._send(OllamaProvider.for_prefilter(), recorder, monkeypatch)
+        options = recorder.payloads[0]["options"]
+        assert options["num_ctx"] == OllamaProvider.for_prefilter().num_ctx
+
+    def test_think_is_omitted_for_the_default_model(self, monkeypatch):
+        recorder = _Recorder()
+        self._send(OllamaProvider(), recorder, monkeypatch)
+        assert "think" not in recorder.payloads[0]
+
+    def test_retries_without_think_when_rejected(self, monkeypatch):
+        """thinking 非対応のモデルを指定しても投稿を止めない。"""
+        recorder = _Recorder(fail_first=True)
+        self._send(OllamaProvider(model="x", think=False), recorder, monkeypatch)
+        assert recorder.payloads[0]["think"] is False
+        assert "think" not in recorder.payloads[1]
+
+
+class TestStripThinking:
+    """推論モデルの思考が本文に漏れても JSON を取り出せること。"""
+
+    def test_reasoning_block_is_removed(self):
+        assert _strip_thinking('<think>迷った</think>{"a": 1}') == '{"a": 1}'
+
+    def test_braces_in_reasoning_do_not_win(self):
+        """素朴に最初の { を探すと、推論文中の { を拾って壊れる。"""
+        text = '<think>{ で始まる形にしよう</think>{"a": 1}'
+        assert json.loads(_extract_json(_strip_thinking(text)))["a"] == 1
+
+    def test_plain_output_passes_through(self):
+        assert _strip_thinking('{"a": 1}') == '{"a": 1}'
 
 
 # ── 一次選抜 ──────────────────────────────────────────────────────────

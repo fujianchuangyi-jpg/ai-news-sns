@@ -104,7 +104,9 @@ class Prefilter:
         if provider is None:
             from .providers.ollama import OllamaProvider
 
-            provider = OllamaProvider()
+            # 原稿生成とは別モデルを割り当てられる。粗い判定しかしないので
+            # 小さく速いモデルで足りる（settings.yaml の prefilter_overrides）
+            provider = OllamaProvider.for_prefilter()
         self.provider = provider
 
     def _screen_chunk(self, articles: list[Article]) -> dict[str, Screening]:
