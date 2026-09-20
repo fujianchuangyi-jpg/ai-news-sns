@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-09-20 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-09-20　生成 09/20 23:55</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/aiplus/article/2609/20/2000001664/" target="_blank" rel="noopener">文章を書かないAI「Jev」が話題</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 「Jev」とは　“文章を書かないAI”がなぜ話題に？　元OpenAI研究者が開発、「“スマートなif文”と考えてみて」</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">文章を書かないAIが、LLMより193.6倍速い。
+元OpenAI研究者が作った「Jev」は会話せず、判断だけをJSONで返す。
+開発元の自社評価で、フロンティアLLM比444.6倍安い。確信度が低い分は人間に回せる。
+#AI #Jev（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 215 / 280（見た目 132字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E6%96%87%E7%AB%A0%E3%82%92%E6%9B%B8%E3%81%8B%E3%81%AA%E3%81%84AI%E3%81%8C%E3%80%81LLM%E3%82%88%E3%82%8A193.6%E5%80%8D%E9%80%9F%E3%81%84%E3%80%82%0A%E5%85%83OpenAI%E7%A0%94%E7%A9%B6%E8%80%85%E3%81%8C%E4%BD%9C%E3%81%A3%E3%81%9F%E3%80%8CJev%E3%80%8D%E3%81%AF%E4%BC%9A%E8%A9%B1%E3%81%9B%E3%81%9A%E3%80%81%E5%88%A4%E6%96%AD%E3%81%A0%E3%81%91%E3%82%92JSON%E3%81%A7%E8%BF%94%E3%81%99%E3%80%82%0A%E9%96%8B%E7%99%BA%E5%85%83%E3%81%AE%E8%87%AA%E7%A4%BE%E8%A9%95%E4%BE%A1%E3%81%A7%E3%80%81%E3%83%95%E3%83%AD%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2LLM%E6%AF%94444.6%E5%80%8D%E5%AE%89%E3%81%84%E3%80%82%E7%A2%BA%E4%BF%A1%E5%BA%A6%E3%81%8C%E4%BD%8E%E3%81%84%E5%88%86%E3%81%AF%E4%BA%BA%E9%96%93%E3%81%AB%E5%9B%9E%E3%81%9B%E3%82%8B%E3%80%82%0A%23AI%20%23Jev%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl1yzq/i_gave_jev_laya_finetuned_modernce_and_qwen35_the/" target="_blank" rel="noopener">Jevら4モデルにDOOMを操作させ比較</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: I gave Jev, Laya, finetuned ModernCE and Qwen3.5 the controls to Doom</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">応答7.6msのModernCEより、146.8msのQwen3.5-4Bが約3倍多く倒した。
+DOOMを4モデルに操作させる比較。平均撃破数はQwen3.5-4Bが3.63、Jevは1.13。8シードの平均。
+#AI #DOOM（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 183 / 280（見た目 131字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%BF%9C%E7%AD%947.6ms%E3%81%AEModernCE%E3%82%88%E3%82%8A%E3%80%81146.8ms%E3%81%AEQwen3.5-4B%E3%81%8C%E7%B4%843%E5%80%8D%E5%A4%9A%E3%81%8F%E5%80%92%E3%81%97%E3%81%9F%E3%80%82%0ADOOM%E3%82%924%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E6%93%8D%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B%E6%AF%94%E8%BC%83%E3%80%82%E5%B9%B3%E5%9D%87%E6%92%83%E7%A0%B4%E6%95%B0%E3%81%AFQwen3.5-4B%E3%81%8C3.63%E3%80%81Jev%E3%81%AF1.13%E3%80%828%E3%82%B7%E3%83%BC%E3%83%89%E3%81%AE%E5%B9%B3%E5%9D%87%E3%80%82%0A%23AI%20%23DOOM%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl18ax/qwen_38_27b_running_live_on_a_rtx_5090_to_solve/" target="_blank" rel="noopener">27BモデルがRTX 5090で未解決問題に挑戦</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Qwen 3.8 27B Running LIVE on a RTX 5090 to solve an Open Math Problem - Covering Design C(25,15,5)</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">42群が最良とされる問題を、41群に減らせるか。
+Qwen 3.8 27BをRTX 5090で動かし、未解決の被覆設計C(25,15,5)に挑ませている。
+解の正否は独立チェッカーが即時判定。過程はライブ公開中。
+#AI #Qwen（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 208 / 280（見た目 131字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］5090 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］チェッカー — この語が本文に見つかりません</div>
+        <div>［固有名詞］メッセージ — この語が本文に見つかりません</div>
+        <div>［固有名詞］リーマン — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=42%E7%BE%A4%E3%81%8C%E6%9C%80%E8%89%AF%E3%81%A8%E3%81%95%E3%82%8C%E3%82%8B%E5%95%8F%E9%A1%8C%E3%82%92%E3%80%8141%E7%BE%A4%E3%81%AB%E6%B8%9B%E3%82%89%E3%81%9B%E3%82%8B%E3%81%8B%E3%80%82%0AQwen%203.8%2027B%E3%82%92RTX%205090%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%97%E3%80%81%E6%9C%AA%E8%A7%A3%E6%B1%BA%E3%81%AE%E8%A2%AB%E8%A6%86%E8%A8%AD%E8%A8%88C%2825%2C15%2C5%29%E3%81%AB%E6%8C%91%E3%81%BE%E3%81%9B%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82%0A%E8%A7%A3%E3%81%AE%E6%AD%A3%E5%90%A6%E3%81%AF%E7%8B%AC%E7%AB%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AB%E3%83%BC%E3%81%8C%E5%8D%B3%E6%99%82%E5%88%A4%E5%AE%9A%E3%80%82%E9%81%8E%E7%A8%8B%E3%81%AF%E3%83%A9%E3%82%A4%E3%83%96%E5%85%AC%E9%96%8B%E4%B8%AD%E3%80%82%0A%23AI%20%23Qwen%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">ツール</span>
+      <span class="tag">断言型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1wl9amq/reached_189_tbs_memory_bandwidth_overclocking_the/" target="_blank" rel="noopener">CMP 170HXのOCで帯域1.89TB/sに</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Reached 1.89 TB/s memory bandwidth overclocking the CMP 170hx</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">オーバークロックだけで、このGPUはまだ速くなる。
+CMP 170HXのメモリ帯域が1386.2→1890.1GB/s、36.4%向上。
+Qwen 3.8 27Bの生成は110→202トークン/秒。消費電力は300W。
+#AI #GPU（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 191 / 280（見た目 133字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］オーバークロック — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A0%E3%81%91%E3%81%A7%E3%80%81%E3%81%93%E3%81%AEGPU%E3%81%AF%E3%81%BE%E3%81%A0%E9%80%9F%E3%81%8F%E3%81%AA%E3%82%8B%E3%80%82%0ACMP%20170HX%E3%81%AE%E3%83%A1%E3%83%A2%E3%83%AA%E5%B8%AF%E5%9F%9F%E3%81%8C1386.2%E2%86%921890.1GB/s%E3%80%8136.4%25%E5%90%91%E4%B8%8A%E3%80%82%0AQwen%203.8%2027B%E3%81%AE%E7%94%9F%E6%88%90%E3%81%AF110%E2%86%92202%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3/%E7%A7%92%E3%80%82%E6%B6%88%E8%B2%BB%E9%9B%BB%E5%8A%9B%E3%81%AF300W%E3%80%82%0A%23AI%20%23GPU%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-09-20.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">文章を書かないAIが、LLMより193.6倍速い。
+一方、DOOMを操作させた検証では、応答146.8msのQwen3.5-4Bが撃破数トップでした。
+
+1. 米TypeSafe AIの「Jev」は、選択肢・数値・はい/いいえの3種類の質問にだけ答えるAI。文章は作らず、答えを確率と確信度付きのJSONで返します。
+同社の説明は「スマートなif文だと考えてほしい」。確信度が足りない判断だけをLLMや人間に回す、という場合分けができます。
+創業者は元OpenAI研究者で、InstructGPT論文の共著者。発表はXで3700万回以上表示されました。(ITmedia AI+)
+
+2. DOOMの操作を4モデルに任せた比較。ViZDoomの画面情報を文章にして渡し、毎秒5回、左右・発射・前進から1つを選ばせます。
+8シード平均の撃破数は、finetuneしたQwen3.5-4Bが3.63で最多。応答7.6msのModernCEと16.2msのLayaは1.25、Jevは1.13。
+生存時間もJevの5.63秒に対し、他3モデルは11秒台でした。(r/LocalLLaMA)
+
+3. 被覆設計「C(25,15,5)」は、現在の最良解が42群。これを41群にできるかという未解決問題に、RTX 5090で動くQwen 3.8 27Bが自律的に挑んでいます。
+公開サイトではAIのメッセージや記憶、コードが見られ、独立したチェッカーが解の正否を即座に判定します。
+投稿者は以前、同じモデルをリーマン予想に63時間走らせていました。(r/LocalLLaMA)
+
+4. CMP 170HX 40GBをオーバークロックしたところ、メモリ帯域が1386.2GB/sから1890.1GB/sへ36.4%向上。
+設定は他に何も変えず、Qwen 3.8 27Bの生成速度は110→202トークン/秒に。消費電力は300Wで、GPU温度はむしろ少し下がったとのこと。
+投稿者は「このカードの潜在性能は大幅に削られている」と書いています。(r/LocalLLaMA)
+
+5. 
+
+速さの数字と、実際にできたことの数字。今日の4本は、どちらも並べて確かめられる形で出ていました。
+毎朝4本、AIニュースをまとめています。あとで読み返したい方は保存、明日も受け取りたい方はフォローをどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #LLM #ローカルLLM #オープンソースAI #AI活用 #機械学習 #AIモデル #Jev #TypeSafeAI #Qwen #DOOM #GPU #RTX5090 #オーバークロック #AInews #MachineLearning #LocalLLaMA #TechNews</pre>
+  <div class="count">1163字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 60.1</span>
+      <span class="tag">興味度 92</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">文章を書かないAI「Jev」が話題</div>
+    <div style="color:var(--muted);font-size:.9rem">「会話するAI」以外の用途、つまり大量の判断処理をAIに任せる領域が新市場として立ち上がる可能性を示す。確信度付き出力はLLMと人間への振り分け設計を変える。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 28.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Jevら4モデルにDOOMを操作させ比較</div>
+    <div style="color:var(--muted);font-size:.9rem">話題の高速判断モデルを実タスクで横並び比較した数少ない検証。速さと判断の質は別物だと具体的な数値で示している。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 27.7</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">27BモデルがRTX 5090で未解決問題に挑戦</div>
+    <div style="color:var(--muted);font-size:.9rem">消費者向けGPUで動く小型オープンモデルが数学の未解決問題に自律挑戦する様子を検証可能な形で公開しており、自律研究の実力を第三者が判定できる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 22.9</span>
+      <span class="tag">興味度 70</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">CMP 170HXのOCで帯域1.89TB/sに</div>
+    <div style="color:var(--muted);font-size:.9rem">マイニング用途の廃棄カードが設定変更だけで倍近い性能を出す。ハードの潜在性能が出荷設定で抑えられている実例。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
