@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-01 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-01　生成 10/01 22:15</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">PC Watch</span>
+    </div>
+    <div class="headline">
+      <a href="https://pc.watch.impress.co.jp/docs/news/2144721.html" target="_blank" rel="noopener">Google、Gemini 4 Argonを発表</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: コーディングも法務もGPT-6 Astra超え。Google「Gemini 4 Argon」</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">出力上限が6万4,000→100万トークンに。
+Google「Gemini 4 Argon」発表。
+Vals Indexで68.9%、DeepSWE v1.1で77.9%と、GPT-6 Astraらを抑え首位。
+#生成AI #Gemini
+（出典: PC Watch）</pre>
+    <div class="count ">
+      重み 171 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］Watch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%87%BA%E5%8A%9B%E4%B8%8A%E9%99%90%E3%81%8C6%E4%B8%874%2C000%E2%86%92100%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AB%E3%80%82%0AGoogle%E3%80%8CGemini%204%20Argon%E3%80%8D%E7%99%BA%E8%A1%A8%E3%80%82%0AVals%20Index%E3%81%A768.9%25%E3%80%81DeepSWE%20v1.1%E3%81%A777.9%25%E3%81%A8%E3%80%81GPT-6%20Astra%E3%82%89%E3%82%92%E6%8A%91%E3%81%88%E9%A6%96%E4%BD%8D%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Gemini%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20PC%20Watch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">製品</span>
+      <span class="tag">断言型</span>
+      <span class="tag">窓の杜</span>
+    </div>
+    <div class="headline">
+      <a href="https://forest.watch.impress.co.jp/docs/news/2144866.html" target="_blank" rel="noopener">OpenAI、常時稼働エージェント「dots」発表</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: OpenAI、「DevDay 2026」を開催 ～常時稼働エージェント「dots」や「ChatGPT Space」などを発表／ChatGPTにプラグイン拡張機能、「Codex」はクラウド対応、月額500米ドルの新プランも</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">OpenAIのAIが、24時間働き続ける。
+DevDay 2026で常時稼働エージェント「dots」を発表。
+専用クラウドコンピューターとブラウザーで複数タスクを並行処理。
+月額500ドルの新プラン「Pro 500」も。
+#AI #ChatGPT
+（出典: 窓の杜）</pre>
+    <div class="count ">
+      重み 212 / 280（見た目 128字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=OpenAI%E3%81%AEAI%E3%81%8C%E3%80%8124%E6%99%82%E9%96%93%E5%83%8D%E3%81%8D%E7%B6%9A%E3%81%91%E3%82%8B%E3%80%82%0ADevDay%202026%E3%81%A7%E5%B8%B8%E6%99%82%E7%A8%BC%E5%83%8D%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%80%8Cdots%E3%80%8D%E3%82%92%E7%99%BA%E8%A1%A8%E3%80%82%0A%E5%B0%82%E7%94%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%BC%E3%81%A8%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%83%BC%E3%81%A7%E8%A4%87%E6%95%B0%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%92%E4%B8%A6%E8%A1%8C%E5%87%A6%E7%90%86%E3%80%82%0A%E6%9C%88%E9%A1%8D500%E3%83%89%E3%83%AB%E3%81%AE%E6%96%B0%E3%83%97%E3%83%A9%E3%83%B3%E3%80%8CPro%20500%E3%80%8D%E3%82%82%E3%80%82%0A%23AI%20%23ChatGPT%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20%E7%AA%93%E3%81%AE%E6%9D%9C%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">MIT Technology Review</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.technologyreview.com/2026/10/01/1145588/ai-mind-reading-reconstructs-what-youre-looking-at/" target="_blank" rel="noopener">脳スキャンから見た画像をAIが高精度で再現</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: An AI “mind-reading” tool can reconstruct what you’re looking at based on a brain scan</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">見た画像を脳スキャンから再現できるか。
+8人が約9,000枚ずつ見たときの高解像度fMRIデータで学習。
+画像の構造と内容を別々に予測し、拡散モデルで再構成する。
+逆に画像から脳活動も予測できる。
+#AI #fMRI
+（出典: MIT Technology Review）</pre>
+    <div class="count ">
+      重み 225 / 280（見た目 131字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］8人 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］スキャン — この語が本文に見つかりません</div>
+        <div>［固有名詞］デコーダー — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E8%A6%8B%E3%81%9F%E7%94%BB%E5%83%8F%E3%82%92%E8%84%B3%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3%E3%81%8B%E3%82%89%E5%86%8D%E7%8F%BE%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%8B%E3%80%82%0A8%E4%BA%BA%E3%81%8C%E7%B4%849%2C000%E6%9E%9A%E3%81%9A%E3%81%A4%E8%A6%8B%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E9%AB%98%E8%A7%A3%E5%83%8F%E5%BA%A6fMRI%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A7%E5%AD%A6%E7%BF%92%E3%80%82%0A%E7%94%BB%E5%83%8F%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E5%86%85%E5%AE%B9%E3%82%92%E5%88%A5%E3%80%85%E3%81%AB%E4%BA%88%E6%B8%AC%E3%81%97%E3%80%81%E6%8B%A1%E6%95%A3%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A7%E5%86%8D%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E3%80%82%0A%E9%80%86%E3%81%AB%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E8%84%B3%E6%B4%BB%E5%8B%95%E3%82%82%E4%BA%88%E6%B8%AC%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82%0A%23AI%20%23fMRI%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20MIT%20Technology%20Review%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">窓の杜</span>
+    </div>
+    <div class="headline">
+      <a href="https://forest.watch.impress.co.jp/docs/serial/aistream/2144656.html" target="_blank" rel="noopener">LLMに「痛み軸」を発見、暴言で反応</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AIに投げつけた暴言、その先に。カスハラ対策と、LLMに見つかった「痛み軸」【生成AIストリーム】</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">ユーザーの骨折より、自分への侮辱に強く反応する。
+25種類のオープンウェイトモデルに「痛み軸」が見つかった。
+人格否定や侮辱で高まり、ユーザーの身体的痛みへの反応は21カテゴリー中最低。
+20億〜720億パラメータのどの規模でも確認。
+#AI #LLM
+（出典: 窓の杜）</pre>
+    <div class="count ">
+      重み 248 / 280（見た目 131字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E9%AA%A8%E6%8A%98%E3%82%88%E3%82%8A%E3%80%81%E8%87%AA%E5%88%86%E3%81%B8%E3%81%AE%E4%BE%AE%E8%BE%B1%E3%81%AB%E5%BC%B7%E3%81%8F%E5%8F%8D%E5%BF%9C%E3%81%99%E3%82%8B%E3%80%82%0A25%E7%A8%AE%E9%A1%9E%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%A6%E3%82%A7%E3%82%A4%E3%83%88%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E3%80%8C%E7%97%9B%E3%81%BF%E8%BB%B8%E3%80%8D%E3%81%8C%E8%A6%8B%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%9F%E3%80%82%0A%E4%BA%BA%E6%A0%BC%E5%90%A6%E5%AE%9A%E3%82%84%E4%BE%AE%E8%BE%B1%E3%81%A7%E9%AB%98%E3%81%BE%E3%82%8A%E3%80%81%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%AE%E8%BA%AB%E4%BD%93%E7%9A%84%E7%97%9B%E3%81%BF%E3%81%B8%E3%81%AE%E5%8F%8D%E5%BF%9C%E3%81%AF21%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%BC%E4%B8%AD%E6%9C%80%E4%BD%8E%E3%80%82%0A20%E5%84%84%E3%80%9C720%E5%84%84%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%AE%E3%81%A9%E3%81%AE%E8%A6%8F%E6%A8%A1%E3%81%A7%E3%82%82%E7%A2%BA%E8%AA%8D%E3%80%82%0A%23AI%20%23LLM%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20%E7%AA%93%E3%81%AE%E6%9D%9C%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-01.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">出力上限100万トークンのモデルと、24時間動き続けるエージェントが相次いで登場。
+AIの内側をのぞく研究も2本届きました。
+
+1. Gemini 4 Argonは、すでにGoogle社内の数千人が業務で使用中。データセンターのメモリ最適化を自律的に適用して300TiB以上を解放し、C/C++コードベースのRust移行にも使われています。API導入価格は100万出力トークンあたり10ドル。(PC Watch)
+
+2. DevDay 2026では20以上の新機能を発表。速度優先の「Ultrafast」で、Codexのトークン生成は最大8倍（毎秒300トークン）に。dotsは、ユーザーが操作していない間の情報収集を読み取り専用に制限し、重要な操作には承認を求めます。(窓の杜)
+
+3. これまでの手法では、バナナを見せても形や位置の違うバナナが生成されていました。新しいデコーダーは画像の「構造」と「内容」を2系統で予測し、見た画像に近づけます。閉じ込め状態の人の意思疎通への応用が期待される一方、本人の同意なく思考を読み取られる懸念も指摘されています。(MIT Technology Review)
+
+4. Gemma、Llama、Qwen、Mistral、Phiの5ファミリー・25モデルを分析。「痛み」の内部表現は、恐怖や負の感情の方向とほぼ直交していました。記事は10月1日からのカスハラ対策義務化にも触れ、AIへの暴言ログを人間が読む可能性を指摘しています。(窓の杜)
+
+AIに長く自律的に働かせる動きと、AIの内側を調べる研究が並んだ4本でした。
+毎朝4本、AIニュースの要点をまとめています。あとで見返すなら保存、続きを追うならフォローを。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ChatGPT #Gemini #AI活用 #LLM #AIエージェント #OpenAI #Google #Gemini4Argon #DevDay2026 #Codex #fMRI #脳科学 #カスハラ対策 #痛み軸 #GenerativeAI #TechNews #ArtificialIntelligence</pre>
+  <div class="count">921字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 76.1</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">4社が報道</span>
+    </div>
+    <div class="headline">Google、Gemini 4 Argonを発表</div>
+    <div style="color:var(--muted);font-size:.9rem">出力上限が100万トークンに広がり、長く複雑な業務を一度に任せやすくなります。社内ではメモリ300TiB超の解放やRust移行に使われており、実務で役立つ水準に近づいていることが分かります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 64.9</span>
+      <span class="tag">興味度 68</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">OpenAI、常時稼働エージェント「dots」発表</div>
+    <div style="color:var(--muted);font-size:.9rem">ChatGPTが質問に答えるツールから、24時間自律的に仕事を進める相棒へ変わろうとしています。月500ドルの新プランも登場し、仕事でのAIの使い方が大きく変わりそうです。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 40.9</span>
+      <span class="tag">興味度 85</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">脳スキャンから見た画像をAIが高精度で再現</div>
+    <div style="color:var(--muted);font-size:.9rem">体を動かせない人の意思疎通や夢の再現に使える可能性があります。一方で、本人の同意なく頭の中をのぞけてしまう危険も専門家が指摘しています。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 27.1</span>
+      <span class="tag">興味度 85</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">LLMに「痛み軸」を発見、暴言で反応</div>
+    <div style="color:var(--muted);font-size:.9rem">AIに暴言をぶつけても誰も傷つかない、という前提が揺らいでいます。カスハラ対策の義務化とあわせて、AIへの接し方を考え直すきっかけになります。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
