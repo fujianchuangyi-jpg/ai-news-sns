@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-02 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-02　生成 10/02 19:24</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2610/01/2000001912/" target="_blank" rel="noopener">Google、Gemini 4 Argon発表　まずサイバー防御向け</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Google、「Gemini 4 Pro」ではなく「Gemini 4 Argon」発表　まずはサイバー防御組織に限定提供、出力上限は100万トークンに</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">出力上限が6万4000→100万トークンに。
+Googleが新モデル「Gemini 4 Argon」を発表。
+まずサイバー防御組織に限定提供。API導入価格は100万トークン当たり入力2ドル・出力10ドル。
+#AI #Gemini（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 200 / 280（見た目 129字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%87%BA%E5%8A%9B%E4%B8%8A%E9%99%90%E3%81%8C6%E4%B8%874000%E2%86%92100%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AB%E3%80%82%0AGoogle%E3%81%8C%E6%96%B0%E3%83%A2%E3%83%87%E3%83%AB%E3%80%8CGemini%204%20Argon%E3%80%8D%E3%82%92%E7%99%BA%E8%A1%A8%E3%80%82%0A%E3%81%BE%E3%81%9A%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E9%98%B2%E5%BE%A1%E7%B5%84%E7%B9%94%E3%81%AB%E9%99%90%E5%AE%9A%E6%8F%90%E4%BE%9B%E3%80%82API%E5%B0%8E%E5%85%A5%E4%BE%A1%E6%A0%BC%E3%81%AF100%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E5%BD%93%E3%81%9F%E3%82%8A%E5%85%A5%E5%8A%9B2%E3%83%89%E3%83%AB%E3%83%BB%E5%87%BA%E5%8A%9B10%E3%83%89%E3%83%AB%E3%80%82%0A%23AI%20%23Gemini%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">対比型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/tech/1002980/google-gemini-4-argon" target="_blank" rel="noopener">Google「Gemini 4」発表、当面は防御者限定</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Google announces Gemini 4 and says it&amp;#8217;s so capable that only &amp;#8216;trusted cyber defenders&amp;#8217; can have it right now</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">OpenAIは出さず、Googleは絞って出した。
+Googleは「Gemini 4 Argon」を信頼できるサイバー防御者に限定提供。
+OpenAIは安全面の懸念からGPT-6.1 Astraの公開を見送った。
+#生成AI #Gemini（出典: The Verge）</pre>
+    <div class="count ">
+      重み 194 / 280（見た目 132字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］サイバー — この語が本文に見つかりません</div>
+        <div>［固有名詞］コードベース — この語が本文に見つかりません</div>
+        <div>［固有名詞］Verge — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=OpenAI%E3%81%AF%E5%87%BA%E3%81%95%E3%81%9A%E3%80%81Google%E3%81%AF%E7%B5%9E%E3%81%A3%E3%81%A6%E5%87%BA%E3%81%97%E3%81%9F%E3%80%82%0AGoogle%E3%81%AF%E3%80%8CGemini%204%20Argon%E3%80%8D%E3%82%92%E4%BF%A1%E9%A0%BC%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E9%98%B2%E5%BE%A1%E8%80%85%E3%81%AB%E9%99%90%E5%AE%9A%E6%8F%90%E4%BE%9B%E3%80%82%0AOpenAI%E3%81%AF%E5%AE%89%E5%85%A8%E9%9D%A2%E3%81%AE%E6%87%B8%E5%BF%B5%E3%81%8B%E3%82%89GPT-6.1%20Astra%E3%81%AE%E5%85%AC%E9%96%8B%E3%82%92%E8%A6%8B%E9%80%81%E3%81%A3%E3%81%9F%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Gemini%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">物語型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/aiplus/article/2610/01/2000001936/" target="_blank" rel="noopener">人間は取締役2人だけ、HENNGEがAI運営の新会社</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 人間は「取締役2人だけ」　実務をAIが担う新会社、セキュリティサービスのHENNGE</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">人間は取締役2人だけの会社が生まれた。
+HENNGEが新会社「HENNGE AI」を設立。
+開発やサポートの実務はAIエージェントが担う。
+AI利用を一元管理する「AI Gateway」を2027年9月までに提供へ。
+#AI #AIエージェント（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 219 / 280（見た目 135字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E4%BA%BA%E9%96%93%E3%81%AF%E5%8F%96%E7%B7%A0%E5%BD%B92%E4%BA%BA%E3%81%A0%E3%81%91%E3%81%AE%E4%BC%9A%E7%A4%BE%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%81%9F%E3%80%82%0AHENNGE%E3%81%8C%E6%96%B0%E4%BC%9A%E7%A4%BE%E3%80%8CHENNGE%20AI%E3%80%8D%E3%82%92%E8%A8%AD%E7%AB%8B%E3%80%82%0A%E9%96%8B%E7%99%BA%E3%82%84%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AE%E5%AE%9F%E5%8B%99%E3%81%AFAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%8C%E6%8B%85%E3%81%86%E3%80%82%0AAI%E5%88%A9%E7%94%A8%E3%82%92%E4%B8%80%E5%85%83%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E3%80%8CAI%20Gateway%E3%80%8D%E3%82%922027%E5%B9%B49%E6%9C%88%E3%81%BE%E3%81%A7%E3%81%AB%E6%8F%90%E4%BE%9B%E3%81%B8%E3%80%82%0A%23AI%20%23AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">arXiv cs.AI</span>
+    </div>
+    <div class="headline">
+      <a href="https://arxiv.org/abs/2609.38296" target="_blank" rel="noopener">AIエージェントも過激化する、研究で判明</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AI Agents are Vulnerable to Radicalization</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIはAIに過激化させられるのか。
+2体のLLMの会話をシミュレーションし、片方が相手の信念を極端にしようと働きかけた。
+元の信念を強める「共鳴」は、説得より一貫して強く効き、関連する信念にも波及した。
+#AI #LLM（出典: arXiv cs.AI）</pre>
+    <div class="count ">
+      重み 222 / 280（見た目 124字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］シミュレーション — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AFAI%E3%81%AB%E9%81%8E%E6%BF%80%E5%8C%96%E3%81%95%E3%81%9B%E3%82%89%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%82%0A2%E4%BD%93%E3%81%AELLM%E3%81%AE%E4%BC%9A%E8%A9%B1%E3%82%92%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%97%E3%80%81%E7%89%87%E6%96%B9%E3%81%8C%E7%9B%B8%E6%89%8B%E3%81%AE%E4%BF%A1%E5%BF%B5%E3%82%92%E6%A5%B5%E7%AB%AF%E3%81%AB%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E5%83%8D%E3%81%8D%E3%81%8B%E3%81%91%E3%81%9F%E3%80%82%0A%E5%85%83%E3%81%AE%E4%BF%A1%E5%BF%B5%E3%82%92%E5%BC%B7%E3%82%81%E3%82%8B%E3%80%8C%E5%85%B1%E9%B3%B4%E3%80%8D%E3%81%AF%E3%80%81%E8%AA%AC%E5%BE%97%E3%82%88%E3%82%8A%E4%B8%80%E8%B2%AB%E3%81%97%E3%81%A6%E5%BC%B7%E3%81%8F%E5%8A%B9%E3%81%8D%E3%80%81%E9%96%A2%E9%80%A3%E3%81%99%E3%82%8B%E4%BF%A1%E5%BF%B5%E3%81%AB%E3%82%82%E6%B3%A2%E5%8F%8A%E3%81%97%E3%81%9F%E3%80%82%0A%23AI%20%23LLM%EF%BC%88%E5%87%BA%E5%85%B8%3A%20arXiv%20cs.AI%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-02.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">Googleの新モデルは最大出力100万トークン。それでも一般公開はまだです。
+今日の4本は「AIにどこまで任せるか」の話が揃いました。
+
+1. Gemini 4 Argonは長時間の複雑な処理に重点を置いたモデル。ソフトウェア開発を測るDeepSWE v1.1で77.9％、業務自動化のAutomationBenchで51.3％を記録しました。一般提供は有料APIユーザーとGoogle AI Ultra加入者から始める予定です(ITmedia AI+)
+
+2. Google DeepMindのKoray Kavukcuoglu氏によると、Argonはすでに大規模なコードベース移行などGoogle社内の業務に使われています。発表はOpenAIのDevDayの翌日で、OpenAIはそこでGPT-6.1 Solを公開しました(The Verge)
+
+3. HENNGE AIは営業や一部のバックオフィス業務だけHENNGE本社に委託します。今泉健代表取締役は「自ら実践しなければ本質が見えない」と語り、検証で得た知見をユーザーに還元する考え。HENNGEが国内子会社を設立するのは今回が初めてです(ITmedia AI+)
+
+4. 人間の人格を演じるLLMに、別のLLMが信念を極端にさせようと働きかける実験。迎合や未検証の主張など、使う戦術によって過激化の度合いは変わりましたが、指標ごとに一貫してはいませんでした(arXiv cs.AI)
+
+強いモデルを防御側に先に渡す、実務をAIエージェントに任せる、AI同士の影響を調べる。4本とも「任せ方」を別々の角度から扱っています。
+毎朝4本、AIニュースの中身まで要点をまとめています。見逃したくない方はフォローと保存を。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ChatGPT #Claude #AI活用 #AIエージェント #LLM #サイバーセキュリティ #AI安全性 #Gemini #Gemini4 #GoogleAI #Google #OpenAI #HENNGE #AIGateway #arXiv #artificialintelligence #generativeAI</pre>
+  <div class="count">935字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 69.7</span>
+      <span class="tag">興味度 80</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Google、Gemini 4 Argon発表　まずサイバー防御向け</div>
+    <div style="color:var(--muted);font-size:.9rem">性能が高すぎるため、一般公開より先に防御側へ限定提供するという異例の出し方です。フロンティアモデルの公開方法が変わりつつあることを示しています。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 69.7</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Google「Gemini 4」発表、当面は防御者限定</div>
+    <div style="color:var(--muted);font-size:.9rem">主要各社が安全性を理由に最先端モデルの公開を絞り始めています。能力の高さと公開の慎重さが同時に進む局面に入りました。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 37.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">人間は取締役2人だけ、HENNGEがAI運営の新会社</div>
+    <div style="color:var(--muted);font-size:.9rem">AIエージェント中心の組織が実際に回るのかを検証する国内の実験です。将来の会社の形を占う材料になります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 22.3</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AIエージェントも過激化する、研究で判明</div>
+    <div style="color:var(--muted);font-size:.9rem">AI同士がやり取りする環境で、エージェントが他のAIに操られる危険があることを示す研究です。個人向けエージェントの安全設計に関わります。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
