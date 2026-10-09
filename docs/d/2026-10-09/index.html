@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-09 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-09　生成 10/09 20:21</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/aiplus/article/2610/08/2000002114/" target="_blank" rel="noopener">Claude Haiku 5.5、API料金が10分の1に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Anthropic、「Claude Haiku 5.5」のAPI料金を「Haiku 4.5」の10分の1に　「Sonnet 5.5」のキャッシュ読み込み料金は半額に</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">Claude Haikuの料金が10分の1に。
+Anthropicが「Haiku 5.5」を提供開始。10万トークン以下なら入力100万トークン0.1ドル（従来1ドル）。平均コストは約75%安いと試算。
+#生成AI #Claude
+（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 194 / 280（見た目 130字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=Claude%20Haiku%E3%81%AE%E6%96%99%E9%87%91%E3%81%8C10%E5%88%86%E3%81%AE1%E3%81%AB%E3%80%82%0AAnthropic%E3%81%8C%E3%80%8CHaiku%205.5%E3%80%8D%E3%82%92%E6%8F%90%E4%BE%9B%E9%96%8B%E5%A7%8B%E3%80%8210%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E4%BB%A5%E4%B8%8B%E3%81%AA%E3%82%89%E5%85%A5%E5%8A%9B100%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B30.1%E3%83%89%E3%83%AB%EF%BC%88%E5%BE%93%E6%9D%A51%E3%83%89%E3%83%AB%EF%BC%89%E3%80%82%E5%B9%B3%E5%9D%87%E3%82%B3%E3%82%B9%E3%83%88%E3%81%AF%E7%B4%8475%25%E5%AE%89%E3%81%84%E3%81%A8%E8%A9%A6%E7%AE%97%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Claude%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">製品</span>
+      <span class="tag">対比型</span>
+      <span class="tag">NVIDIA</span>
+    </div>
+    <div class="headline">
+      <a href="https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/" target="_blank" rel="noopener">NVIDIAとMS、AI PC「RTX Spark」を発表</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">クラウド級のAIが、クラウドなしで動く。
+NVIDIAとMicrosoftが「RTX Spark」を発表。最大128GB統合メモリで125Bのモデルをクラウドに送らず実行。ノートは10月16日発売。
+#AI #NVIDIA
+（出典: NVIDIA）</pre>
+    <div class="count ">
+      重み 187 / 280（見た目 121字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］10月 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］11月 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］クラウド — この語が本文に見つかりません</div>
+        <div>［固有名詞］デスクトップ — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E7%B4%9A%E3%81%AEAI%E3%81%8C%E3%80%81%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%81%AA%E3%81%97%E3%81%A7%E5%8B%95%E3%81%8F%E3%80%82%0ANVIDIA%E3%81%A8Microsoft%E3%81%8C%E3%80%8CRTX%20Spark%E3%80%8D%E3%82%92%E7%99%BA%E8%A1%A8%E3%80%82%E6%9C%80%E5%A4%A7128GB%E7%B5%B1%E5%90%88%E3%83%A1%E3%83%A2%E3%83%AA%E3%81%A7125B%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%82%92%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%81%AB%E9%80%81%E3%82%89%E3%81%9A%E5%AE%9F%E8%A1%8C%E3%80%82%E3%83%8E%E3%83%BC%E3%83%88%E3%81%AF10%E6%9C%8816%E6%97%A5%E7%99%BA%E5%A3%B2%E3%80%82%0A%23AI%20%23NVIDIA%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20NVIDIA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">断言型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://atmarkit.itmedia.co.jp/ait/articles/2610/09/news033.html" target="_blank" rel="noopener">企業利用のAIモデル、6割超が中国製に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 企業が使うAIモデル、1年半で6割超が「中国製」に　「最高性能のオープンモデルはほぼ中国発」の理由</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">最高性能のオープンモデルは、ほぼ中国発だ。
+企業が使うAIモデルは1年半で6割超が中国製に。RedMonkによると、例外は米NVIDIAの「Nemotron」など。
+#生成AI #オープンモデル
+（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 184 / 280（見た目 112字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］6割 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］オープンモデル — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E6%9C%80%E9%AB%98%E6%80%A7%E8%83%BD%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AF%E3%80%81%E3%81%BB%E3%81%BC%E4%B8%AD%E5%9B%BD%E7%99%BA%E3%81%A0%E3%80%82%0A%E4%BC%81%E6%A5%AD%E3%81%8C%E4%BD%BF%E3%81%86AI%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AF1%E5%B9%B4%E5%8D%8A%E3%81%A76%E5%89%B2%E8%B6%85%E3%81%8C%E4%B8%AD%E5%9B%BD%E8%A3%BD%E3%81%AB%E3%80%82RedMonk%E3%81%AB%E3%82%88%E3%82%8B%E3%81%A8%E3%80%81%E4%BE%8B%E5%A4%96%E3%81%AF%E7%B1%B3NVIDIA%E3%81%AE%E3%80%8CNemotron%E3%80%8D%E3%81%AA%E3%81%A9%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AB%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">資金調達</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/10/08/popular-ai-leaderboard-arena-nearly-doubles-valuation-to-3-1b-valuation-in-10-months/" target="_blank" rel="noopener">AI評価のArena、評価額31億ドルに倍増</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Popular AI leaderboard Arena nearly doubles valuation to $3.1B valuation in 10 months</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIの「採点係」に、なぜ31億ドルの値がつくのか。
+モデル比較サイトArenaが2億ドルを調達、評価額は10カ月でほぼ倍に。年換算売上は1億ドル。新設の整合性ランキングではOpenAI勢が上位を占めた。
+#AI #Arena
+（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 214 / 280（見た目 126字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］31億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］2億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］17億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］3000万 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］ランキング — この語が本文に見つかりません</div>
+        <div>［固有名詞］プロジェクト — この語が本文に見つかりません</div>
+        <div>［固有名詞］シリーズ — この語が本文に見つかりません</div>
+        <div>［固有名詞］TechCrunch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AE%E3%80%8C%E6%8E%A1%E7%82%B9%E4%BF%82%E3%80%8D%E3%81%AB%E3%80%81%E3%81%AA%E3%81%9C31%E5%84%84%E3%83%89%E3%83%AB%E3%81%AE%E5%80%A4%E3%81%8C%E3%81%A4%E3%81%8F%E3%81%AE%E3%81%8B%E3%80%82%0A%E3%83%A2%E3%83%87%E3%83%AB%E6%AF%94%E8%BC%83%E3%82%B5%E3%82%A4%E3%83%88Arena%E3%81%8C2%E5%84%84%E3%83%89%E3%83%AB%E3%82%92%E8%AA%BF%E9%81%94%E3%80%81%E8%A9%95%E4%BE%A1%E9%A1%8D%E3%81%AF10%E3%82%AB%E6%9C%88%E3%81%A7%E3%81%BB%E3%81%BC%E5%80%8D%E3%81%AB%E3%80%82%E5%B9%B4%E6%8F%9B%E7%AE%97%E5%A3%B2%E4%B8%8A%E3%81%AF1%E5%84%84%E3%83%89%E3%83%AB%E3%80%82%E6%96%B0%E8%A8%AD%E3%81%AE%E6%95%B4%E5%90%88%E6%80%A7%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AFOpenAI%E5%8B%A2%E3%81%8C%E4%B8%8A%E4%BD%8D%E3%82%92%E5%8D%A0%E3%82%81%E3%81%9F%E3%80%82%0A%23AI%20%23Arena%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-09.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">入力100万トークン0.1ドル。Claudeの小型モデルが、前世代の10分の1の料金になりました。
+ほかに、クラウド級AIが手元で動くPC、中国製モデルの台頭、AI評価サイトの急成長も。
+
+1. Haiku 5.5は、推論の深さを選べる「effort」設定にHaikuクラスで初めて対応。10万トークンを超えるプロンプトは半額にとどまります。Sonnet 5.5もキャッシュ読み込みが半額になり、エージェント型の作業で約20%安くなるとしています。(ITmedia AI+)
+
+2. RTX Sparkは、最大20コアのGrace CPUとBlackwell RTX GPUを600GB/sで接続。Surface Laptop Ultraが搭載し、Acer、ASUS、Dell、HPなども製品を出します。小型デスクトップは11月発売。Windowsには、エージェントをOSの管理下で安全に動かす基盤「MXC」が正式提供されました。(NVIDIA)
+
+3. オープンモデル（重みが公開され、手元で動かせるAIモデル）では中国勢が主流に。RedMonkによると、最高性能のオープンモデルはほぼ中国発で、例外は米NVIDIAの「Nemotron」や米Thinking Machinesの「Inkling」などです。(ITmedia AI+)
+
+4. Arenaは2023年にUC Berkeleyの研究プロジェクトとして始まり、利用者がどのモデルの回答が優れているかを評価する仕組みです。1月のシリーズAでは評価額17億ドル、年換算売上3000万ドルでした。新設の整合性ランキングでは、Claude Opus 5.5が6位です。(TechCrunch)
+
+今日の4本では、AIの「価格」「動かす場所」「つくった国」「評価の仕方」がそれぞれ動きました。
+毎朝4本、AIニュースを要点だけまとめています。あとで見返せるよう保存し、続きはフォローでチェックしてください。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ArtificialIntelligence #GenerativeAI #Claude #AI活用 #LLM #AIエージェント #TechNews #Anthropic #ClaudeHaiku #NVIDIA #RTXSpark #Microsoft #Windows #オープンモデル #中国AI #Arena #資金調達</pre>
+  <div class="count">1029字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 60.1</span>
+      <span class="tag">興味度 80</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Claude Haiku 5.5、API料金が10分の1に</div>
+    <div style="color:var(--muted);font-size:.9rem">要約やサブエージェントなど、これまでコストが見合わなかった用途でもClaudeを使いやすくなります。小型モデルの価格競争が一段と進みそうです。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 70.6</span>
+      <span class="tag">興味度 68</span>
+      <span class="tag">2社が報道</span>
+    </div>
+    <div class="headline">NVIDIAとMS、AI PC「RTX Spark」を発表</div>
+    <div style="color:var(--muted);font-size:.9rem">クラウド級のモデルをPC上で通信なしに動かせる時代が近づいています。Windowsはエージェントを安全に動かす基盤（MXC）も整え、PCの役割が変わりつつあります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 46.9</span>
+      <span class="tag">興味度 75</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">企業利用のAIモデル、6割超が中国製に</div>
+    <div style="color:var(--muted);font-size:.9rem">オープンモデルでは中国勢が主流になり、米国の規制論議とも重なっています。企業がどのモデルを選ぶかに、地政学のリスクが絡むようになりました。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 49.9</span>
+      <span class="tag">興味度 70</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AI評価のArena、評価額31億ドルに倍増</div>
+    <div style="color:var(--muted);font-size:.9rem">ベンチマークでモデルが高得点を取りにいく問題が広がり、中立的な第三者評価がビジネスとして成り立っています。新設の整合性ランキングでは首位をOpenAI勢が占め、Claude勢は6位と9位でした。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
