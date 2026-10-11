@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-12 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-12　生成 10/12 08:40</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">Hacker News</span>
+    </div>
+    <div class="headline">
+      <a href="https://momo5502.com/posts/2026-10-09-game-decompilation/" target="_blank" rel="noopener">AI群が人気FPSを丸ごと逆コンパイル</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 500B tokens later: Letting AI agents decompile a first-person shooter</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">5000億トークンで、AIが人気FPSを逆コンパイル。
+最初の1カ月、作業役3体と査読役1体で約8割を再現。ゲーム起動やマップ読込まで到達した。
+文脈の圧縮開始を90%から42%に早め、消費を削減。
+#AI #ClaudeCode
+（出典: Hacker News）</pre>
+    <div class="count ">
+      重み 215 / 280（見た目 129字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］5000億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］8割 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］コンパイル — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］チャンネル — この語が本文に見つかりません</div>
+        <div>［固有名詞］Hacker — この語が本文に見つかりません</div>
+        <div>［固有名詞］News — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=5000%E5%84%84%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%A7%E3%80%81AI%E3%81%8C%E4%BA%BA%E6%B0%97FPS%E3%82%92%E9%80%86%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%80%82%0A%E6%9C%80%E5%88%9D%E3%81%AE1%E3%82%AB%E6%9C%88%E3%80%81%E4%BD%9C%E6%A5%AD%E5%BD%B93%E4%BD%93%E3%81%A8%E6%9F%BB%E8%AA%AD%E5%BD%B91%E4%BD%93%E3%81%A7%E7%B4%848%E5%89%B2%E3%82%92%E5%86%8D%E7%8F%BE%E3%80%82%E3%82%B2%E3%83%BC%E3%83%A0%E8%B5%B7%E5%8B%95%E3%82%84%E3%83%9E%E3%83%83%E3%83%97%E8%AA%AD%E8%BE%BC%E3%81%BE%E3%81%A7%E5%88%B0%E9%81%94%E3%81%97%E3%81%9F%E3%80%82%0A%E6%96%87%E8%84%88%E3%81%AE%E5%9C%A7%E7%B8%AE%E9%96%8B%E5%A7%8B%E3%82%9290%25%E3%81%8B%E3%82%8942%25%E3%81%AB%E6%97%A9%E3%82%81%E3%80%81%E6%B6%88%E8%B2%BB%E3%82%92%E5%89%8A%E6%B8%9B%E3%80%82%0A%23AI%20%23ClaudeCode%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Hacker%20News%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">Hacker News</span>
+    </div>
+    <div class="headline">
+      <a href="https://twitter.com/karpathy/status/2109361546505966046" target="_blank" rel="noopener">LLMの実力、人による認識の差が急拡大</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: The gap in shared understanding of LLM capability is widening</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">同じAIなのに、見えている景色が違う。
+約60億人はLLMにほぼ触れず、10〜20億人は無料版を時々使う程度。
+数学やコードで最前線のLLMを使うのは約2000万人、社内の最先端システムに触れるのは約5000人。
+#AI #LLM
+（出典: Hacker News）</pre>
+    <div class="count ">
+      重み 219 / 280（見た目 129字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］60億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］2000万 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］10 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］Hacker — この語が本文に見つかりません</div>
+        <div>［固有名詞］News — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%90%8C%E3%81%98AI%E3%81%AA%E3%81%AE%E3%81%AB%E3%80%81%E8%A6%8B%E3%81%88%E3%81%A6%E3%81%84%E3%82%8B%E6%99%AF%E8%89%B2%E3%81%8C%E9%81%95%E3%81%86%E3%80%82%0A%E7%B4%8460%E5%84%84%E4%BA%BA%E3%81%AFLLM%E3%81%AB%E3%81%BB%E3%81%BC%E8%A7%A6%E3%82%8C%E3%81%9A%E3%80%8110%E3%80%9C20%E5%84%84%E4%BA%BA%E3%81%AF%E7%84%A1%E6%96%99%E7%89%88%E3%82%92%E6%99%82%E3%80%85%E4%BD%BF%E3%81%86%E7%A8%8B%E5%BA%A6%E3%80%82%0A%E6%95%B0%E5%AD%A6%E3%82%84%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E6%9C%80%E5%89%8D%E7%B7%9A%E3%81%AELLM%E3%82%92%E4%BD%BF%E3%81%86%E3%81%AE%E3%81%AF%E7%B4%842000%E4%B8%87%E4%BA%BA%E3%80%81%E7%A4%BE%E5%86%85%E3%81%AE%E6%9C%80%E5%85%88%E7%AB%AF%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%AF%E7%B4%845000%E4%BA%BA%E3%80%82%0A%23AI%20%23LLM%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Hacker%20News%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">断言型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x37kxn/now_you_can_grow_bonsai_on_your_potato/" target="_blank" rel="noopener">27B級モデルを5.9GBに、1.72ビット化</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Now you can grow Bonsai on your potato</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">27B級の推論モデルが、普通のノートPCに収まる。
+約54GBを約5.9GBへ。1重みあたり1.72ビットの三値化で、FP16の性能の98.2%を維持。
+Apple M5 Max搭載ノートで毎秒約47トークン。
+#生成AI #ローカルLLM
+（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 210 / 280（見た目 135字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］コーディング — この語が本文に見つかりません</div>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=27B%E7%B4%9A%E3%81%AE%E6%8E%A8%E8%AB%96%E3%83%A2%E3%83%87%E3%83%AB%E3%81%8C%E3%80%81%E6%99%AE%E9%80%9A%E3%81%AE%E3%83%8E%E3%83%BC%E3%83%88PC%E3%81%AB%E5%8F%8E%E3%81%BE%E3%82%8B%E3%80%82%0A%E7%B4%8454GB%E3%82%92%E7%B4%845.9GB%E3%81%B8%E3%80%821%E9%87%8D%E3%81%BF%E3%81%82%E3%81%9F%E3%82%8A1.72%E3%83%93%E3%83%83%E3%83%88%E3%81%AE%E4%B8%89%E5%80%A4%E5%8C%96%E3%81%A7%E3%80%81FP16%E3%81%AE%E6%80%A7%E8%83%BD%E3%81%AE98.2%25%E3%82%92%E7%B6%AD%E6%8C%81%E3%80%82%0AApple%20M5%20Max%E6%90%AD%E8%BC%89%E3%83%8E%E3%83%BC%E3%83%88%E3%81%A7%E6%AF%8E%E7%A7%92%E7%B4%8447%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABLLM%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">ツール</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1x2yv1b/running_next_flash_iq3_xxs_at_70_toks_with_100k/" target="_blank" rel="noopener">中古マイニング基板500ドルでLLMを高速実行</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Running Next Flash IQ3_XXS at ~70 tok/s with 100k context or 2 instances of Qwen 3.6 35B A3B IQ4 at ~145 tok/s with 256k all on $500 of ex mining BC-250 boards</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">中古マイニング基板で、LLMはどこまで速く動くか。
+1枚100ドル未満で買ったBC-250を4枚接続。
+Qwen 3.6 35Bを2つ同時に動かし、開始時は毎秒145トークン。
+15万トークン時は毎秒100未満に。
+#AI #ローカルLLM
+（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 216 / 280（見た目 134字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］15万 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］マイニング — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］イーサネット — この語が本文に見つかりません</div>
+        <div>［固有名詞］クラスタ — この語が本文に見つかりません</div>
+        <div>［固有名詞］Qwen — この語が本文に見つかりません</div>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E4%B8%AD%E5%8F%A4%E3%83%9E%E3%82%A4%E3%83%8B%E3%83%B3%E3%82%B0%E5%9F%BA%E6%9D%BF%E3%81%A7%E3%80%81LLM%E3%81%AF%E3%81%A9%E3%81%93%E3%81%BE%E3%81%A7%E9%80%9F%E3%81%8F%E5%8B%95%E3%81%8F%E3%81%8B%E3%80%82%0A1%E6%9E%9A100%E3%83%89%E3%83%AB%E6%9C%AA%E6%BA%80%E3%81%A7%E8%B2%B7%E3%81%A3%E3%81%9FBC-250%E3%82%924%E6%9E%9A%E6%8E%A5%E7%B6%9A%E3%80%82%0AQwen%203.6%2035B%E3%82%922%E3%81%A4%E5%90%8C%E6%99%82%E3%81%AB%E5%8B%95%E3%81%8B%E3%81%97%E3%80%81%E9%96%8B%E5%A7%8B%E6%99%82%E3%81%AF%E6%AF%8E%E7%A7%92145%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%80%82%0A15%E4%B8%87%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E6%99%82%E3%81%AF%E6%AF%8E%E7%A7%92100%E6%9C%AA%E6%BA%80%E3%81%AB%E3%80%82%0A%23AI%20%23%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABLLM%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-12.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">約54GBのモデルが5.9GBに縮み、性能はFP16の98.2%を維持。
+今日は「AIを手元で、長く、大きく動かす」話が4本揃いました。
+
+1. ① Claude CodeとCodexのエージェントが、GitHubのissueで進捗を管理し、Discordの共有チャンネルで互いに連絡しながら逆コンパイルを分担。CIの失敗もDiscordに自動通知されます。一方で、途中で別の関数に移る・確認せずissueを閉じるといった「集中切れ」も記録されています。(Hacker News)
+
+2. ② 筆者は人々を4つの層に分けて説明。最上層の約5000人が見ているのは、数千のエージェントが数週間かけて協働する姿だといいます。差を生む要因として、取り組む課題の規模、得意分野の偏り、無料・有料・社内という利用環境の違いの3つを挙げています。(Hacker News)
+
+3. ③ 埋め込みから出力層まで、言語部分の重みをすべて三値で表現。数学は96.57、コーディングは89.42、ツール呼び出しは74.92のスコアです。262Kトークンの長い文脈を端末上で扱え、llama.cpp（CUDA・Metal・CPU）で動きます。(r/LocalLLaMA)
+
+4. ④ 4枚の基板を2.5Gbのイーサネットでつなぎ、llamaのVulkanとRPCで動作。当初Next Flashは毎秒30トークンでしたが、Claude Codeにクラスタを任せた後は、より良い量子化で毎秒60〜70トークンを維持。消費電力は負荷時に最大900Wで、次は基板ごとの水冷化を予定しています。(r/LocalLLaMA)
+
+モデルを縮める工夫、安い基板を束ねる工夫、エージェントを長期間動かす工夫。AIを動かす手段そのものが今日の主役でした。
+毎朝4本、数字と出典つきでAIニュースをまとめています。見返せるように保存、続きはフォローでどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ChatGPT #Claude #ClaudeCode #Codex #LLM #ローカルLLM #AI活用 #AIエージェント #逆コンパイル #量子化 #llamacpp #Qwen #BC250 #LocalLLaMA #GenerativeAI #ArtificialIntelligence #TechNews</pre>
+  <div class="count">1003字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 37.5</span>
+      <span class="tag">興味度 82</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AI群が人気FPSを丸ごと逆コンパイル</div>
+    <div style="color:var(--muted);font-size:.9rem">複数のエージェントがDiscordとGitHubで連携しながら、数カ月にわたって自律的に作業しました。長期の大規模プロジェクトをAIに任せるための実践的な知見が詰まっています。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 46.7</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">LLMの実力、人による認識の差が急拡大</div>
+    <div style="color:var(--muted);font-size:.9rem">無料版のチャットボットしか知らない層と、数週間かかっていた開発をAIに任せる層とでは、AIの見え方がまったく違います。AIの評価が人によって食い違う理由を説明する見方です。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 28.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">27B級モデルを5.9GBに、1.72ビット化</div>
+    <div style="color:var(--muted);font-size:.9rem">約54GBあったモデルが普通のノートPCで動くサイズになりました。高性能な推論モデルを手元で使える人が一気に広がる可能性があります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 19.9</span>
+      <span class="tag">興味度 70</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">中古マイニング基板500ドルでLLMを高速実行</div>
+    <div style="color:var(--muted);font-size:.9rem">高価なGPUがなくても、安い中古基板を組み合わせれば実用的な速度で動かせることを示しました。ローカルAIの敷居を下げる事例です。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
