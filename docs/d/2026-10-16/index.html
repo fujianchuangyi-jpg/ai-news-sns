@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-16 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-16　生成 10/16 08:45</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">Hugging Face</span>
+    </div>
+    <div class="headline">
+      <a href="https://huggingface.co/blog/meta-muse-spark-open" target="_blank" rel="noopener">Meta、816B級オープンモデルMuse Spark Open</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Welcome Muse Spark Open: open-weight frontier multimodal mixture-of-experts model from Meta</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">動かすのは816Bのうち42Bだけ。
+Metaがオープン重みのMuse Spark Openを公開。256の専門家から1トークンごとに8つを選ぶMoE構造。画像・音声・動画も入力できる。コーディング特化。
+#生成AI #Meta
+（出典: Hugging Face）</pre>
+    <div class="count ">
+      重み 206 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］オープン — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］コーディング — この語が本文に見つかりません</div>
+        <div>［固有名詞］パラメータ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ネットワーク — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%8B%95%E3%81%8B%E3%81%99%E3%81%AE%E3%81%AF816B%E3%81%AE%E3%81%86%E3%81%A142B%E3%81%A0%E3%81%91%E3%80%82%0AMeta%E3%81%8C%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E9%87%8D%E3%81%BF%E3%81%AEMuse%20Spark%20Open%E3%82%92%E5%85%AC%E9%96%8B%E3%80%82256%E3%81%AE%E5%B0%82%E9%96%80%E5%AE%B6%E3%81%8B%E3%82%891%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%94%E3%81%A8%E3%81%AB8%E3%81%A4%E3%82%92%E9%81%B8%E3%81%B6MoE%E6%A7%8B%E9%80%A0%E3%80%82%E7%94%BB%E5%83%8F%E3%83%BB%E9%9F%B3%E5%A3%B0%E3%83%BB%E5%8B%95%E7%94%BB%E3%82%82%E5%85%A5%E5%8A%9B%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E7%89%B9%E5%8C%96%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23Meta%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Hugging%20Face%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">製品</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2610/15/2000002287/" target="_blank" rel="noopener">YouTube Music、AI生成曲にラベル表示</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: 「YouTube Music」、生成AIで作られた楽曲にラベル表示</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">今聴いている曲、AIが作ったものか分かる？
+YouTube Musicが主に生成AIで作られた楽曲にラベル表示を開始。レーベルは「全部・一部・なし」の3区分で申告できる。YouTube本体にも拡大予定。
+#生成AI #YouTube
+（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 215 / 280（見た目 131字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E4%BB%8A%E8%81%B4%E3%81%84%E3%81%A6%E3%81%84%E3%82%8B%E6%9B%B2%E3%80%81AI%E3%81%8C%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%82%E3%81%AE%E3%81%8B%E5%88%86%E3%81%8B%E3%82%8B%EF%BC%9F%0AYouTube%20Music%E3%81%8C%E4%B8%BB%E3%81%AB%E7%94%9F%E6%88%90AI%E3%81%A7%E4%BD%9C%E3%82%89%E3%82%8C%E3%81%9F%E6%A5%BD%E6%9B%B2%E3%81%AB%E3%83%A9%E3%83%99%E3%83%AB%E8%A1%A8%E7%A4%BA%E3%82%92%E9%96%8B%E5%A7%8B%E3%80%82%E3%83%AC%E3%83%BC%E3%83%99%E3%83%AB%E3%81%AF%E3%80%8C%E5%85%A8%E9%83%A8%E3%83%BB%E4%B8%80%E9%83%A8%E3%83%BB%E3%81%AA%E3%81%97%E3%80%8D%E3%81%AE3%E5%8C%BA%E5%88%86%E3%81%A7%E7%94%B3%E5%91%8A%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82YouTube%E6%9C%AC%E4%BD%93%E3%81%AB%E3%82%82%E6%8B%A1%E5%A4%A7%E4%BA%88%E5%AE%9A%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23YouTube%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2610/15/2000002260/" target="_blank" rel="noopener">「AIで生産性2倍」宣言の企業、2年後の実態</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: CTOが「AI導入で生産性を1年で2倍に」掲げた企業のその後　米国が開発者802人の進捗を追跡調査</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">全体の提出量は3.1倍、レビュー担当は1.5倍。
+「AIで生産性2倍」を掲げた企業で開発者802人を追跡。1人あたり提出量は2.09倍。レビュー担当の負担は実質倍増し、8割以上のPRをAIボット等が受けるように。
+#AI #コードレビュー
+（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 231 / 280（見た目 134字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%85%A8%E4%BD%93%E3%81%AE%E6%8F%90%E5%87%BA%E9%87%8F%E3%81%AF3.1%E5%80%8D%E3%80%81%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%8B%85%E5%BD%93%E3%81%AF1.5%E5%80%8D%E3%80%82%0A%E3%80%8CAI%E3%81%A7%E7%94%9F%E7%94%A3%E6%80%A72%E5%80%8D%E3%80%8D%E3%82%92%E6%8E%B2%E3%81%92%E3%81%9F%E4%BC%81%E6%A5%AD%E3%81%A7%E9%96%8B%E7%99%BA%E8%80%85802%E4%BA%BA%E3%82%92%E8%BF%BD%E8%B7%A1%E3%80%821%E4%BA%BA%E3%81%82%E3%81%9F%E3%82%8A%E6%8F%90%E5%87%BA%E9%87%8F%E3%81%AF2.09%E5%80%8D%E3%80%82%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%8B%85%E5%BD%93%E3%81%AE%E8%B2%A0%E6%8B%85%E3%81%AF%E5%AE%9F%E8%B3%AA%E5%80%8D%E5%A2%97%E3%81%97%E3%80%818%E5%89%B2%E4%BB%A5%E4%B8%8A%E3%81%AEPR%E3%82%92AI%E3%83%9C%E3%83%83%E3%83%88%E7%AD%89%E3%81%8C%E5%8F%97%E3%81%91%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%80%82%0A%23AI%20%23%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">規制</span>
+      <span class="tag">断言型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/10/15/anthropic-is-letting-metr-researchers-look-under-the-hood-with-employee-level-access/" target="_blank" rel="noopener">Anthropic、METRに社員並みの内部アクセス付与</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Anthropic is letting METR researchers look under the hood with employee-level access</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">Anthropicは、評価結果の公開を拒否する権利を手放した。
+AI評価の非営利団体METRの研究者6人に社員並みのアクセスを付与。社用PCや社内ツールを使い、安全対策やリスク管理を評価・公表する。
+#AI #Anthropic
+（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 215 / 280（見た目 128字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］6人 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］アクセス — この語が本文に見つかりません</div>
+        <div>［固有名詞］オフィス — この語が本文に見つかりません</div>
+        <div>［固有名詞］TechCrunch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=Anthropic%E3%81%AF%E3%80%81%E8%A9%95%E4%BE%A1%E7%B5%90%E6%9E%9C%E3%81%AE%E5%85%AC%E9%96%8B%E3%82%92%E6%8B%92%E5%90%A6%E3%81%99%E3%82%8B%E6%A8%A9%E5%88%A9%E3%82%92%E6%89%8B%E6%94%BE%E3%81%97%E3%81%9F%E3%80%82%0AAI%E8%A9%95%E4%BE%A1%E3%81%AE%E9%9D%9E%E5%96%B6%E5%88%A9%E5%9B%A3%E4%BD%93METR%E3%81%AE%E7%A0%94%E7%A9%B6%E8%80%856%E4%BA%BA%E3%81%AB%E7%A4%BE%E5%93%A1%E4%B8%A6%E3%81%BF%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E4%BB%98%E4%B8%8E%E3%80%82%E7%A4%BE%E7%94%A8PC%E3%82%84%E7%A4%BE%E5%86%85%E3%83%84%E3%83%BC%E3%83%AB%E3%82%92%E4%BD%BF%E3%81%84%E3%80%81%E5%AE%89%E5%85%A8%E5%AF%BE%E7%AD%96%E3%82%84%E3%83%AA%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86%E3%82%92%E8%A9%95%E4%BE%A1%E3%83%BB%E5%85%AC%E8%A1%A8%E3%81%99%E3%82%8B%E3%80%82%0A%23AI%20%23Anthropic%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-16.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">「AIで生産性2倍」を掲げた会社で、1人あたりのコード提出量は本当に2.09倍になった。
+でも、それを確認する人間は追いつかなかった。
+
+1. Metaのオープン重みモデル「Muse Spark Open」。総パラメータは816Bですが、256個の専門家（部分的なネットワーク）から1トークンごとに8個だけを動かすので、計算に使うのは約42B分。画像・音声・動画を入力でき、4bit版のNVFP4はB200を積んだ1ノードで動きます。(Hugging Face)
+
+2. 対象は、AIモデルで曲やボーカルを生成した楽曲など。再生中のプレーヤー画面にラベルが出て、タップすると詳しい情報が見られます。レーベルが申告しなくても、YouTube独自のシグナルでAI生成と判断することがあります。(ITmedia AI+)
+
+3. 2024年1月〜26年4月、開発者802人・19万6212件のPRを追跡した研究。提出量の伸びは特にマネジャー層で大きく、効果は古いコードより新しいシステムに集中。一方で、具体的な指摘のない「無言の承認」の割合が高まりました。(ITmedia AI+)
+
+4. METRの6人は社用PC、オフィス、社内ツールを使えます。Anthropicはこれを、大手銀行に置かれる常駐検査官になぞらえています。黒塗りを求められるのは顧客データなど事前に決めた範囲だけで、METRはその黒塗りが妥当だったかも公に評価できます。(TechCrunch)
+
+4本のうち3本は「AIが作ったものや、AI企業そのものをどう確かめるか」の話でした。
+毎朝4本、AIニュースの要点をまとめています。あとで見返したい人は保存、毎朝追いたい人はフォローを。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #GenerativeAI #ArtificialIntelligence #TechNews #LLM #Claude #AI活用 #AI音楽 #プログラミング #エンジニア #AIセーフティ #Anthropic #Meta #MuseSparkOpen #YouTubeMusic #METR #コードレビュー #オープンモデル</pre>
+  <div class="count">925字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 65.5</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Meta、816B級オープンモデルMuse Spark Open</div>
+    <div style="color:var(--muted);font-size:.9rem">画像・音声・動画を入力できる、コーディング特化の巨大モデルが重み付きで公開されました。米国勢が出すオープンモデルの勢力図が変わる可能性があります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 62.8</span>
+      <span class="tag">興味度 60</span>
+      <span class="tag">2社が報道</span>
+    </div>
+    <div class="headline">YouTube Music、AI生成曲にラベル表示</div>
+    <div style="color:var(--muted);font-size:.9rem">大手音楽配信がAI生成曲を見分けて表示し始めました。リスナーの知る権利と、AI音楽の扱い方の標準づくりに影響します。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 40.9</span>
+      <span class="tag">興味度 85</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">「AIで生産性2倍」宣言の企業、2年後の実態</div>
+    <div style="color:var(--muted);font-size:.9rem">AIを導入するとコードを書く速さは上がりますが、人間のレビューが追いつかなくなります。802人を追跡したデータで、この現実的な問題がはっきり示されました。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 55.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Anthropic、METRに社員並みの内部アクセス付与</div>
+    <div style="color:var(--muted);font-size:.9rem">外部の評価者がAI企業の内側に常駐する、銀行の常駐検査官に近い仕組みです。AIの安全性を独立した立場で検証するモデルケースになり得ます。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
