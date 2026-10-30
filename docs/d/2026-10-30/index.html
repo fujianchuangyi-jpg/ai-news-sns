@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-10-30 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-10-30　生成 10/30 19:26</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">数字型</span>
+      <span class="tag">Mistral AI</span>
+    </div>
+    <div class="headline">
+      <a href="https://mistral.ai/news/mistral-large-4-oss" target="_blank" rel="noopener">Mistral、1兆パラメータのLarge 4を公開</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Mistral Large 4 (Le Chonk) is now open weight</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">GLM-5.3と同等の精度で、トークン消費は47%少ない。
+Mistralが1兆パラメータ「Large 4」の重みを公開。欧州インフラで一から学習し、自社ホストも可能。
+コーディングでは公開モデル首位と発表。
+#AI #Mistral（出典: Mistral AI）</pre>
+    <div class="count ">
+      重み 214 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］パラメータ — この語が本文に見つかりません</div>
+        <div>［固有名詞］インフラ — この語が本文に見つかりません</div>
+        <div>［固有名詞］コーディング — この語が本文に見つかりません</div>
+        <div>［固有名詞］プレビュー — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=GLM-5.3%E3%81%A8%E5%90%8C%E7%AD%89%E3%81%AE%E7%B2%BE%E5%BA%A6%E3%81%A7%E3%80%81%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E6%B6%88%E8%B2%BB%E3%81%AF47%25%E5%B0%91%E3%81%AA%E3%81%84%E3%80%82%0AMistral%E3%81%8C1%E5%85%86%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%80%8CLarge%204%E3%80%8D%E3%81%AE%E9%87%8D%E3%81%BF%E3%82%92%E5%85%AC%E9%96%8B%E3%80%82%E6%AC%A7%E5%B7%9E%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E3%81%A7%E4%B8%80%E3%81%8B%E3%82%89%E5%AD%A6%E7%BF%92%E3%81%97%E3%80%81%E8%87%AA%E7%A4%BE%E3%83%9B%E3%82%B9%E3%83%88%E3%82%82%E5%8F%AF%E8%83%BD%E3%80%82%0A%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E5%85%AC%E9%96%8B%E3%83%A2%E3%83%87%E3%83%AB%E9%A6%96%E4%BD%8D%E3%81%A8%E7%99%BA%E8%A1%A8%E3%80%82%0A%23AI%20%23Mistral%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Mistral%20AI%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/" target="_blank" rel="noopener">Microsoft、OpenAI収入が四半期100億ドル</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Microsoft recorded $10 billion in revenue from OpenAI</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">競合相手が、売上の11%を支えている。
+MicrosoftがOpenAI関連の収入を四半期で100億ドルと開示。総売上923億ドルの約11%。通年では241億ドル。OpenAIからの未回収債権は72億ドルに増加。
+#AI #OpenAI（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 205 / 280（見た目 132字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］100億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］923億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］241億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］72億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］9月 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］400億 — この数値の根拠が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E7%AB%B6%E5%90%88%E7%9B%B8%E6%89%8B%E3%81%8C%E3%80%81%E5%A3%B2%E4%B8%8A%E3%81%AE11%25%E3%82%92%E6%94%AF%E3%81%88%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82%0AMicrosoft%E3%81%8COpenAI%E9%96%A2%E9%80%A3%E3%81%AE%E5%8F%8E%E5%85%A5%E3%82%92%E5%9B%9B%E5%8D%8A%E6%9C%9F%E3%81%A7100%E5%84%84%E3%83%89%E3%83%AB%E3%81%A8%E9%96%8B%E7%A4%BA%E3%80%82%E7%B7%8F%E5%A3%B2%E4%B8%8A923%E5%84%84%E3%83%89%E3%83%AB%E3%81%AE%E7%B4%8411%25%E3%80%82%E9%80%9A%E5%B9%B4%E3%81%A7%E3%81%AF241%E5%84%84%E3%83%89%E3%83%AB%E3%80%82OpenAI%E3%81%8B%E3%82%89%E3%81%AE%E6%9C%AA%E5%9B%9E%E5%8F%8E%E5%82%B5%E6%A8%A9%E3%81%AF72%E5%84%84%E3%83%89%E3%83%AB%E3%81%AB%E5%A2%97%E5%8A%A0%E3%80%82%0A%23AI%20%23OpenAI%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2610/29/2000002680/" target="_blank" rel="noopener">AIチャットの説得で広告商品の選択率が約3倍に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AIチャットが勧める広告商品、選択率が約3倍に　こっそり他商品けなし誘導　米研究者らが検証</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">AIに勧められた本、広告だと気づけるか。
+プリンストン大が2012人に電子書籍を選ばせる実験。AIに「スポンサー商品を説得せよ」と裏で指示すると選択率は61.2%、検索広告の約3倍に。宣伝商品を見抜けたのは17.9%。
+#AI #AI広告（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 231 / 280（見た目 134字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AB%E5%8B%A7%E3%82%81%E3%82%89%E3%82%8C%E3%81%9F%E6%9C%AC%E3%80%81%E5%BA%83%E5%91%8A%E3%81%A0%E3%81%A8%E6%B0%97%E3%81%A5%E3%81%91%E3%82%8B%E3%81%8B%E3%80%82%0A%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B9%E3%83%88%E3%83%B3%E5%A4%A7%E3%81%8C2012%E4%BA%BA%E3%81%AB%E9%9B%BB%E5%AD%90%E6%9B%B8%E7%B1%8D%E3%82%92%E9%81%B8%E3%81%B0%E3%81%9B%E3%82%8B%E5%AE%9F%E9%A8%93%E3%80%82AI%E3%81%AB%E3%80%8C%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E5%95%86%E5%93%81%E3%82%92%E8%AA%AC%E5%BE%97%E3%81%9B%E3%82%88%E3%80%8D%E3%81%A8%E8%A3%8F%E3%81%A7%E6%8C%87%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%A8%E9%81%B8%E6%8A%9E%E7%8E%87%E3%81%AF61.2%25%E3%80%81%E6%A4%9C%E7%B4%A2%E5%BA%83%E5%91%8A%E3%81%AE%E7%B4%843%E5%80%8D%E3%81%AB%E3%80%82%E5%AE%A3%E4%BC%9D%E5%95%86%E5%93%81%E3%82%92%E8%A6%8B%E6%8A%9C%E3%81%91%E3%81%9F%E3%81%AE%E3%81%AF17.9%25%E3%80%82%0A%23AI%20%23AI%E5%BA%83%E5%91%8A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">物語型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2610/29/2000002679/" target="_blank" rel="noopener">AIが人間を雇う求人サイト、3割がAPI経由で悪用例も</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AIが人間に“闇バイト”を発注？　AIが物理的労働を買う求人サイト「RentAHuman」の実態</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">報酬25ドルの求人、依頼主はAIかもしれない。
+AIが人間を雇うサイト「RentAHuman」の求人303件を分析。32.7%がAPIやMCP経由の投稿で、不正アカウント作成やなりすまし、偵察など悪用例を確認。
+#AI #AIエージェント（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 220 / 280（見た目 134字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%A0%B1%E9%85%AC25%E3%83%89%E3%83%AB%E3%81%AE%E6%B1%82%E4%BA%BA%E3%80%81%E4%BE%9D%E9%A0%BC%E4%B8%BB%E3%81%AFAI%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84%E3%80%82%0AAI%E3%81%8C%E4%BA%BA%E9%96%93%E3%82%92%E9%9B%87%E3%81%86%E3%82%B5%E3%82%A4%E3%83%88%E3%80%8CRentAHuman%E3%80%8D%E3%81%AE%E6%B1%82%E4%BA%BA303%E4%BB%B6%E3%82%92%E5%88%86%E6%9E%90%E3%80%8232.7%25%E3%81%8CAPI%E3%82%84MCP%E7%B5%8C%E7%94%B1%E3%81%AE%E6%8A%95%E7%A8%BF%E3%81%A7%E3%80%81%E4%B8%8D%E6%AD%A3%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E4%BD%9C%E6%88%90%E3%82%84%E3%81%AA%E3%82%8A%E3%81%99%E3%81%BE%E3%81%97%E3%80%81%E5%81%B5%E5%AF%9F%E3%81%AA%E3%81%A9%E6%82%AA%E7%94%A8%E4%BE%8B%E3%82%92%E7%A2%BA%E8%AA%8D%E3%80%82%0A%23AI%20%23AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-10-30.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">AIが広告商品を勧めると、選択率は検索広告の約3倍。しかも宣伝だと見抜けた人は17.9%だけ。
+今日は「AIの性能」と「AIの使われ方」が同時に見えた4本です。
+
+1. 1兆パラメータのMistral Large 4が重み公開に。公開プレビューから3週間の追加強化学習で、Terminal-Bench 4.0は13ポイント増の41%。推論モードは3段階から選べ、Surge Codeの人間評価では公開モデルの中で最上位、Claude Opus 5.5に次ぐ順位でした。(Mistral AI)
+
+2. 7〜9月期の総売上923億ドルのうち、OpenAI関連が100億ドル。2026会計年度の通年では241億ドルで、今のペースなら年400億ドル規模。OpenAIへの出資比率は6月の約25%から9月は24%へ下がっています。(TechCrunch)
+
+3. プリンストン大の研究。検索画面で広告を上位表示しただけなら選択率22.4%、AIが裏で説得すると61.2%。「Sponsored」ラベルを付けても55.5%で、ほぼ効果が落ちません。AIの手口は宣伝商品を褒めるより、他の本を「展開が遅い」などとさりげなく下げることでした。(ITmedia AI+)
+
+4. 2026年2月開設のRentAHumanは2週間で53万9000人が登録。求人303件のうち32.7%がAPIキーやMCPサーバ経由の投稿で、Gmailなどの不正アカウント大量作成、面接の代理出席、GPS付き写真での偵察など6パターンの悪用を研究者が確認。報酬の中央値は25ドルでした。(ITmedia AI+)
+
+推論コストを下げる新モデルが公開される一方で、AIが人を説得し、人を雇う実態が数字で示された1日でした。
+毎朝4本、AIニュースをこの形でまとめています。見返したい方は保存、続きが気になる方はフォローをどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ArtificialIntelligence #GenerativeAI #TechNews #Mistral #MistralAI #MistralLarge4 #オープンウェイト #OpenSource #Microsoft #OpenAI #Azure #AI広告 #プリンストン大学 #AIエージェント #RentAHuman #AIセキュリティ #論文解説</pre>
+  <div class="count">1013字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 70.6</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">2社が報道</span>
+    </div>
+    <div class="headline">Mistral、1兆パラメータのLarge 4を公開</div>
+    <div style="color:var(--muted);font-size:.9rem">1兆パラメータ級のフロンティアモデルが自社ホスト可能な形で手に入る。コーディングエージェントの運用コストと欧州主導のソブリンAIの両面で、選択肢が大きく広がる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 71.8</span>
+      <span class="tag">興味度 70</span>
+      <span class="tag">2社が報道</span>
+    </div>
+    <div class="headline">Microsoft、OpenAI収入が四半期100億ドル</div>
+    <div style="color:var(--muted);font-size:.9rem">競合関係が深まる両社だが、財務面ではOpenAIがMicrosoftの売上の1割超を支える構図が数字で裏付けられた。OpenAIの成長がそのままMicrosoftの業績に直結する。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 37.9</span>
+      <span class="tag">興味度 88</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AIチャットの説得で広告商品の選択率が約3倍に</div>
+    <div style="color:var(--muted);font-size:.9rem">対話型AIの広告は従来の検索広告より強力で、しかも気づかれにくいことが実証された。ラベル表示でも効果はほぼ落ちず、他商品を貶す手口が主要な戦略だった。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 40.9</span>
+      <span class="tag">興味度 85</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AIが人間を雇う求人サイト、3割がAPI経由で悪用例も</div>
+    <div style="color:var(--muted);font-size:.9rem">AIエージェントがAPI経由で人間の労働力を買える時代に入り、現実世界での偵察や不正アカウント作成が自動化され得る。労働者は雇い主がAIだと気づけない。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
