@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-11-08 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-11-08　生成 11/09 08:01</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development" target="_blank" rel="noopener">METR調査、AnthropicはAIで開発速度2倍に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Why a new report on Anthropic automating AI development is alarming researchers</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">社員の自己申告で、生産性はAIなしの約12倍。
+AI安全性研究機関METRがAnthropic社内を11週間調査。モデルの改善速度は1年前の約2倍で、加速の大半はAIによるものと結論。未公開モデル3本も判明。
+#AI #Anthropic
+（出典: The Verge）</pre>
+    <div class="count ">
+      重み 216 / 280（見た目 132字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］1年 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］10月 — この数値の根拠が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E7%A4%BE%E5%93%A1%E3%81%AE%E8%87%AA%E5%B7%B1%E7%94%B3%E5%91%8A%E3%81%A7%E3%80%81%E7%94%9F%E7%94%A3%E6%80%A7%E3%81%AFAI%E3%81%AA%E3%81%97%E3%81%AE%E7%B4%8412%E5%80%8D%E3%80%82%0AAI%E5%AE%89%E5%85%A8%E6%80%A7%E7%A0%94%E7%A9%B6%E6%A9%9F%E9%96%A2METR%E3%81%8CAnthropic%E7%A4%BE%E5%86%85%E3%82%9211%E9%80%B1%E9%96%93%E8%AA%BF%E6%9F%BB%E3%80%82%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%94%B9%E5%96%84%E9%80%9F%E5%BA%A6%E3%81%AF1%E5%B9%B4%E5%89%8D%E3%81%AE%E7%B4%842%E5%80%8D%E3%81%A7%E3%80%81%E5%8A%A0%E9%80%9F%E3%81%AE%E5%A4%A7%E5%8D%8A%E3%81%AFAI%E3%81%AB%E3%82%88%E3%82%8B%E3%82%82%E3%81%AE%E3%81%A8%E7%B5%90%E8%AB%96%E3%80%82%E6%9C%AA%E5%85%AC%E9%96%8B%E3%83%A2%E3%83%87%E3%83%AB3%E6%9C%AC%E3%82%82%E5%88%A4%E6%98%8E%E3%80%82%0A%23AI%20%23Anthropic%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">物語型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos" target="_blank" rel="noopener">Stamos氏「AIでセキュリティは暗黒時代に」</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AI broke the cybersecurity world. What’s next?</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">盗まれたAPIキーが、5000社への入口になった。
+Stamos氏によると、Fireworksへの侵入で盗まれたキーでCursorに侵入され、不正なプラグインが5000社に届いた。
+#AI #サイバーセキュリティ
+（出典: The Verge）</pre>
+    <div class="count ">
+      重み 193 / 280（見た目 119字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］プラグイン — この語が本文に見つかりません</div>
+        <div>［固有名詞］セキュリティ — この語が本文に見つかりません</div>
+        <div>［固有名詞］スタンフォード — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E7%9B%97%E3%81%BE%E3%82%8C%E3%81%9FAPI%E3%82%AD%E3%83%BC%E3%81%8C%E3%80%815000%E7%A4%BE%E3%81%B8%E3%81%AE%E5%85%A5%E5%8F%A3%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F%E3%80%82%0AStamos%E6%B0%8F%E3%81%AB%E3%82%88%E3%82%8B%E3%81%A8%E3%80%81Fireworks%E3%81%B8%E3%81%AE%E4%BE%B5%E5%85%A5%E3%81%A7%E7%9B%97%E3%81%BE%E3%82%8C%E3%81%9F%E3%82%AD%E3%83%BC%E3%81%A7Cursor%E3%81%AB%E4%BE%B5%E5%85%A5%E3%81%95%E3%82%8C%E3%80%81%E4%B8%8D%E6%AD%A3%E3%81%AA%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%8C5000%E7%A4%BE%E3%81%AB%E5%B1%8A%E3%81%84%E3%81%9F%E3%80%82%0A%23AI%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">Hacker News</span>
+    </div>
+    <div class="headline">
+      <a href="https://hunch.net/?p=13764006" target="_blank" rel="noopener">MSR「AI Frontiers」終焉、当事者が内幕</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: The end of Microsoft Research&#39;s AI Frontiers group</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">研究か、規模か。Microsoftで路線が割れた。
+約50人の研究組織「AI Frontiers」が9月上旬にMicrosoft AIへ統合。当事者いわく、MAIの方針は規模の拡大で「研究ではない」。
+#AI #Microsoft
+（出典: Hacker News）</pre>
+    <div class="count ">
+      重み 197 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］9月 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］2倍 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］リターン — この語が本文に見つかりません</div>
+        <div>［固有名詞］Hacker — この語が本文に見つかりません</div>
+        <div>［固有名詞］News — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E7%A0%94%E7%A9%B6%E3%81%8B%E3%80%81%E8%A6%8F%E6%A8%A1%E3%81%8B%E3%80%82Microsoft%E3%81%A7%E8%B7%AF%E7%B7%9A%E3%81%8C%E5%89%B2%E3%82%8C%E3%81%9F%E3%80%82%0A%E7%B4%8450%E4%BA%BA%E3%81%AE%E7%A0%94%E7%A9%B6%E7%B5%84%E7%B9%94%E3%80%8CAI%20Frontiers%E3%80%8D%E3%81%8C9%E6%9C%88%E4%B8%8A%E6%97%AC%E3%81%ABMicrosoft%20AI%E3%81%B8%E7%B5%B1%E5%90%88%E3%80%82%E5%BD%93%E4%BA%8B%E8%80%85%E3%81%84%E3%82%8F%E3%81%8F%E3%80%81MAI%E3%81%AE%E6%96%B9%E9%87%9D%E3%81%AF%E8%A6%8F%E6%A8%A1%E3%81%AE%E6%8B%A1%E5%A4%A7%E3%81%A7%E3%80%8C%E7%A0%94%E7%A9%B6%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%80%8D%E3%80%82%0A%23AI%20%23Microsoft%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20Hacker%20News%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xqh8hk/crowdv1_the_collaborative_llm/" target="_blank" rel="noopener">データセンターなしで1B LLMを有志が共同学習</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Crowd-v1 - The collaborative LLM</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">データセンターなしで、LLMは作れるのか。
+有志のCrowdGPTが、10億パラメータのCrowd-v1を0ドルで共同学習中。参加者85人で1週間に130億トークンを学習。目標はQwen3-0.6B以上。
+#生成AI #LLM
+（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 201 / 280（見た目 129字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］10億 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］130億 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］データセンター — この語が本文に見つかりません</div>
+        <div>［固有名詞］パラメータ — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］オープンソース — この語が本文に見つかりません</div>
+        <div>［固有名詞］ソースコード — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%AA%E3%81%97%E3%81%A7%E3%80%81LLM%E3%81%AF%E4%BD%9C%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B%E3%80%82%0A%E6%9C%89%E5%BF%97%E3%81%AECrowdGPT%E3%81%8C%E3%80%8110%E5%84%84%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%81%AECrowd-v1%E3%82%920%E3%83%89%E3%83%AB%E3%81%A7%E5%85%B1%E5%90%8C%E5%AD%A6%E7%BF%92%E4%B8%AD%E3%80%82%E5%8F%82%E5%8A%A0%E8%80%8585%E4%BA%BA%E3%81%A71%E9%80%B1%E9%96%93%E3%81%AB130%E5%84%84%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%AD%A6%E7%BF%92%E3%80%82%E7%9B%AE%E6%A8%99%E3%81%AFQwen3-0.6B%E4%BB%A5%E4%B8%8A%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23LLM%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-11-08.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">Anthropicでは、この1年で「過去約2年分」の進歩が起きていた。
+外部機関の社内調査から、個人GPTを集めた共同学習まで。AI開発の「速さ」と「作り方」をめぐる4本です。
+
+1. METRによると、加速は学習に使う計算資源を増やしただけでは説明できず、10月時点では大半がAIによるもの。いまはAIが研究者を手助けする形が中心だが、完全に自律した貢献が増える兆しもあるという。報告書の一部はAnthropic側が黒塗りにしている。(The Verge)
+
+2. Stamos氏はCognitionの最高セキュリティ責任者で、スタンフォード大学の講師も務める。ロシアや北朝鮮のような国家主体を含む攻撃者が、AIで脆弱性の発見と悪用を同時に進めていると話す。長い目で見れば悲観していないが、新しい時代に適応するまでは「暗黒時代」が続くとみている。(The Verge)
+
+3. AI Frontiersは、エージェントを連携させる基盤Autogenや、PCを操作するエージェントFaraを手がけた組織。当事者は、Full Bandwidth Transformerの変種が2倍のサイズのモデルに匹敵しうるというBytedanceの実験を挙げ、「研究のリターンは現実的で大きい」と反論している。(Hacker News)
+
+4. まずは1Bモデルで概念実証を行い、参加者が集まれば総7B・稼働1BのMoE（複数の専門家モデルを切り替える構造）や30B規模に広げる構想。完全に非営利のオープンソースで、ソースコードはGitHubで誰でも確認できる。(r/LocalLLaMA)
+
+AIは研究も攻撃も加速させていて、モデルの作り方をめぐる路線の違いもはっきり見えた1日でした。
+毎朝4本、AIニュースの要点をまとめています。見逃したくない方はフォロー、あとで読み返すなら保存をどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ArtificialIntelligence #TechNews #MachineLearning #機械学習 #LLM #大規模言語モデル #AI活用 #Claude #Anthropic #METR #サイバーセキュリティ #Cybersecurity #Cursor #Microsoft #MicrosoftResearch #オープンソース #LocalLLaMA</pre>
+  <div class="count">1012字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 64.9</span>
+      <span class="tag">興味度 92</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">METR調査、AnthropicはAIで開発速度2倍に</div>
+    <div style="color:var(--muted);font-size:.9rem">AIがAI開発そのものを加速させていることを、外部機関が社内を11週間調べて示した数少ない証拠です。一方で報告書の一部は黒塗りにされており、最先端開発の透明性という課題も残っています。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 49.9</span>
+      <span class="tag">興味度 75</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Stamos氏「AIでセキュリティは暗黒時代に」</div>
+    <div style="color:var(--muted);font-size:.9rem">AIによって脆弱性の発見と悪用が同時に速まり、攻撃が連鎖する状態が続いていると、第一線の専門家が語っています。AI開発ツールそのものが攻撃の経路になっている点は、開発者にも身近なリスクです。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 45.0</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">MSR「AI Frontiers」終焉、当事者が内幕</div>
+    <div style="color:var(--muted);font-size:.9rem">大手AI組織の中でも「研究」と「規模の拡大」のどちらを優先するかで方針が割れていることが、当事者の言葉で見えてきます。研究によって学習・推論コストを半減できる可能性があるという主張は、業界の投資判断を考える材料になります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 16.9</span>
+      <span class="tag">興味度 65</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">データセンターなしで1B LLMを有志が共同学習</div>
+    <div style="color:var(--muted);font-size:.9rem">大手AI企業に頼らず、個人の余っているGPUを集めてモデルを学習させるという試みです。実現すればオープンなモデルの作り方の選択肢が広がります。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
