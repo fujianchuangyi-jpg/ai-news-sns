@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-11-12 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-11-12　生成 11/13 22:52</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">ツール</span>
+      <span class="tag">物語型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2611/12/2000003126/" target="_blank" rel="noopener">AWS Emulator無償公開、全コードをAIが記述</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Amazon、AWSのAPIを手元で再現する「AWS Emulator」を無償公開　コードはすべてAIエージェントが記述</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">始まりは、週末の実験だった。
+AWSのAPIを手元で再現する「AWS Emulator」が無償公開。コードはすべてAIエージェントが書き、人間はレビューもしていない。数百のエージェントが1日数千件の問題を修正している。
+#AI #AWS（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 226 / 280（見た目 133字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%A7%8B%E3%81%BE%E3%82%8A%E3%81%AF%E3%80%81%E9%80%B1%E6%9C%AB%E3%81%AE%E5%AE%9F%E9%A8%93%E3%81%A0%E3%81%A3%E3%81%9F%E3%80%82%0AAWS%E3%81%AEAPI%E3%82%92%E6%89%8B%E5%85%83%E3%81%A7%E5%86%8D%E7%8F%BE%E3%81%99%E3%82%8B%E3%80%8CAWS%20Emulator%E3%80%8D%E3%81%8C%E7%84%A1%E5%84%9F%E5%85%AC%E9%96%8B%E3%80%82%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AF%E3%81%99%E3%81%B9%E3%81%A6AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%8C%E6%9B%B8%E3%81%8D%E3%80%81%E4%BA%BA%E9%96%93%E3%81%AF%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%82%82%E3%81%97%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%80%82%E6%95%B0%E7%99%BE%E3%81%AE%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%8C1%E6%97%A5%E6%95%B0%E5%8D%83%E4%BB%B6%E3%81%AE%E5%95%8F%E9%A1%8C%E3%82%92%E4%BF%AE%E6%AD%A3%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%80%82%0A%23AI%20%23AWS%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">ITmedia AI+</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.itmedia.co.jp/news/article/2611/12/2000003127/" target="_blank" rel="noopener">ユナイテッド航空、外部AIエージェントの予約禁止</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: ユナイテッド航空、外部のAIアシスタントによる航空券の予約などを禁止へ　「チェックインには人間の確認が必要」</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">AIに航空券の予約を任せられないのはなぜか。
+ユナイテッド航空が、許可のない外部AIエージェントの利用を禁止すると発表。認証情報の共有による情報漏えいや、意図しない購入・マイル使用の恐れを理由に挙げた。
+#AI #AIエージェント（出典: ITmedia AI+）</pre>
+    <div class="count ">
+      重み 238 / 280（見た目 130字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AB%E8%88%AA%E7%A9%BA%E5%88%B8%E3%81%AE%E4%BA%88%E7%B4%84%E3%82%92%E4%BB%BB%E3%81%9B%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%AF%E3%81%AA%E3%81%9C%E3%81%8B%E3%80%82%0A%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E8%88%AA%E7%A9%BA%E3%81%8C%E3%80%81%E8%A8%B1%E5%8F%AF%E3%81%AE%E3%81%AA%E3%81%84%E5%A4%96%E9%83%A8AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E5%88%A9%E7%94%A8%E3%82%92%E7%A6%81%E6%AD%A2%E3%81%99%E3%82%8B%E3%81%A8%E7%99%BA%E8%A1%A8%E3%80%82%E8%AA%8D%E8%A8%BC%E6%83%85%E5%A0%B1%E3%81%AE%E5%85%B1%E6%9C%89%E3%81%AB%E3%82%88%E3%82%8B%E6%83%85%E5%A0%B1%E6%BC%8F%E3%81%88%E3%81%84%E3%82%84%E3%80%81%E6%84%8F%E5%9B%B3%E3%81%97%E3%81%AA%E3%81%84%E8%B3%BC%E5%85%A5%E3%83%BB%E3%83%9E%E3%82%A4%E3%83%AB%E4%BD%BF%E7%94%A8%E3%81%AE%E6%81%90%E3%82%8C%E3%82%92%E7%90%86%E7%94%B1%E3%81%AB%E6%8C%99%E3%81%92%E3%81%9F%E3%80%82%0A%23AI%20%23AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%EF%BC%88%E5%87%BA%E5%85%B8%3A%20ITmedia%20AI%2B%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">対比型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/1031623/united-unauthorized-ai-agents" target="_blank" rel="noopener">United航空、AIエージェントの航空券予約を拒否</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: United won’t let your AI agent book your flight</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">便を見せるのは可、予約の完了は不可。
+ユナイテッド航空はAIエージェントによる航空券購入を認めない方針。Scott Kirby CEOは「正直、新たな仲介者は作りたくない」と発言。将来の再検討にも含みを残した。
+#AI #ユナイテッド航空（出典: The Verge）</pre>
+    <div class="count ">
+      重み 233 / 280（見た目 132字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］ユナイテッド — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］ブロック — この語が本文に見つかりません</div>
+        <div>［固有名詞］Verge — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E4%BE%BF%E3%82%92%E8%A6%8B%E3%81%9B%E3%82%8B%E3%81%AE%E3%81%AF%E5%8F%AF%E3%80%81%E4%BA%88%E7%B4%84%E3%81%AE%E5%AE%8C%E4%BA%86%E3%81%AF%E4%B8%8D%E5%8F%AF%E3%80%82%0A%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E8%88%AA%E7%A9%BA%E3%81%AFAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AB%E3%82%88%E3%82%8B%E8%88%AA%E7%A9%BA%E5%88%B8%E8%B3%BC%E5%85%A5%E3%82%92%E8%AA%8D%E3%82%81%E3%81%AA%E3%81%84%E6%96%B9%E9%87%9D%E3%80%82Scott%20Kirby%20CEO%E3%81%AF%E3%80%8C%E6%AD%A3%E7%9B%B4%E3%80%81%E6%96%B0%E3%81%9F%E3%81%AA%E4%BB%B2%E4%BB%8B%E8%80%85%E3%81%AF%E4%BD%9C%E3%82%8A%E3%81%9F%E3%81%8F%E3%81%AA%E3%81%84%E3%80%8D%E3%81%A8%E7%99%BA%E8%A8%80%E3%80%82%E5%B0%86%E6%9D%A5%E3%81%AE%E5%86%8D%E6%A4%9C%E8%A8%8E%E3%81%AB%E3%82%82%E5%90%AB%E3%81%BF%E3%82%92%E6%AE%8B%E3%81%97%E3%81%9F%E3%80%82%0A%23AI%20%23%E3%83%A6%E3%83%8A%E3%82%A4%E3%83%86%E3%83%83%E3%83%89%E8%88%AA%E7%A9%BA%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">CNET Japan</span>
+    </div>
+    <div class="headline">
+      <a href="https://japan.cnet.com/article/35254781/" target="_blank" rel="noopener">AI偽情報「見抜ける」自信は3割に低下</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AI生成の偽情報、見抜ける？　「自信あり」は約3割に低下--ドコモ調査</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIの偽文章を「見抜ける自信あり」は35.4％→27.6％に低下。
+ドコモ調査。画像は31.5％、動画は30.8％。生成AIを「詳しく知っている」人でも文章で15.7ポイント減。測ったのは自信で、見分ける能力ではない。
+#生成AI #偽情報（出典: CNET Japan）</pre>
+    <div class="count ">
+      重み 229 / 280（見た目 134字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AE%E5%81%BD%E6%96%87%E7%AB%A0%E3%82%92%E3%80%8C%E8%A6%8B%E6%8A%9C%E3%81%91%E3%82%8B%E8%87%AA%E4%BF%A1%E3%81%82%E3%82%8A%E3%80%8D%E3%81%AF35.4%EF%BC%85%E2%86%9227.6%EF%BC%85%E3%81%AB%E4%BD%8E%E4%B8%8B%E3%80%82%0A%E3%83%89%E3%82%B3%E3%83%A2%E8%AA%BF%E6%9F%BB%E3%80%82%E7%94%BB%E5%83%8F%E3%81%AF31.5%EF%BC%85%E3%80%81%E5%8B%95%E7%94%BB%E3%81%AF30.8%EF%BC%85%E3%80%82%E7%94%9F%E6%88%90AI%E3%82%92%E3%80%8C%E8%A9%B3%E3%81%97%E3%81%8F%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%80%8D%E4%BA%BA%E3%81%A7%E3%82%82%E6%96%87%E7%AB%A0%E3%81%A715.7%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E6%B8%9B%E3%80%82%E6%B8%AC%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF%E8%87%AA%E4%BF%A1%E3%81%A7%E3%80%81%E8%A6%8B%E5%88%86%E3%81%91%E3%82%8B%E8%83%BD%E5%8A%9B%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23%E5%81%BD%E6%83%85%E5%A0%B1%EF%BC%88%E5%87%BA%E5%85%B8%3A%20CNET%20Japan%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-11-12.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">人間はコードを1行も書かず、レビューもしない。AWSの新ツールは数百のAIエージェントが作りました。
+一方で、AIエージェントを締め出す企業も出ています。
+
+1. ① AWS Emulatorは、AWSのAPIモデル438件を基に作られたローカル用の再現ツール。AWSアカウント不要、追加料金なしでテストに使えます。最初に作った「Amazon SQS」は約15分で完成したとのこと。本番環境やセキュリティのテストでの利用は想定されていません。(ITmedia AI+)
+
+2. ② ユナイテッド航空は、AIによる自動操作が米連邦航空局（FAA）や米運輸省（DOT）の規制に違反する恐れがあると説明。チェックインでは、手荷物に爆発物などが入っていないことを人間が確認する必要があるとしています。米国ではAmazonが9月20日からMetaのAIエージェント「Muse」による買い物をブロックし、10月には大手銀行も制限に動きました。(ITmedia AI+)
+
+3. ③ The Wall Street Journalの報道によると、AIエージェントで航空券を予約しようとする人は、まだ多くないそうです。エージェントはUnitedの便を表示できますが、取引の完了はできません。eBayもエージェントによるサイト閲覧をブロックしたとみられています。(The Verge)
+
+4. ④ 15〜29歳の男性では、文章の偽情報を見抜く自信がある人が58.2％から41.8％に低下。一方、AIを信じすぎて失敗した経験がある人は自信が高い傾向で、画像では47.3％と、経験がない人の34.7％を上回りました。2025年と2026年で回答者は異なります。(CNET Japan)
+
+AIエージェントに開発を任せる企業と、外部のAIエージェントの利用を制限する企業。両方のニュースが並んだ日でした。
+毎朝4本、AIニュースを要点だけにまとめています。あとで読み返せるよう保存を、明日の4本も受け取りたい方はフォローをどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ITニュース #AIエージェント #AI活用 #AWS #AWSEmulator #Amazon #Kiro #ユナイテッド航空 #UnitedAirlines #Muse #偽情報 #フェイクニュース #ドコモ #モバイル社会研究所 #ソフトウェア開発 #エンジニア #ArtificialIntelligence #GenerativeAI #AIAgent #TechNews</pre>
+  <div class="count">1079字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 49.9</span>
+      <span class="tag">興味度 88</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AWS Emulator無償公開、全コードをAIが記述</div>
+    <div style="color:var(--muted);font-size:.9rem">数百のAIエージェントがテスト作成・不具合報告・修正を分担し、人間がコードを書かずレビューもしない開発体制が大手で実運用されている。ソフトウェア開発の進め方が変わる具体例になる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 52.9</span>
+      <span class="tag">興味度 78</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">ユナイテッド航空、外部AIエージェントの予約禁止</div>
+    <div style="color:var(--muted);font-size:.9rem">Amazonや大手銀行に続き航空会社もパーソナルAIエージェントを締め出し、「AIに代わりに手続きさせる」未来に企業側の壁が立ちはだかっている。認証情報をAIに渡すリスクと責任の所在が焦点になる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 52.9</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">United航空、AIエージェントの航空券予約を拒否</div>
+    <div style="color:var(--muted);font-size:.9rem">企業がAIエージェントを拒む理由に、安全面だけでなく顧客接点を奪われたくない本音が見える。パーソナルAIアシスタントの実用性を左右する動きになる。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 36.1</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">AI偽情報「見抜ける」自信は3割に低下</div>
+    <div style="color:var(--muted);font-size:.9rem">生成AIに詳しい人でも自信が10ポイント以上下がっており、偽情報の精巧化を利用者自身が実感していることがうかがえる。測定したのは自信であって、実際に見分ける能力ではない点に注意が必要。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
