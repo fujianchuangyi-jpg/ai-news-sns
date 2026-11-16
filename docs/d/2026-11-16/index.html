@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-11-16 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-11-16　生成 11/16 20:32</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">研究</span>
+      <span class="tag">断言型</span>
+      <span class="tag">OpenAI</span>
+    </div>
+    <div class="headline">
+      <a href="https://openai.com/index/step-toward-defining-the-standard-model" target="_blank" rel="noopener">GPT-6 Astra、標準模型の格子定義の証明を主導</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: A step toward defining the Standard Model on a lattice</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">50年以上未解決の問題に、AIが証明で挑んだ。
+物理学者クレイグ氏がGPT-6 Astraと、標準模型を格子（時空の網目）上で定義する候補案を10月のプレプリントで提案。
+詳細な証明づくりはAstraが主導した。
+#AI #GPT6
+（出典: OpenAI）</pre>
+    <div class="count ">
+      重み 215 / 280（見た目 125字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［数値］50年 — この数値の根拠が本文に見つかりません</div>
+        <div>［数値］10月 — この数値の根拠が本文に見つかりません</div>
+        <div>［固有名詞］クレイグ — この語が本文に見つかりません</div>
+        <div>［固有名詞］プレプリント — この語が本文に見つかりません</div>
+        <div>［固有名詞］ネイサニエル — この語が本文に見つかりません</div>
+        <div>［固有名詞］サンタバーバラ — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=50%E5%B9%B4%E4%BB%A5%E4%B8%8A%E6%9C%AA%E8%A7%A3%E6%B1%BA%E3%81%AE%E5%95%8F%E9%A1%8C%E3%81%AB%E3%80%81AI%E3%81%8C%E8%A8%BC%E6%98%8E%E3%81%A7%E6%8C%91%E3%82%93%E3%81%A0%E3%80%82%0A%E7%89%A9%E7%90%86%E5%AD%A6%E8%80%85%E3%82%AF%E3%83%AC%E3%82%A4%E3%82%B0%E6%B0%8F%E3%81%8CGPT-6%20Astra%E3%81%A8%E3%80%81%E6%A8%99%E6%BA%96%E6%A8%A1%E5%9E%8B%E3%82%92%E6%A0%BC%E5%AD%90%EF%BC%88%E6%99%82%E7%A9%BA%E3%81%AE%E7%B6%B2%E7%9B%AE%EF%BC%89%E4%B8%8A%E3%81%A7%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B%E5%80%99%E8%A3%9C%E6%A1%88%E3%82%9210%E6%9C%88%E3%81%AE%E3%83%97%E3%83%AC%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88%E3%81%A7%E6%8F%90%E6%A1%88%E3%80%82%0A%E8%A9%B3%E7%B4%B0%E3%81%AA%E8%A8%BC%E6%98%8E%E3%81%A5%E3%81%8F%E3%82%8A%E3%81%AFAstra%E3%81%8C%E4%B8%BB%E5%B0%8E%E3%81%97%E3%81%9F%E3%80%82%0A%23AI%20%23GPT6%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20OpenAI%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">ツール</span>
+      <span class="tag">物語型</span>
+      <span class="tag">CNET Japan</span>
+    </div>
+    <div class="headline">
+      <a href="https://japan.cnet.com/article/35254571/" target="_blank" rel="noopener">非エンジニアがClaude Codeで13日でアプリ公開</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: コードはすべてAI--非プログラマーの筆者がiPhoneアプリをApp Storeで公開するまでの13日間</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">発売日の夜、非プログラマーの筆者はAIに相談した。
+コードはすべてClaude Codeが書き、構想から約73時間で審査提出、13日でApp Store公開。
+テストは300件余り。実機確認と判断は人間。
+#生成AI #ClaudeCode
+（出典: CNET Japan）</pre>
+    <div class="count ">
+      重み 214 / 280（見た目 133字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］プログラマー — この語が本文に見つかりません</div>
+        <div>［固有名詞］CNET — この語が本文に見つかりません</div>
+        <div>［固有名詞］Japan — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E7%99%BA%E5%A3%B2%E6%97%A5%E3%81%AE%E5%A4%9C%E3%80%81%E9%9D%9E%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9E%E3%83%BC%E3%81%AE%E7%AD%86%E8%80%85%E3%81%AFAI%E3%81%AB%E7%9B%B8%E8%AB%87%E3%81%97%E3%81%9F%E3%80%82%0A%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AF%E3%81%99%E3%81%B9%E3%81%A6Claude%20Code%E3%81%8C%E6%9B%B8%E3%81%8D%E3%80%81%E6%A7%8B%E6%83%B3%E3%81%8B%E3%82%89%E7%B4%8473%E6%99%82%E9%96%93%E3%81%A7%E5%AF%A9%E6%9F%BB%E6%8F%90%E5%87%BA%E3%80%8113%E6%97%A5%E3%81%A7App%20Store%E5%85%AC%E9%96%8B%E3%80%82%0A%E3%83%86%E3%82%B9%E3%83%88%E3%81%AF300%E4%BB%B6%E4%BD%99%E3%82%8A%E3%80%82%E5%AE%9F%E6%A9%9F%E7%A2%BA%E8%AA%8D%E3%81%A8%E5%88%A4%E6%96%AD%E3%81%AF%E4%BA%BA%E9%96%93%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23ClaudeCode%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20CNET%20Japan%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">新モデル</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xww5o2/higurashiaiharu4b_hugging_face/" target="_blank" rel="noopener">聞きながら話す全二重音声対話モデルHaru-4B</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: higurashi-ai/Haru-4B · Hugging Face</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">電話のように聞きながら話すAI、仕組みは？
+研究用に公開されたHaru-4Bは、133msごとに相手の音声1フレームを受け取り、自分の音声と文字を1フレーム出す。
+日本語を含む9言語に対応し、声は短い音声クリップで指定。
+#AI #音声AI
+（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 236 / 280（見た目 135字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］フレーム — この語が本文に見つかりません</div>
+        <div>［固有名詞］クリップ — この語が本文に見つかりません</div>
+        <div>［固有名詞］ベースモデル — この語が本文に見つかりません</div>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］ステップ — この語が本文に見つかりません</div>
+        <div>［固有名詞］キャラクター — この語が本文に見つかりません</div>
+        <div>［固有名詞］テキスト — この語が本文に見つかりません</div>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E9%9B%BB%E8%A9%B1%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E8%81%9E%E3%81%8D%E3%81%AA%E3%81%8C%E3%82%89%E8%A9%B1%E3%81%99AI%E3%80%81%E4%BB%95%E7%B5%84%E3%81%BF%E3%81%AF%EF%BC%9F%0A%E7%A0%94%E7%A9%B6%E7%94%A8%E3%81%AB%E5%85%AC%E9%96%8B%E3%81%95%E3%82%8C%E3%81%9FHaru-4B%E3%81%AF%E3%80%81133ms%E3%81%94%E3%81%A8%E3%81%AB%E7%9B%B8%E6%89%8B%E3%81%AE%E9%9F%B3%E5%A3%B01%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%82%92%E5%8F%97%E3%81%91%E5%8F%96%E3%82%8A%E3%80%81%E8%87%AA%E5%88%86%E3%81%AE%E9%9F%B3%E5%A3%B0%E3%81%A8%E6%96%87%E5%AD%97%E3%82%921%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E5%87%BA%E3%81%99%E3%80%82%0A%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%82%92%E5%90%AB%E3%82%809%E8%A8%80%E8%AA%9E%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%97%E3%80%81%E5%A3%B0%E3%81%AF%E7%9F%AD%E3%81%84%E9%9F%B3%E5%A3%B0%E3%82%AF%E3%83%AA%E3%83%83%E3%83%97%E3%81%A7%E6%8C%87%E5%AE%9A%E3%80%82%0A%23AI%20%23%E9%9F%B3%E5%A3%B0AI%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">ツール</span>
+      <span class="tag">数字型</span>
+      <span class="tag">r/LocalLLaMA</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.reddit.com/r/LocalLLaMA/comments/1xx1cu9/basalt_040_more_models_still_as_fast_qwen_27b_up/" target="_blank" rel="noopener">RTX 5090でQwen 27Bが毎秒776トークン</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Basalt 0.4.0: More models, still as fast - Qwen 27B up to 770 tok/s on a 5090</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">RTX 5090でQwen 27Bが毎秒最大776トークン。
+Basalt 0.4.0が初の密モデルに対応。776は構造化出力時で、会話は262。
+NVFP4量子化でもBF16版とのtop-1一致率92.8%。
+#AI #Qwen
+（出典: r/LocalLLaMA）</pre>
+    <div class="count ">
+      重み 185 / 280（見た目 130字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］トークン — この語が本文に見つかりません</div>
+        <div>［固有名詞］コンテキスト — この語が本文に見つかりません</div>
+        <div>［固有名詞］プリフィル — この語が本文に見つかりません</div>
+        <div>［固有名詞］RTX — この語が本文に見つかりません</div>
+        <div>［固有名詞］LocalLLaMA — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=RTX%205090%E3%81%A7Qwen%2027B%E3%81%8C%E6%AF%8E%E7%A7%92%E6%9C%80%E5%A4%A7776%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%80%82%0ABasalt%200.4.0%E3%81%8C%E5%88%9D%E3%81%AE%E5%AF%86%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%80%82776%E3%81%AF%E6%A7%8B%E9%80%A0%E5%8C%96%E5%87%BA%E5%8A%9B%E6%99%82%E3%81%A7%E3%80%81%E4%BC%9A%E8%A9%B1%E3%81%AF262%E3%80%82%0ANVFP4%E9%87%8F%E5%AD%90%E5%8C%96%E3%81%A7%E3%82%82BF16%E7%89%88%E3%81%A8%E3%81%AEtop-1%E4%B8%80%E8%87%B4%E7%8E%8792.8%25%E3%80%82%0A%23AI%20%23Qwen%0A%EF%BC%88%E5%87%BA%E5%85%B8%3A%20r/LocalLLaMA%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-11-16.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">50年以上解けなかった物理の土台に、AIが証明づくりで挑んだ。
+非エンジニアのアプリ公開、聞きながら話す音声AI、GPU1枚での高速推論まで、今日の4本です。
+
+1. 物理学者ネイサニエル・クレイグ氏（UCサンタバーバラ）が、標準模型を時空の格子上で定義する候補案を提示。相互作用を小さな補正として扱わない「非摂動的」な定義は、50年以上の課題だった。氏の戦略をAstraが構成に落とし込み、詳細な証明を主導した。(OpenAI)
+
+2. 作ったのは、月の区切りにとらわれず週を縦につなげる「つらなりカレンダー」。Claude CodeのRemote Controlを使い、ベッドや風呂からスマホで指示を出すこともあった。Appleの審査では追加情報を求められ、説明画面の指摘も受けたが、修正して承認された。(CNET Japan)
+
+3. Haru-4Bは研究向けに公開された事前学習済みのベースモデル。音声を離散トークンにせず、1フレーム64次元の連続値として、小さなMLPヘッドが1ステップで生成する。キャラクターはテキストのカードで、声は短い参考音声で設定する。(r/LocalLLaMA)
+
+4. Basalt 0.4.0はQwen 3.8 27B NVFP4に対応。4kコンテキストでのプリフィルは毎秒12,000トークン、文章生成は毎秒194トークン。最大262Kのコンテキストで、ツール呼び出しや画像・動画も扱える。(r/LocalLLaMA)
+
+研究からアプリ開発、手元のGPUまで、AIが実際に手を動かした記録が揃った一日でした。
+毎朝4本、AIニュースを見出しの先の中身まで要約しています。見逃さないようフォローと保存をどうぞ。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ChatGPT #Claude #ClaudeCode #AI活用 #LLM #ローカルLLM #OpenAI #GPT6Astra #標準模型 #物理学 #バイブコーディング #アプリ開発 #iPhoneDuo #音声AI #Haru4B #Qwen #Basalt</pre>
+  <div class="count">894字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 54.7</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">GPT-6 Astra、標準模型の格子定義の証明を主導</div>
+    <div style="color:var(--muted);font-size:.9rem">AIが補助役ではなく、理論物理の証明づくりを主導した事例です。基礎科学の研究の進め方が変わりつつあることを示しています。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 30.1</span>
+      <span class="tag">興味度 72</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">非エンジニアがClaude Codeで13日でアプリ公開</div>
+    <div style="color:var(--muted);font-size:.9rem">コードを書かない人でもAIでアプリを公開できる一方、判断と責任は人間に残ることが具体的に分かります。バイブコーディングの実態を知るのに役立つ記録です。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 19.9</span>
+      <span class="tag">興味度 62</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">聞きながら話す全二重音声対話モデルHaru-4B</div>
+    <div style="color:var(--muted);font-size:.9rem">電話のように相手の話を聞きながら同時に話せるオープンモデルで、日本語にも対応しています。自然な音声AIの研究が身近になります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 22.9</span>
+      <span class="tag">興味度 58</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">RTX 5090でQwen 27Bが毎秒776トークン</div>
+    <div style="color:var(--muted);font-size:.9rem">個人のGPU1枚で、中規模モデルが実用的な速度と精度で動くことを示しています。ローカルLLMの選択肢が広がります。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
