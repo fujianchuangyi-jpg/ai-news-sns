@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>2026-11-21 の下書き — AIニュース</title>
+<style>
+  :root {
+    --bg: #0e1116; --surface: #161b22; --line: #262d38;
+    --text: #f5f7fa; --muted: #8b95a5; --accent: #3ddc97;
+    --warn: #f4b860; --danger: #e86a6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.7; padding-bottom: 4rem;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1rem; }
+  header { padding: 1.5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  .date { color: var(--muted); font-size: .9rem; }
+  h2 {
+    font-size: 1.15rem; margin: 2.5rem 0 1rem; padding-left: .6rem;
+    border-left: 4px solid var(--accent);
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: .75rem; }
+  .tag {
+    font-size: .75rem; padding: .15rem .6rem; border-radius: 999px;
+    background: #23303d; color: var(--muted);
+  }
+  .tag.famous { background: #1d3b30; color: var(--accent); }
+  .tag.niche  { background: #3a3020; color: var(--warn); }
+  .headline { font-weight: 700; font-size: 1rem; margin-bottom: .5rem; }
+  .headline a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  img.card-img {
+    width: 100%; border-radius: 8px; display: block; margin: .75rem 0;
+    border: 1px solid var(--line);
+  }
+  pre.body {
+    white-space: pre-wrap; word-break: break-word; background: #0b0e13;
+    border: 1px solid var(--line); border-radius: 8px; padding: .85rem;
+    font-family: inherit; font-size: .95rem; margin: .5rem 0;
+  }
+  .count { font-size: .8rem; color: var(--muted); }
+  .count.over { color: var(--danger); font-weight: 700; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+  .btn {
+    flex: 1 1 auto; min-width: 8rem; text-align: center; cursor: pointer;
+    padding: .7rem .9rem; border-radius: 8px; border: 1px solid var(--line);
+    background: #1f2733; color: var(--text); font-size: .9rem;
+    text-decoration: none; font-family: inherit;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #0b0e13; border-color: var(--accent); font-weight: 700; }
+  .btn.copied { background: #1d3b30; border-color: var(--accent); color: var(--accent); }
+  .warn {
+    background: #33260f; border: 1px solid var(--warn); color: #ffd89b;
+    border-radius: 8px; padding: .75rem; margin: .75rem 0; font-size: .88rem;
+  }
+  .warn b { color: var(--warn); }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .75rem 0; }
+  .thumbs a { display: block; }
+  .thumbs img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .thumbs .n { font-size: .7rem; color: var(--muted); text-align: center; }
+  footer { color: var(--muted); font-size: .8rem; margin-top: 3rem; text-align: center; }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#f7f8fa; --surface:#fff; --line:#e2e6ec; --text:#111820; --muted:#5d6b7d; }
+    pre.body { background: #f0f2f5; }
+    .btn { background: #eef1f5; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>今日のAIニュース 下書き</h1>
+  <div class="date">2026-11-21　生成 11/21 10:22</div>
+</header>
+
+
+<div class="warn">
+  <b>⚠ ファクト照合で要確認の項目があります。</b>
+  各ニュースの警告を確認してから投稿してください。
+</div>
+
+<h2>X（4投稿）</h2>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">対比型</span>
+      <span class="tag">TechCrunch</span>
+    </div>
+    <div class="headline">
+      <a href="https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too/" target="_blank" rel="noopener">Claudeでリーマン予想を証明か、人間の証明も同時に</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: AI claimed a solution to the 167-year-old Riemann hypothesis — and a human did, too</div>
+    </div>
+
+<img class="card-img" src="x_01.jpg" alt="">
+    <pre class="body" id="x-1">AIの証明と、AIなしの証明。リーマン予想で相次いで出た。
+Alpöge氏はClaudeと見つけたLean証明を公開。スタンフォードではMasullo氏が12年かけた「AIなし」の証明草稿も出た。
+#AI #Claude（出典: TechCrunch）</pre>
+    <div class="count ">
+      重み 196 / 280（見た目 124字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］リーマン — この語が本文に見つかりません</div>
+        <div>［固有名詞］スタンフォード — この語が本文に見つかりません</div>
+        <div>［固有名詞］ポスドク — この語が本文に見つかりません</div>
+        <div>［固有名詞］TechCrunch — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-1">本文をコピー</button>
+<a class="btn" href="x_01.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%AE%E8%A8%BC%E6%98%8E%E3%81%A8%E3%80%81AI%E3%81%AA%E3%81%97%E3%81%AE%E8%A8%BC%E6%98%8E%E3%80%82%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E4%BA%88%E6%83%B3%E3%81%A7%E7%9B%B8%E6%AC%A1%E3%81%84%E3%81%A7%E5%87%BA%E3%81%9F%E3%80%82%0AAlp%C3%B6ge%E6%B0%8F%E3%81%AFClaude%E3%81%A8%E8%A6%8B%E3%81%A4%E3%81%91%E3%81%9FLean%E8%A8%BC%E6%98%8E%E3%82%92%E5%85%AC%E9%96%8B%E3%80%82%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AFMasullo%E6%B0%8F%E3%81%8C12%E5%B9%B4%E3%81%8B%E3%81%91%E3%81%9F%E3%80%8CAI%E3%81%AA%E3%81%97%E3%80%8D%E3%81%AE%E8%A8%BC%E6%98%8E%E8%8D%89%E7%A8%BF%E3%82%82%E5%87%BA%E3%81%9F%E3%80%82%0A%23AI%20%23Claude%EF%BC%88%E5%87%BA%E5%85%B8%3A%20TechCrunch%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">研究</span>
+      <span class="tag">数字型</span>
+      <span class="tag">CNET Japan</span>
+    </div>
+    <div class="headline">
+      <a href="https://japan.cnet.com/article/35255245/" target="_blank" rel="noopener">Claudeでリーマン予想を証明か、Lean検証を通過</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Claudeを使い「リーマン予想」を証明か　Anthropic数学者が発表　Lean検証も通過、数学界が精査へ</div>
+    </div>
+
+<img class="card-img" src="x_02.jpg" alt="">
+    <pre class="body" id="x-2">全17万5187モジュール、エラーゼロ。
+Claudeを使ったリーマン予想の証明を、MITのSutherland氏が検証。別の検証器nanodaでも通過。ただしクレイ数学研究所は11月21日時点で「未解決」のまま。
+#AI #リーマン予想（出典: CNET Japan）</pre>
+    <div class="count ">
+      重み 216 / 280（見た目 133字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］エラーゼロ — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-2">本文をコピー</button>
+<a class="btn" href="x_02.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=%E5%85%A817%E4%B8%875187%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%80%81%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%BC%E3%83%AD%E3%80%82%0AClaude%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E4%BA%88%E6%83%B3%E3%81%AE%E8%A8%BC%E6%98%8E%E3%82%92%E3%80%81MIT%E3%81%AESutherland%E6%B0%8F%E3%81%8C%E6%A4%9C%E8%A8%BC%E3%80%82%E5%88%A5%E3%81%AE%E6%A4%9C%E8%A8%BC%E5%99%A8nanoda%E3%81%A7%E3%82%82%E9%80%9A%E9%81%8E%E3%80%82%E3%81%9F%E3%81%A0%E3%81%97%E3%82%AF%E3%83%AC%E3%82%A4%E6%95%B0%E5%AD%A6%E7%A0%94%E7%A9%B6%E6%89%80%E3%81%AF11%E6%9C%8821%E6%97%A5%E6%99%82%E7%82%B9%E3%81%A7%E3%80%8C%E6%9C%AA%E8%A7%A3%E6%B1%BA%E3%80%8D%E3%81%AE%E3%81%BE%E3%81%BE%E3%80%82%0A%23AI%20%23%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%B3%E4%BA%88%E6%83%B3%EF%BC%88%E5%87%BA%E5%85%B8%3A%20CNET%20Japan%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">業界動向</span>
+      <span class="tag">疑問型</span>
+      <span class="tag">The Verge</span>
+    </div>
+    <div class="headline">
+      <a href="https://www.theverge.com/ai-artificial-intelligence/1038390/signal-blocking-ai-agent-screenshots-mobile-app" target="_blank" rel="noopener">Signal、AIの画面読み取り防止でスクショ制限</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: Signal is blocking Gemini and Siri AI from reading your screen</div>
+    </div>
+
+<img class="card-img" src="x_03.jpg" alt="">
+    <pre class="body" id="x-3">Signalがスクショを制限した、なぜか。
+iOS 27とAndroidで、SiriやGeminiなどOS組み込みAIに画面を読ませないため。macOSでは対策できず、OS各社に開発者向けの手段を求めた。
+#AI #Signal（出典: The Verge）</pre>
+    <div class="count ">
+      重み 194 / 280（見た目 127字）    </div>
+
+    <div class="warn">
+      <b>要確認:</b>
+        <div>［固有名詞］スクショ — この語が本文に見つかりません</div>
+        <div>［固有名詞］エージェント — この語が本文に見つかりません</div>
+        <div>［固有名詞］ファイルシステム — この語が本文に見つかりません</div>
+        <div>［固有名詞］アクセス — この語が本文に見つかりません</div>
+        <div>［固有名詞］Verge — この語が本文に見つかりません</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-3">本文をコピー</button>
+<a class="btn" href="x_03.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=Signal%E3%81%8C%E3%82%B9%E3%82%AF%E3%82%B7%E3%83%A7%E3%82%92%E5%88%B6%E9%99%90%E3%81%97%E3%81%9F%E3%80%81%E3%81%AA%E3%81%9C%E3%81%8B%E3%80%82%0AiOS%2027%E3%81%A8Android%E3%81%A7%E3%80%81Siri%E3%82%84Gemini%E3%81%AA%E3%81%A9OS%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BFAI%E3%81%AB%E7%94%BB%E9%9D%A2%E3%82%92%E8%AA%AD%E3%81%BE%E3%81%9B%E3%81%AA%E3%81%84%E3%81%9F%E3%82%81%E3%80%82macOS%E3%81%A7%E3%81%AF%E5%AF%BE%E7%AD%96%E3%81%A7%E3%81%8D%E3%81%9A%E3%80%81OS%E5%90%84%E7%A4%BE%E3%81%AB%E9%96%8B%E7%99%BA%E8%80%85%E5%90%91%E3%81%91%E3%81%AE%E6%89%8B%E6%AE%B5%E3%82%92%E6%B1%82%E3%82%81%E3%81%9F%E3%80%82%0A%23AI%20%23Signal%EF%BC%88%E5%87%BA%E5%85%B8%3A%20The%20Verge%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">事件</span>
+      <span class="tag">断言型</span>
+      <span class="tag">CNET Japan</span>
+    </div>
+    <div class="headline">
+      <a href="https://japan.cnet.com/article/35255231/" target="_blank" rel="noopener">メルカリ、Notion AI委託先から顧客情報流出か</a>
+      <div class="t" style="color:var(--muted);font-size:.82rem">原題: メルカリ、1522人分の顧客情報流出の恐れ　Notion AIの委託先に不正アクセスで</div>
+    </div>
+
+<img class="card-img" src="x_04.jpg" alt="">
+    <pre class="body" id="x-4">AIへの入力が、委託先から漏れた恐れ。
+Notion AIの処理委託先Fireworks AIが不正アクセスを受け、メルカリ顧客1522人分が対象。従業員の10月5〜24日の入力と回答の記録に含まれていた。
+#生成AI #NotionAI（出典: CNET Japan）</pre>
+    <div class="count ">
+      重み 211 / 280（見た目 133字）    </div>
+
+
+    <div class="actions">
+      <button class="btn primary" data-copy="x-4">本文をコピー</button>
+<a class="btn" href="x_04.jpg" download>画像を保存</a>      <a class="btn" href="https://x.com/intent/post?text=AI%E3%81%B8%E3%81%AE%E5%85%A5%E5%8A%9B%E3%81%8C%E3%80%81%E5%A7%94%E8%A8%97%E5%85%88%E3%81%8B%E3%82%89%E6%BC%8F%E3%82%8C%E3%81%9F%E6%81%90%E3%82%8C%E3%80%82%0ANotion%20AI%E3%81%AE%E5%87%A6%E7%90%86%E5%A7%94%E8%A8%97%E5%85%88Fireworks%20AI%E3%81%8C%E4%B8%8D%E6%AD%A3%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%82%92%E5%8F%97%E3%81%91%E3%80%81%E3%83%A1%E3%83%AB%E3%82%AB%E3%83%AA%E9%A1%A7%E5%AE%A21522%E4%BA%BA%E5%88%86%E3%81%8C%E5%AF%BE%E8%B1%A1%E3%80%82%E5%BE%93%E6%A5%AD%E5%93%A1%E3%81%AE10%E6%9C%885%E3%80%9C24%E6%97%A5%E3%81%AE%E5%85%A5%E5%8A%9B%E3%81%A8%E5%9B%9E%E7%AD%94%E3%81%AE%E8%A8%98%E9%8C%B2%E3%81%AB%E5%90%AB%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%81%9F%E3%80%82%0A%23%E7%94%9F%E6%88%90AI%20%23NotionAI%EF%BC%88%E5%87%BA%E5%85%B8%3A%20CNET%20Japan%EF%BC%89"
+         target="_blank" rel="noopener">Xの投稿画面を開く</a>
+    </div>
+  </div>
+
+<h2>Instagram（カルーセル 6枚）</h2>
+<div class="card">
+  <div class="thumbs">
+    <div>
+      <a href="ig_01_cover.jpg" download><img src="ig_01_cover.jpg" alt="1枚目"></a>
+      <div class="n">1. 表紙</div>
+    </div>
+    <div>
+      <a href="ig_02_news.jpg" download><img src="ig_02_news.jpg" alt="2枚目"></a>
+      <div class="n">2. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_03_news.jpg" download><img src="ig_03_news.jpg" alt="3枚目"></a>
+      <div class="n">3. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_04_news.jpg" download><img src="ig_04_news.jpg" alt="4枚目"></a>
+      <div class="n">4. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_05_news.jpg" download><img src="ig_05_news.jpg" alt="5枚目"></a>
+      <div class="n">5. ニュース</div>
+    </div>
+    <div>
+      <a href="ig_06_cta.jpg" download><img src="ig_06_cta.jpg" alt="6枚目"></a>
+      <div class="n">6. CTA</div>
+    </div>
+  </div>
+  <div class="actions">
+<a class="btn" href="instagram_2026-11-21.zip" download>6枚まとめてダウンロード</a>  </div>
+
+  <pre class="body" id="ig-caption">Claudeを使ったリーマン予想の証明、全17万5187モジュールが機械検証を通過。
+一方で、AIとデータの守り方をめぐるニュースも2本ありました。
+
+1. Anthropicの数学者Alpöge氏が、Claudeと試行錯誤しながら見つけたLean証明を公開。同じころスタンフォードでは、ポスドクのMasullo氏が12年かけた「AIなし」の一般リーマン予想の証明草稿を公開した。こちらはLeanで書かれておらず、正しいかどうかはまだ判断できない。(TechCrunch)
+
+2. Leanは、推論の正しさをコンピューターで確かめる仕組み。Alpöge氏によると、終盤でClaudeが重要な着想を示した。100万ドルの懸賞の審査対象になるには、掲載から2年以上たち、数学界で広く受け入れられる必要がある。(CNET Japan)
+
+3. スクショ制限は設定で解除できるが、Signalは「AIエージェントに内容が見える恐れがある」と警告。ファイルシステム経由のアクセスは防げず、対策は「不完全」だと認めている。昨年もMicrosoftのRecall対策で同じ手を打った。(The Verge)
+
+4. 対象の顧客1522人のうち、1061人は顧客識別番号のみ。ほかに取引先571人、採用応募者169人、派遣社員や退職者ら1534人の情報も含まれる。業務システムの認証情報はすべて無効化・再発行済みで、不正ログインは確認されていない。(CNET Japan)
+
+AIは難問を解く道具にもなれば、データの抜け道にもなる。今日はその両面が並びました。
+毎朝4本、AIニュースを要点だけまとめています。見返したい人は保存を、取りこぼしたくない人はフォローを。
+
+#AI #生成AI #人工知能 #テクノロジー #AIニュース #ArtificialIntelligence #TechNews #Claude #Anthropic #AI活用 #プライバシー #情報セキュリティ #Cybersecurity #リーマン予想 #RiemannHypothesis #数学 #Math #Lean #Signal #NotionAI #メルカリ #個人情報</pre>
+  <div class="count">923字（Instagram上限 2,200字）</div>
+  <div class="actions">
+    <button class="btn primary" data-copy="ig-caption">キャプションをコピー</button>
+  </div>
+</div>
+
+<h2>この日の選定理由</h2>
+<div class="card">
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 67.9</span>
+      <span class="tag">興味度 95</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Claudeでリーマン予想を証明か、人間の証明も同時に</div>
+    <div style="color:var(--muted);font-size:.9rem">167年来の難問で、AIを使った形式証明と人間だけによる証明がほぼ同時に出てきました。数学の進め方そのものの転換点になり得ます。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag famous">有名</span>
+      <span class="tag">知名度 63.1</span>
+      <span class="tag">興味度 90</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Claudeでリーマン予想を証明か、Lean検証を通過</div>
+    <div style="color:var(--muted);font-size:.9rem">AIを使った証明が機械検証を通過し、ミレニアム懸賞問題の解決に現実味が出てきました。ただし、数学界が正式に認めるまでには時間がかかります。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 52.9</span>
+      <span class="tag">興味度 80</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">Signal、AIの画面読み取り防止でスクショ制限</div>
+    <div style="color:var(--muted);font-size:.9rem">OSに組み込まれたAIエージェントが、アプリ側の暗号化やプライバシー保護を素通りできることが浮き彫りになりました。AIの利便性とプライバシーの衝突を象徴する動きです。</div>
+  </div>
+  <div style="margin-bottom:1rem">
+    <div class="meta">
+      <span class="tag niche">ニッチ</span>
+      <span class="tag">知名度 48.1</span>
+      <span class="tag">興味度 80</span>
+      <span class="tag">1社が報道</span>
+    </div>
+    <div class="headline">メルカリ、Notion AI委託先から顧客情報流出か</div>
+    <div style="color:var(--muted);font-size:.9rem">社員が業務AIに入力した内容が、利用者からは見えない再委託先に保存され、そこから漏れました。業務でAIを使う企業には、委託の連鎖まで含めたデータ管理が求められます。</div>
+  </div>
+</div>
+
+<footer>
+  投稿したらこのページは用済みです。実績は翌日 analytics が自動収集します。
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.copy);
+    var text = el.innerText;
+    var done = function () {
+      var original = btn.textContent;
+      btn.textContent = 'コピーしました';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('copied');
+      }, 1600);
+    };
+    // navigator.clipboard は HTTPS か localhost でしか使えないため、
+    // file:// で開いたときのために execCommand へ退避する
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
